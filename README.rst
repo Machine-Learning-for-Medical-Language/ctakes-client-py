@@ -20,10 +20,10 @@ Configuration
 ==============================
 Default client talks to "localhost" running a server locally (https://github.com/Machine-Learning-for-Medical-Language/ctakes-covid-container)
 ::
-   export CTAKES_URL_REST='http://tmill-desktop:8082/ctakes-web-rest/service/analyze'
+   export CTAKES_URL_REST='http://YOUR_SERVER:YOUR_PORT/ctakes-web-rest/service/analyze'
 
    
-HTTP Request
+Request
 ==============================
 Clinical text fragment or entire physician note. 
 ::
@@ -32,7 +32,7 @@ Clinical text fragment or entire physician note.
    response = ctakes_client.call_ctakes(text)
 
 
-HTTP Response
+Response
 ==============================
 This client parses responses into lists of MatchText and UmlsConcept. 
 ::
