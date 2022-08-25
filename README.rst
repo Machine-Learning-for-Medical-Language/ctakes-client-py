@@ -38,21 +38,26 @@ This client parses responses into lists of MatchText and UmlsConcept.
 Output Physician Note MatchText
 ===================================
 MatchText(s) are the character positions in the physician note where a UmlsConcept was found.
+
 .. image:: README/diagram/MatchText.png
   :width: 400
   :alt: MatchText::= begin end text polarity UmlsConcept+
-
-Concepts
-================================================
-.. image:: README/diagram/UmlsConcept.png
-.. image:: README/diagram/cui.png
-.. image:: README/diagram/tui.png
 
 Polarity (Negation)
 ================================================
 .. image:: README/diagram/polarity.png
   :width: 400
 
+UMLS Concepts
+================================================
+.. image:: README/diagram/UmlsConcept.png
+.. image:: README/diagram/cui.png
+.. image:: README/diagram/tui.png
+
+UMLS Vocabulary
+================================================
+.. image:: README/diagram/codingScheme.png
+.. image:: README/diagram/code.png
     
 UMLS (Unified Medical Language System)
 =========================================================
