@@ -5,7 +5,7 @@ Purpose: Extract Medical Concepts from Physician Notes
 This package simplifies communication with CTAKES NLP servers which produce matches with UMLS Concepts.
 
 - Clinical Text and Knowledge Extraction System (http://ctakes.apache.org)  
-- UMLS Unified Medical Language System
+- UMLS Unified Medical Language System / National Library of Medicine (https://nlm.nih.gov/research/umls)
 
 
 Quickstart
@@ -14,7 +14,7 @@ Clinical text fragment or entire physician note.
 ::
    physician_note = 'Chief Complaint: Patient c/o cough, denies fever, recent COVID test negative. Denies smoking.'
 
-Output medical concepts matches by type
+Output UMLS Concepts
 ==========================================
 This client parses responses into lists of MatchText and UmlsConcept. 
 ::
@@ -38,16 +38,20 @@ This client parses responses into lists of MatchText and UmlsConcept.
 Output Physician Note MatchText
 ===================================
 MatchText(s) are the character positions in the physician note where a UmlsConcept was found.
-.. |MatchText| image:: README/diagram/MatchText.png
+.. image:: README/diagram/MatchText.png
   :width: 400
   :alt: MatchText::= begin end text polarity UmlsConcept+
 
-Unified Medical Language System (UMLS) Concepts
+Concepts
 ================================================
-For general information on UMLS, see National Library of Medicine: https://www.nlm.nih.gov/research/umls/
-.. |UmlsConcept| image:: README/diagram/UmlsConcept.png
+.. image:: README/diagram/UmlsConcept.png
+.. image:: README/diagram/cui.png
+.. image:: README/diagram/tui.png
+
+Polarity (Negation)
+================================================
+.. image:: README/diagram/polarity.png
   :width: 400
-  :alt: UmlsConcept::= begin end text polarity UmlsConcept+
 
     
 UMLS (Unified Medical Language System)
