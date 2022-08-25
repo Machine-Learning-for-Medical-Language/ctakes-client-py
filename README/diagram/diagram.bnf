@@ -1,0 +1,15 @@
+MatchText::= begin end text polarity conceptAttributes
+
+begin::='first physician note character position'
+end::='last physician note character position'
+text::='Hepatocellcular Carcinoma'
+polarity::= (Positive 'example: patient has liver cancer')|(Negated 'no evidence of liver cancer')
+conceptAttributes::= UmlsConcept+
+
+UmlsConcept::= tui cui codingScheme code
+
+tui::='UMLS Term Unique Identifier (TUI)'
+cui::='UMLS Concept Unique Identifier(CUI) across all vocabularies'
+codingScheme::='vocabulary source'
+code::='identifier in vocabulary source'
+

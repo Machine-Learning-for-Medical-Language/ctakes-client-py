@@ -1,63 +1,64 @@
 .. contents:: ctakes-client-python
 
-what is ctakes-client-python?
-==============================
-
+Purpose: Extract Medical Concepts from Physician Notes
+=======================================================
 This package simplifies communication with CTAKES NLP servers which produce matches with UMLS Concepts.
 
 - Clinical Text and Knowledge Extraction System (http://ctakes.apache.org)  
 - UMLS Unified Medical Language System
 
+
 Quickstart
 ==============================
-Python3 pip install
+Clinical text fragment or entire physician note.
 ::
-   pip install ctakes-client
+   physician_note = 'Chief Complaint: Patient c/o cough, denies fever, recent COVID test negative. Denies smoking.'
 
-   
-
-Configuration
-==============================
-Default client talks to "localhost" running a server locally (https://github.com/Machine-Learning-for-Medical-Language/ctakes-covid-container)
-::
-   export CTAKES_URL_REST='http://YOUR_SERVER:YOUR_PORT/ctakes-web-rest/service/analyze'
-
-   
-Request
-==============================
-Clinical text fragment or entire physician note. 
-::
-   clinical_text = 'Chief Complaint: Patient c/o cough, denies fever, recent COVID test negative. Denies smoking.'
-   
-   response = ctakes_client.call_ctakes(text)
-
-
-Response
-==============================
+Output medical concepts matches by type
+==========================================
 This client parses responses into lists of MatchText and UmlsConcept. 
 ::
-    CtakesJSON(response)
+    CtakesJSON(output)
 
-    def list_match(self) -> List[MatchText]
+    list_match() -> List[MatchText]
     
-    def list_concept(self) -> List[UmlsConcept]
+    list_concept() -> List[UmlsConcept]
 
-    def list_sign_symptom(self) -> List[MatchText]
+    list_sign_symptom() -> List[MatchText]
 
-    def list_disease_disorder(self) -> List[MatchText]
+    list_disease_disorder() -> List[MatchText]
 
-    def list_medication(self) -> List[MatchText]
+    list_medication() -> List[MatchText]
 
-    def list_procedure(self) -> List[MatchText]
+    list_procedure() -> List[MatchText]
 
-    def list_anatomical_site(self) -> List[MatchText]
+    list_anatomical_site() -> List[MatchText]
 
-    def list_identified_annotation(self) -> List[MatchText]
+
+Output Physician Note MatchText
+===================================
+MatchText(s) are the character positions in the physician note where a UmlsConcept was found.
+.. |MatchText| image:: README/diagram/MatchText.png
+  :width: 400
+  :alt: MatchText::= begin end text polarity UmlsConcept+
+
+Unified Medical Language System (UMLS) Concepts
+================================================
+For general information on UMLS, see National Library of Medicine: https://www.nlm.nih.gov/research/umls/
+.. |UmlsConcept| image:: README/diagram/UmlsConcept.png
+  :width: 400
+  :alt: UmlsConcept::= begin end text polarity UmlsConcept+
+
     
-    
+UMLS (Unified Medical Language System)
+=========================================================
+For convenience, the list of UMLS Semantic Types is provided here.
 
+.. csv-table:: Semantic Types and Groupings
+   :file: README/SemGroups_2018.csv
+   :widths: 10, 20, 10, 60
+   :header-rows: 1
 
-   
    
    
    
