@@ -1,6 +1,7 @@
 import os
 import logging
 import requests
+from ctakes.ctakes_json import UmlsTypeMention, UmlsConcept, MatchText, CtakesJSON
 
 #######################################################################################################################
 #
@@ -16,7 +17,7 @@ def get_url_ctakes() -> str:
     """
     return os.environ.get('CTAKES_URL_REST', 'http://localhost:8080/ctakes-web-rest/service/analyze')
 
-def send(sentence:str, url=get_url_ctakes()) -> dict:
+def post(sentence:str, url=get_url_ctakes()) -> dict:
     """
     :param sentence: clinical text to send to cTAKES
     :param url: cTAKES REST server fully qualified path
@@ -24,3 +25,11 @@ def send(sentence:str, url=get_url_ctakes()) -> dict:
     """
     logging.debug(url)
     return requests.post(url, data=sentence).json()
+
+def process(sentence:str, url=get_url_ctakes()) -> CtakesJSON:
+    """
+    :param sentence: clinical text to send to cTAKES
+    :param url: cTAKES REST server fully qualified path
+    :return: CtakesJSON wrapper
+    """
+    return CtakesJSON(post(sentence, url))

@@ -13,8 +13,9 @@ Quickstart
 Clinical text fragment or entire physician note.
 ::
    physician_note = 'Chief Complaint: Patient c/o cough, denies fever, recent COVID test negative. Denies smoking.'
+   output = ctakes.process(physician_note)
 
-Output UMLS Concepts
+Output
 ==========================================
 This client parses responses into lists of MatchText and UmlsConcept. 
 ::
@@ -35,7 +36,7 @@ This client parses responses into lists of MatchText and UmlsConcept.
     list_anatomical_site() -> List[MatchText]
 
 
-Output Physician Note MatchText
+MatchText: Physician Notes
 ===================================
 MatchText(s) are the character positions in the physician note where a UmlsConcept was found.
 
@@ -43,12 +44,11 @@ MatchText(s) are the character positions in the physician note where a UmlsConce
   :width: 400
   :alt: MatchText::= begin end text polarity UmlsConcept+
 
-Polarity (Negation)
-================================================
+MatchText: Polarity
+===================================
 .. image:: README/diagram/polarity.png
-  :width: 400
 
-UMLS Concepts
+UMLS Concept
 ================================================
 .. image:: README/diagram/UmlsConcept.png
 .. image:: README/diagram/cui.png
@@ -59,7 +59,7 @@ UMLS Vocabulary
 .. image:: README/diagram/codingScheme.png
 .. image:: README/diagram/code.png
     
-UMLS (Unified Medical Language System)
+UMLS Semantic Types and Gruops
 =========================================================
 For convenience, the list of UMLS Semantic Types is provided here.
 

@@ -123,10 +123,15 @@ class CtakesJSON:
         if source:
             self.from_json(source)
 
-    def list_concept(self) -> List[UmlsConcept]:
+    def list_concept(self, polarity=None) -> List[UmlsConcept]:
         concat = list()
         for match in self.list_match():
-            concat += match.conceptAttributes
+            if polarity is None:
+                concat += match.conceptAttributes
+            if (polarity is True) and match.polarity:
+                concat += match.conceptAttributes
+            if (polarity is False) and not match.polarity:
+                concat += match.conceptAttributes
         return concat
 
     def list_concept_cui(self) -> List[str]:
@@ -138,17 +143,18 @@ class CtakesJSON:
     def list_concept_code(self) -> List[str]:
         return [c.code for c in self.list_concept()]
 
-    def list_match(self) -> List[MatchText]:
+    def list_match(self, filter_umls_type=None) -> List[MatchText]:
         concat = list()
         for semtype, matches in self.mentions.items():
-            concat += matches
+            if (filter_umls_type is None) or (semtype == filter_umls_type):
+                concat += matches
         return concat
 
     def list_match_text(self) -> List[str]:
         return [m.text for m in self.list_match()]
 
     def list_sign_symptom(self) -> List[MatchText]:
-        return self.mentions[UmlsTypeMention.SignSymptom]
+        return self.list_match(UmlsTypeMention.SignSymptom.value)
 
     def list_disease_disorder(self) -> List[MatchText]:
         return self.mentions[UmlsTypeMention.DiseaseDisorder]
