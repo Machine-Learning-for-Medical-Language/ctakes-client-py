@@ -128,25 +128,37 @@ class CtakesJSON:
         for match in self.list_match():
             if polarity is None:
                 concat += match.conceptAttributes
-            if (polarity is True) and match.polarity:
+            elif (polarity is True) and match.polarity:
                 concat += match.conceptAttributes
-            if (polarity is False) and not match.polarity:
+            elif (polarity is False) and not match.polarity:
                 concat += match.conceptAttributes
+            else:
+                raise Exception(f'polarity unknown: {polarity}')
         return concat
 
-    def list_concept_cui(self) -> List[str]:
-        return [c.cui for c in self.list_concept()]
+    def list_concept_cui(self, polarity=None) -> List[str]:
+        return [c.cui for c in self.list_concept(polarity)]
 
-    def list_concept_tui(self) -> List[str]:
-        return [c.tui for c in self.list_concept()]
+    def list_concept_tui(self, polarity=None) -> List[str]:
+        return [c.tui for c in self.list_concept(polarity)]
 
-    def list_concept_code(self) -> List[str]:
-        return [c.code for c in self.list_concept()]
+    def list_concept_code(self, polarity=None) -> List[str]:
+        return [c.code for c in self.list_concept(polarity)]
 
-    def list_match(self, filter_umls_type=None) -> List[MatchText]:
+    def list_match(self, filter_umls_type=None, polarity=None) -> List[MatchText]:
         concat = list()
         for semtype, matches in self.mentions.items():
             if (filter_umls_type is None) or (semtype == filter_umls_type):
+                if polarity is None:
+                    concat += matches
+                else:
+                    for m in matches:
+                        if (polarity is True) and m.polarity:
+                            concat += m
+                        elif (polarity is False) and not m.polarity:
+                            concat += m
+                        else:
+                            raise Exception(f'polarity unknown: {polarity}')
                 concat += matches
         return concat
 

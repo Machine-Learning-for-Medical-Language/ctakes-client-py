@@ -46,3 +46,13 @@ def list_bsv(filename) -> List[BSV]:
                     pref=cols[4]))
 
     return entries
+
+def bsv_to_cui_map(bsv_file) -> dict:
+    """
+    :param bsv_file: see BSV file, where rows are CUI|TUI|CODE|VOCAB|TXT|PREF
+    :return: map of {cui:text} labels
+    """
+    cui_map = dict()
+    for bsv in list_bsv(bsv_file):
+        cui_map[bsv.cui] = bsv.pref
+    return cui_map
