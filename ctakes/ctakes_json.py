@@ -128,10 +128,12 @@ class CtakesJSON:
         for match in self.list_match():
             if polarity is None:
                 concat += match.conceptAttributes
-            elif (polarity is True) and match.polarity:
-                concat += match.conceptAttributes
-            elif (polarity is False) and not match.polarity:
-                concat += match.conceptAttributes
+            elif polarity is True:
+                if match.polarity:
+                    concat += match.conceptAttributes
+            elif polarity is False:
+                if not match.polarity:
+                    concat += match.conceptAttributes
             else:
                 raise Exception(f'polarity unknown: {polarity}')
         return concat
@@ -157,8 +159,6 @@ class CtakesJSON:
                             concat += m
                         elif (polarity is False) and not m.polarity:
                             concat += m
-                        else:
-                            raise Exception(f'polarity unknown: {polarity}')
                 concat += matches
         return concat
 
