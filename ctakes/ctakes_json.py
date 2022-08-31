@@ -1,3 +1,4 @@
+import logging
 from typing import List
 from enum import Enum
 
@@ -60,6 +61,15 @@ class UmlsConcept:
 #
 #######################################################################################################################
 
+class Polarity(Enum):
+    """"
+    Polarity means "negation" like "patient denies cough".
+    NegEx algorithm polularized by Wendy Chapman et al
+    https://www.sciencedirect.com/science/article/pii/S1532046401910299
+    """
+    pos = 0
+    neg = -1
+
 class MatchText:
     def __init__(self, source=None):
         self.begin = None
@@ -72,19 +82,15 @@ class MatchText:
         if source: self.from_json(source)
 
     @staticmethod
-    def parse_polarity(polarity) -> bool:
-        """
-        Polarity means "negation" like "patient denies cough".
-        NegEx algorithm polularized by Wendy Chapman et al
-        https://www.sciencedirect.com/science/article/pii/S1532046401910299
-
-        :param polarity: typically 0 for positive and -1 for negated
-        :return: True/False
-        """
-        if polarity in [0, 1, '0', '1', True, 'positive']:
-            return True
-        if polarity in [-1, '-1', False, 'negated']:
-            return False
+    def parse_polarity(polarity) -> Polarity:
+        if isinstance(polarity, Polarity):
+            return polarity
+        elif polarity == -1:
+            return Polarity.neg
+        elif polarity == 0:
+            return Polarity.pos
+        else:
+            raise Exception(f'polarity unknown: {polarity}')
 
     @staticmethod
     def parse_mention(mention:str) -> UmlsTypeMention:
@@ -105,7 +111,7 @@ class MatchText:
             self.conceptAttributes.append(UmlsConcept(c))
 
     def as_json(self):
-        _polarity = 0 if self.polarity else -1
+        _polarity = self.polarity.value
         _concepts = [c.as_json() for c in self.conceptAttributes]
         return {'begin': self.begin, 'end': self.end, 'text': self.text,
                 'polarity': _polarity,
@@ -125,17 +131,8 @@ class CtakesJSON:
 
     def list_concept(self, polarity=None) -> List[UmlsConcept]:
         concat = list()
-        for match in self.list_match():
-            if polarity is None:
-                concat += match.conceptAttributes
-            elif polarity is True:
-                if match.polarity:
-                    concat += match.conceptAttributes
-            elif polarity is False:
-                if not match.polarity:
-                    concat += match.conceptAttributes
-            else:
-                raise Exception(f'polarity unknown: {polarity}')
+        for match in self.list_match(polarity=polarity):
+            concat += match.conceptAttributes
         return concat
 
     def list_concept_cui(self, polarity=None) -> List[str]:
@@ -147,7 +144,12 @@ class CtakesJSON:
     def list_concept_code(self, polarity=None) -> List[str]:
         return [c.code for c in self.list_concept(polarity)]
 
-    def list_match(self, filter_umls_type=None, polarity=None) -> List[MatchText]:
+    def list_match(self, polarity=None, filter_umls_type=None) -> List[MatchText]:
+        print(f'list_match(polarity={polarity}, filter_umls_type={filter_umls_type}')
+
+        if polarity is not None:
+            polarity = MatchText.parse_polarity(polarity)
+
         concat = list()
         for semtype, matches in self.mentions.items():
             if (filter_umls_type is None) or (semtype == filter_umls_type):
@@ -155,33 +157,30 @@ class CtakesJSON:
                     concat += matches
                 else:
                     for m in matches:
-                        if (polarity is True) and m.polarity:
-                            concat += m
-                        elif (polarity is False) and not m.polarity:
-                            concat += m
-                concat += matches
+                        if polarity == m.polarity:
+                            concat.append(m)
         return concat
 
-    def list_match_text(self) -> List[str]:
-        return [m.text for m in self.list_match()]
+    def list_match_text(self, polarity=None) -> List[str]:
+        return [m.text for m in self.list_match(polarity=polarity, filter_umls_type=None)]
 
-    def list_sign_symptom(self) -> List[MatchText]:
-        return self.list_match(UmlsTypeMention.SignSymptom.value)
+    def list_sign_symptom(self, polarity=None) -> List[MatchText]:
+        return self.list_match(polarity, UmlsTypeMention.SignSymptom)
 
-    def list_disease_disorder(self) -> List[MatchText]:
-        return self.mentions[UmlsTypeMention.DiseaseDisorder]
+    def list_disease_disorder(self, polarity=None) -> List[MatchText]:
+        return self.list_match(polarity, UmlsTypeMention.DiseaseDisorder)
 
-    def list_medication(self) -> List[MatchText]:
-        return self.mentions[UmlsTypeMention.Medication]
+    def list_medication(self, polarity=None) -> List[MatchText]:
+        return self.list_match(polarity, UmlsTypeMention.Medication)
 
-    def list_procedure(self) -> List[MatchText]:
-        return self.mentions[UmlsTypeMention.Procedure]
+    def list_procedure(self, polarity=None) -> List[MatchText]:
+        return self.list_match(polarity, UmlsTypeMention.Procedure)
 
-    def list_anatomical_site(self) -> List[MatchText]:
-        return self.mentions[UmlsTypeMention.AnatomicalSite]
+    def list_anatomical_site(self, polarity=None) -> List[MatchText]:
+        return self.list_match(polarity, UmlsTypeMention.AnatomicalSite)
 
-    def list_identified_annotation(self) -> List[MatchText]:
-        return self.mentions[UmlsTypeMention.CustomDict]
+    def list_identified_annotation(self, polarity=None) -> List[MatchText]:
+        return self.list_match(polarity, UmlsTypeMention.CustomDict)
 
     def from_json(self, source: dict) -> None:
         for mention, match_list in source.items():

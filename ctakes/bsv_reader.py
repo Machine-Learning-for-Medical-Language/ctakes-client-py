@@ -1,8 +1,9 @@
+import json
 from typing import List
 import logging
 
-class BSV(object):
-    def __init__(self, cui=None, code=None, vocab=None, text=None, pref=None):
+class BSV:
+    def __init__(self, cui=None, tui=None, code=None, vocab=None, text=None, pref=None):
         """
         BSV file format =
         CUI|TUI|CODE|VOCAB|TXT|PREF
@@ -17,10 +18,45 @@ class BSV(object):
         :param pref: preferred terms https://www.nlm.nih.gov/research/umls/new_users/online_learning/Meta_004.html
         """
         self.cui = cui
+        self.tui = tui
         self.code = code
         self.vocab = vocab
         self.text = text
         self.pref = pref
+
+    def as_json(self):
+        return self.__dict__
+
+    def from_json(self, source):
+        self.cui = source.get('cui')
+        self.tui = source.get('tui')
+        self.code = source.get('code')
+        self.vocab = source.get('vocab')
+        self.text = source.get('text')
+        self.pref = source.get('pref')
+
+    def from_bsv(self, source):
+        if isinstance(source, BSV):
+            return source
+
+        if isinstance(source, str):
+            source = source.split('|')
+
+        if 6 != len(source):
+            raise Exception(f'from_bsv failed: {source}')
+
+        self.cui = source[0]
+        self.tui = source[1]
+        self.code = source[2]
+        self.vocab = source[3]
+        self.text = source[4]
+        self.pref = source[5]
+
+    def to_bsv(self):
+        return f'{self.cui}|{self.tui}|{self.code}|{self.vocab}|{self.text}|{self.pref}'
+
+    def __str__(self):
+        return self.to_bsv()
 
 def list_bsv(filename) -> List[BSV]:
     """
@@ -34,20 +70,13 @@ def list_bsv(filename) -> List[BSV]:
             if line.startswith('#'):
                 logging.info(f'found header : {line}')
             else:
-                cols = line.split('|')
-                if 5 != len(cols):
-                    logging.error(f'unknown line {line}')
-                    raise Exception(f'cannot parse BSV line: {line}, cols was {cols}')
-                entries.append(BSV(
-                    cui=cols[0],
-                    code=cols[1],
-                    vocab=cols[2],
-                    text=cols[3],
-                    pref=cols[4]))
+                parsed = BSV()
+                parsed.from_bsv(line)
+                entries.append(parsed)
 
     return entries
 
-def bsv_to_cui_map(bsv_file) -> dict:
+def bsv_file_cui_map(bsv_file) -> dict:
     """
     :param bsv_file: see BSV file, where rows are CUI|TUI|CODE|VOCAB|TXT|PREF
     :return: map of {cui:text} labels
@@ -56,3 +85,19 @@ def bsv_to_cui_map(bsv_file) -> dict:
     for bsv in list_bsv(bsv_file):
         cui_map[bsv.cui] = bsv.pref
     return cui_map
+
+def read_text(filename) -> str:
+    logging.info(f'read_text({filename})')
+    with open(filename, 'r') as fp:
+        return fp.read()
+
+def read_text_lines(filename) -> List[str]:
+    logging.info(f'read_text({filename})')
+    with open(filename, 'r') as fp:
+        return fp.readlines()
+
+def read_json(filename) -> dict:
+    logging.info(f'read_json({filename})')
+    with open(filename, 'r') as fp:
+        return json.load(fp)
+
