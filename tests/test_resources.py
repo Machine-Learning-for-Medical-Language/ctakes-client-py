@@ -28,3 +28,7 @@ class TestResources(unittest.TestCase):
         self.assertIsNotNone(load(COVID_SYMPTOMS_BSV))
         self.assertIsNotNone(load(TEST_PHYSICIAN_NOTE_TXT))
         self.assertIsNotNone(load(TEST_PHYSICIAN_NOTE_JSON))
+
+
+if __name__ == '__main__':
+    unittest.main()

@@ -39,5 +39,9 @@ class TestCtakesJSON(unittest.TestCase):
         self.assertDictEqual(expected, actual1, 'JSON did not match round trip serialization')
 
 
+if __name__ == '__main__':
+    unittest.main()
+
+
 
 
