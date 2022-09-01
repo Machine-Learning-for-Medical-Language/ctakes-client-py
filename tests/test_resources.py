@@ -1,33 +1,51 @@
 import os
+from enum import Enum
 import unittest
-from ctakes import bsv_reader
+from ctakes import ctakes_bsv
 
-COVID_SYMPTOMS_BSV = os.path.join(os.getcwd(), '../resources/covid_symptoms.bsv')
-TEST_PHYSICIAN_NOTE_TXT = os.path.join(os.getcwd(), '../resources/test_physician_note.txt')
-TEST_PHYSICIAN_NOTE_JSON = os.path.join(os.getcwd(), '../resources/test_physician_note.json')
+def path(filename):
+    return os.path.join(os.getcwd(), f'../resources/{filename}')
 
-def load(filename):
-    if str(filename).endswith('.json'):
-        return bsv_reader.read_json(filename)
-    elif str(filename).endswith('.txt'):
-        return bsv_reader.read_text(filename)
-    elif str(filename).endswith('.bsv'):
-        return bsv_reader.list_bsv(filename)
+def load(filepath):
+    if str(filepath).endswith('.json'):
+        return ctakes_bsv.read_json(filepath)
+    elif str(filepath).endswith('.txt'):
+        return ctakes_bsv.read_text(filepath)
+    if str(filepath).endswith('.bsv'):
+        if 'SemGroups' in filepath:
+            return ctakes_bsv.list_bsv_semantics(filepath)
+        else:
+            return ctakes_bsv.list_bsv_concept(filepath)
 
-class TestResources(unittest.TestCase):
 
-    def assertExists(self, resource_file=COVID_SYMPTOMS_BSV):
+class PathResource(Enum):
+    covid_symptoms = path('covid_symptoms.bsv')
+    physician_note_text = path('test_physician_note.txt')
+    physician_note_json = path('test_physician_note.json')
+    test_negation = path('test_negation_hard.txt')
+    semantic_groups = path('SemGroups_2018.bsv')
+
+class LoadResource(Enum):
+    covid_symptoms = load(PathResource.covid_symptoms.value)
+    physician_note_text = load(PathResource.physician_note_text.value)
+    physician_note_json = load(PathResource.physician_note_json.value)
+    test_negation = load(PathResource.test_negation.value)
+    semantic_groups = load(PathResource.semantic_groups.value)
+
+class TestResourceValidity(unittest.TestCase):
+
+    def assertExists(self, resource_file):
         self.assertTrue(os.path.exists(resource_file), f'resource did not exist: {resource_file}')
 
     def test_resource_exists(self):
-        self.assertExists(COVID_SYMPTOMS_BSV)
-        self.assertExists(TEST_PHYSICIAN_NOTE_TXT)
-        self.assertExists(TEST_PHYSICIAN_NOTE_JSON)
+        for res in PathResource:
+            self.assertExists(res.value)
 
     def test_resource_load(self):
-        self.assertIsNotNone(load(COVID_SYMPTOMS_BSV))
-        self.assertIsNotNone(load(TEST_PHYSICIAN_NOTE_TXT))
-        self.assertIsNotNone(load(TEST_PHYSICIAN_NOTE_JSON))
+        for loader in LoadResource:
+            # print(loader.value)
+            self.assertIsNotNone(loader.value)
+            self.assertTrue(len(loader.value) > 0)
 
 
 if __name__ == '__main__':

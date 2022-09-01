@@ -145,7 +145,7 @@ class CtakesJSON:
         return [c.code for c in self.list_concept(polarity)]
 
     def list_match(self, polarity=None, filter_umls_type=None) -> List[MatchText]:
-        print(f'list_match(polarity={polarity}, filter_umls_type={filter_umls_type}')
+        logging.debug(f'list_match(polarity={polarity}, filter_umls_type={filter_umls_type}')
 
         if polarity is not None:
             polarity = MatchText.parse_polarity(polarity)
