@@ -149,7 +149,7 @@ def list_bsv_semantics(filename) -> List[BsvSemanticType]:
 def list_bsv_concept(filename) -> List[BsvConcept]:
     return list_bsv(filename, BsvConcept)
 
-def list_bsv_concept_cui_pref(filename) -> dict:
+def map_cui_pref(filename) -> dict:
     """
     :param filename: see BSV file, where rows are CUI|TUI|CODE|VOCAB|TXT|PREF
     :return: map of {cui:text} labels

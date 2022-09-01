@@ -71,7 +71,7 @@ class TestCtakesClient(unittest.TestCase):
     def test_negation(self):
         ner = ctakes_client.extract(LoadResource.test_negation.value)
 
-        symptoms_dict = ctakes_bsv.list_bsv_concept_cui_pref(PathResource.covid_symptoms.value)
+        symptoms_dict = ctakes_bsv.map_cui_pref(PathResource.covid_symptoms.value)
         positive_list = ner.list_concept(Polarity.pos)
 
         for unexpected in positive_list:
