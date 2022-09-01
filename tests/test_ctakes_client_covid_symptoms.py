@@ -42,19 +42,24 @@ class TestCtakesClient(unittest.TestCase):
                 self.assertTrue(bsv.cui in cui_list, err)
 
     def test_covid_symptoms_medical_synonyms(self):
-        """
-        SOB : shortness of breath
-        HA : Headache
-        Myalgias : Muscle aches and pain
-        Chills : Fever or chills
-        """
-        expected = ['SOB', 'HA', 'Myalgias', 'Chills']
+        expected = {'SOB':'Shortness Of Breath',
+                    'HA': 'Headache',
+                    'Myalgias': 'Muscle aches and pain',
+                    'Chills': 'Fever or chills',
+                    'Post-tussive': 'after Coughing',
+                    'tussive':'related to Coughing',
+                    'Pharyngitis':'sore throat',
+                    'Odynophagia': 'sore throat'}
+
         actual = list()
-        for symptom in expected:
+        for symptom in expected.keys():
             found = ctakes_client.extract(symptom).list_match_text()
             if symptom in found:
                 actual.append(symptom)
-        self.assertEqual(expected, actual)
+
+        diff = set(expected.keys()).difference(set(actual))
+
+        self.assertEqual(set(), diff, 'diff should be empty, missing')
 
     def test_physician_note(self):
         physician_note = LoadResource.physician_note_text.value

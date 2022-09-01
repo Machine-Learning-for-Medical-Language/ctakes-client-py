@@ -10,7 +10,7 @@ with open(os.path.join(here, 'README.rst'), encoding='utf-8') as f:
 
 setup(
     name='ctakes-client',
-    version='0.1.3',
+    version='0.1.4',
     description='cTAKES client support for accessing cTAKES COVID REST service',
     long_description=long_descr,
     url='https://github.com/comorbidity/ctakes-client-python',
