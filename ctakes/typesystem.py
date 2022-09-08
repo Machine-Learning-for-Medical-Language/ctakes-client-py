@@ -27,7 +27,7 @@ class UmlsConcept:
         * CODE  identified by the vocabulary
         https://www.ncbi.nlm.nih.gov/books/NBK9684/#ch02.sec2.5
 
-        * codingScheme also known as SAB for "source abbreviation" or vocabularoy
+        * codingScheme also known as SAB for "source abbreviation" or vocabulary
         https://www.nlm.nih.gov/research/umls/sourcereleasedocs/index.html
 
         * TUI Type Unique Identifier (semantic types)
@@ -64,7 +64,7 @@ class UmlsConcept:
 class Polarity(Enum):
     """"
     Polarity means "negation" like "patient denies cough".
-    NegEx algorithm polularized by Wendy Chapman et al
+    NegEx algorithm popularized by Wendy Chapman et al
     https://www.sciencedirect.com/science/article/pii/S1532046401910299
     """
     pos = 0

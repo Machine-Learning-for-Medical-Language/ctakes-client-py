@@ -29,8 +29,9 @@ class TestNegationTransformer(unittest.TestCase):
 
     def assertPolarityCompatible(self, text: str):
         ner = ctakes.client.extract(text)
-        polarities_ctakes = ner.list_polarity(ner.list_sign_symptom())
-        polarities_cnlp = ctakes.transformer.list_polarity(text, ner.list_spans())
+        symptoms = ner.list_sign_symptom()
+        polarities_ctakes = ner.list_polarity(symptoms)
+        polarities_cnlp = ctakes.transformer.list_polarity(text, ner.list_spans(symptoms))
 
         self.assertEqual(polarities_ctakes, polarities_cnlp, text)
 
@@ -40,14 +41,14 @@ class TestNegationTransformer(unittest.TestCase):
 
         ner = ctakes.client.extract(text)
 
-        for match in ner.list_match():
+        matches = ner.list_match()
+        spans = ner.list_spans(matches)
+
+        for match in matches:
             print(f'{match.polarity.name}\t{match.span()}\t{match.text}\t\t{match.type.value}')
 
-        spans = ner.list_spans()
-        print(spans)
-
-        polarities_cnlp = ctakes.transformer.list_polarity(text, ner.list_spans())
-        polarities_ctakes = ner.list_polarity()
+        polarities_cnlp = ctakes.transformer.list_polarity(text, spans)
+        polarities_ctakes = ner.list_polarity(spans)
 
         print('###############################################################################')
         print('cNLP=')

@@ -59,7 +59,7 @@ UMLS Vocabulary
 .. image:: README/diagram/codingScheme.png
 .. image:: README/diagram/code.png
     
-UMLS Semantic Types and Gruops
+UMLS Semantic Types and Groups
 =========================================================
 For convenience, the list of UMLS Semantic Types is provided here.
 
