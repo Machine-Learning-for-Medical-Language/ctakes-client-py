@@ -1,21 +1,21 @@
 import os
 from enum import Enum
 import unittest
-from ctakes import ctakes_bsv
+from ctakes import filesystem
 
 def path(filename):
     return os.path.join(os.getcwd(), f'../resources/{filename}')
 
 def load(filepath):
     if str(filepath).endswith('.json'):
-        return ctakes_bsv.read_json(filepath)
+        return filesystem.read_json(filepath)
     elif str(filepath).endswith('.txt'):
-        return ctakes_bsv.read_text(filepath)
+        return filesystem.read_text(filepath)
     if str(filepath).endswith('.bsv'):
         if 'SemGroups' in filepath:
-            return ctakes_bsv.list_bsv_semantics(filepath)
+            return filesystem.list_bsv_semantics(filepath)
         else:
-            return ctakes_bsv.list_bsv_concept(filepath)
+            return filesystem.list_bsv_concept(filepath)
 
 
 class PathResource(Enum):

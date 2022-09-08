@@ -1,10 +1,12 @@
-import json
 from typing import List
 import logging
+import json
+from ctakes.exceptions import BSVError
 
 #######################################################################################################################
+# Filetype: *.bsv
 #
-# BSV = Bar|Separated|File
+# BSV = Bar|Separated|Value
 #
 #######################################################################################################################
 
@@ -52,7 +54,7 @@ class BsvConcept:
             source = source.split('|')
 
         if 6 != len(source):
-            raise Exception(f'from_bsv failed: {source}')
+            raise BSVError(f'from_bsv failed: {source}')
 
         self.cui = source[0]
         self.tui = source[1]
@@ -68,6 +70,7 @@ class BsvConcept:
         return self.to_bsv()
 
 #######################################################################################################################
+# Filetype: *.bsv
 #
 # BSV Semantic Types
 #
@@ -109,7 +112,7 @@ class BsvSemanticType:
             source = source.split('|')
 
         if 4 != len(source):
-            raise Exception(f'from_bsv failed: {source}')
+            raise BSVError(f'from_bsv failed: {source}')
 
         self.group_id = source[0]
         self.group_label = source[1]
@@ -123,6 +126,7 @@ class BsvSemanticType:
         return self.to_bsv()
 
 #######################################################################################################################
+# FUNCTIONS for file handling
 #
 # File Common Helper functions with INFO logging
 #
@@ -139,7 +143,7 @@ def list_bsv(filename, class_bsv) -> list:
             logging.info(f'found header : {line} : {filename}')
         else:
             parsed = class_bsv()
-            parsed.from_bsv(line)
+            parsed.from_bsv(line.strip())
             entries.append(parsed)
     return entries
 
@@ -156,7 +160,7 @@ def map_cui_pref(filename) -> dict:
     """
     cui_map = dict()
     for bsv in list_bsv_concept(filename):
-        cui_map[bsv.cui] = bsv.pref
+        cui_map[bsv.cui] = bsv.pref.strip()
     return cui_map
 
 #######################################################################################################################

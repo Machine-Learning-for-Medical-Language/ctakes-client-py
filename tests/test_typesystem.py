@@ -2,14 +2,13 @@ import unittest
 import os
 import json
 
-from ctakes.ctakes_json import CtakesJSON, Polarity
-import test_resources
-from test_resources import TEST_PHYSICIAN_NOTE_JSON
+from ctakes.typesystem import CtakesJSON, Polarity
+from test_resources import PathResource, LoadResource
 
 class TestCtakesJSON(unittest.TestCase):
 
-    def test_physician_note(self, physician_note=TEST_PHYSICIAN_NOTE_JSON):
-        reader = CtakesJSON(test_resources.load(physician_note))
+    def test_physician_note(self):
+        reader = CtakesJSON(LoadResource.physician_note_json.value)
 
         expected = {'headache', 'nausea', 'vomiting', 'chest pain', 'mental status'}
         sign_symptom_neg = [m.text for m in reader.list_sign_symptom(Polarity.neg)]
@@ -24,8 +23,8 @@ class TestCtakesJSON(unittest.TestCase):
         self.assertEqual(0, len(reader.list_medication()), 'no medications expected')
         self.assertEqual(0, len(reader.list_identified_annotation()), 'no custom dict expected')
 
-    def test_umls_concept_medical_entries_exist(self, physician_note_json=TEST_PHYSICIAN_NOTE_JSON):
-        expected = test_resources.load(physician_note_json)
+    def test_umls_concept_medical_entries_exist(self):
+        expected = LoadResource.physician_note_json.value
         actual = CtakesJSON(expected)
 
         self.assertDictEqual(expected, actual.as_json(), 'ctakes json did not match before/after serialization')

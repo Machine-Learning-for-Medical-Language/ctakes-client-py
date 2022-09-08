@@ -1,6 +1,6 @@
 import unittest
 
-from ctakes import ctakes_bsv
+import ctakes
 from tests.test_resources import PathResource
 
 class TestCovidSymptomsBSV(unittest.TestCase):
@@ -10,7 +10,7 @@ class TestCovidSymptomsBSV(unittest.TestCase):
         Symptoms of COVID-19
         https://www.cdc.gov/coronavirus/2019-ncov/symptoms-testing/symptoms.html
         """
-        for bsv in ctakes_bsv.list_bsv_concept(PathResource.covid_symptoms.value):
+        for bsv in ctakes.filesystem.list_bsv_concept(PathResource.covid_symptoms.value):
             self.assertTrue(bsv.cui.startswith('C'), 'Concept CUI expected')
             self.assertTrue(bsv.tui.startswith('T'), 'Type TUI expected')
             self.assertEqual(bsv.vocab, 'SNOMEDCT_US', 'clinical terms vocab expected')
@@ -18,7 +18,7 @@ class TestCovidSymptomsBSV(unittest.TestCase):
             self.assertIsNotNone(bsv.pref)
 
     def test_umls_semantic_types(self):
-        bsv_list = ctakes_bsv.list_bsv_semantics(PathResource.semantic_groups.value)
+        bsv_list = ctakes.filesystem.list_bsv_semantics(PathResource.semantic_groups.value)
 
         for bsv in bsv_list:
             self.assertEqual(4, len(bsv.group_id), 'Group Abbreviations are 4 chars')

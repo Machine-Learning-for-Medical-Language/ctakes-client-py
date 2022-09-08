@@ -70,6 +70,28 @@ class Polarity(Enum):
     pos = 0
     neg = -1
 
+class Span:
+    """
+    Helper class to strongly type sharing of TextSpan similar to cTAKES package:
+    https://ctakes.apache.org/apidocs/4.0.0/org/apache/ctakes/typesystem/type/textspan/package-summary.html
+    """
+    def __init__(self, begin: int, end: int):
+        """
+        :param begin: first character position for a MatchText
+        :param end: last character position for a MatchText
+        """
+        self.begin = begin
+        self.end = end
+
+    def key(self) -> tuple:
+        """
+        :return: span as a single item (tuple entry)
+        """
+        return self.begin, self.end
+
+    def __str__(self):
+        return str(self.key())
+
 class MatchText:
     def __init__(self, source=None):
         self.begin = None
@@ -80,6 +102,9 @@ class MatchText:
         self.conceptAttributes = None
 
         if source: self.from_json(source)
+
+    def span(self) -> Span:
+        return Span(self.begin, self.end)
 
     @staticmethod
     def parse_polarity(polarity) -> Polarity:
@@ -144,6 +169,12 @@ class CtakesJSON:
     def list_concept_code(self, polarity=None) -> List[str]:
         return [c.code for c in self.list_concept(polarity)]
 
+    def list_spans(self, matches: list) -> List[tuple]:
+        return list(m.span().key() for m in matches)
+
+    def list_polarity(self, matches:list) -> List[Polarity]:
+        return list(m.polarity for m in matches)
+
     def list_match(self, polarity=None, filter_umls_type=None) -> List[MatchText]:
         logging.debug(f'list_match(polarity={polarity}, filter_umls_type={filter_umls_type}')
 
@@ -162,7 +193,7 @@ class CtakesJSON:
         return concat
 
     def list_match_text(self, polarity=None) -> List[str]:
-        return [m.text for m in self.list_match(polarity=polarity, filter_umls_type=None)]
+        return list(m.text for m in self.list_match(polarity=polarity, filter_umls_type=None))
 
     def list_sign_symptom(self, polarity=None) -> List[MatchText]:
         return self.list_match(polarity, UmlsTypeMention.SignSymptom)
@@ -199,3 +230,6 @@ class CtakesJSON:
 
             res[mention.value] = match_json
         return res
+
+
+
