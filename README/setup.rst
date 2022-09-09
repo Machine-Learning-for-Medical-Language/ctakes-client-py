@@ -4,12 +4,15 @@ Server server locally or use a remote server (https://github.com/Machine-Learnin
 ::
    export URL_CTAKES_URL='http://localhost:8080/ctakes-web-rest/service/analyze'
 
-   output = ctakes_client.post(physician_note, server_address=URL_CTAKES_URL)
+   ner = ctakes.client.extract(physician_note, url=URL_CTAKES_URL)
 
 Setup Clinical NLP Transformers  (Optional)
 ===============================================
 https://github.com/Machine-Learning-for-Medical-Language/cnlp_transformers#negation-api
 ::
-   export URL_CNLP_NEGATION='http://localhost:8000/negation/process''
+    export URL_CNLP_NEGATION='http://localhost:8000/negation/process'
 
-   output = ctakes_client.post(physician_note, server_address=URL_CTAKES_URL)
+    symptoms = ner.list_sign_symptom()
+    spans = ner.list_spans(symptoms)
+
+    def list_polarity(physician_note, spans, url=URL_CNLP_NEGATION)

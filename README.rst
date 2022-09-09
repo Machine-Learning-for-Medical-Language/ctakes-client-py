@@ -13,7 +13,7 @@ Quickstart
 Clinical text fragment or entire physician note.
 ::
    physician_note = 'Chief Complaint: Patient c/o cough, denies fever, recent COVID test negative. Denies smoking.'
-   output = ctakes.process(physician_note)
+   output = ctakes.post(physician_note)
 
 Output
 ==========================================
