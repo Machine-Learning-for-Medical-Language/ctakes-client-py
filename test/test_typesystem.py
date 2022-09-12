@@ -21,7 +21,6 @@ class TestCtakesJSON(unittest.TestCase):
         self.assertEqual(0, len(reader.list_disease_disorder()), 'no diseases expected')
         self.assertEqual(0, len(reader.list_procedure()), 'no procedures expected')
         self.assertEqual(0, len(reader.list_medication()), 'no medications expected')
-        self.assertEqual(0, len(reader.list_identified_annotation()), 'no custom dict expected')
 
     def test_umls_concept_medical_entries_exist(self):
         expected = LoadResource.physician_note_json.value

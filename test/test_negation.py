@@ -35,20 +35,28 @@ class TestNegationCtakesDefaultContext(unittest.TestCase):
         ner = ctakesclient.client.extract(note_negated_ros_review_of_symptoms())
 
         symptoms_dict = covid_symptoms()
-        positive_list = ner.list_concept(Polarity.pos)
+        symptoms_fp = list()
 
-        for unexpected in positive_list:
-            msg = json.dumps(unexpected.as_json(), indent=4)
-            msg = f'########## \t Found positive match: {msg}'
-            logging.warning(msg)
+        for match in ner.list_match(Polarity.pos):
+            for concept in match.conceptAttributes:
+                as_json = json.dumps(match.as_json(), indent=4)
+                msg = f'########## \t Found false positive match: {as_json}'
 
-            if unexpected.cui in symptoms_dict.keys():
-                logging.error(msg)
+                if concept.cui in symptoms_dict.keys():
+                    symptoms_fp.append(match)
 
+        self.assertEqual(list(), symptoms_fp,
+                         f'false positives found in purely NEGATED physician note review of systems {symptoms_fp}')
+
+    @unittest.skip('https://github.com/comorbidity/ctakes-client-python/issues/2')
     def test_patient_denies(self):
+        """
+        Test everything in this example note is negated.
+        Unfortunately ctakes negation algorithm is not perfect. See linked issue #2.
+        """
         text = note_negated_denies()
 
-        false_positives = ctakesclient.client.extract(text).list_match_text()
+        false_positives = ctakesclient.client.extract(text).list_match_text(Polarity.pos)
         self.assertEqual(list(), false_positives)
 
     def test_history_of_headache(self):
