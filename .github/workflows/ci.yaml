@@ -1,0 +1,30 @@
+name: CI
+on: [push]
+
+jobs:
+  unittest:
+    name: unit tests
+    runs-on: ubuntu-22.04
+    strategy:
+      matrix:
+        python-version: ["3.10"]
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v4
+        with:
+          python-version: ${{ matrix.python-version }}
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install pytest
+          pip install -r requirements.txt
+
+      - name: Test with pytest
+        run: |
+          # TODO: Expand our CI run to include the client/server tests too
+          # https://github.com/Machine-Learning-for-Medical-Language/ctakes-client-py/issues/10
+          python -m pytest test/test_filesystem.py test/test_resources.py test/test_typesystem.py

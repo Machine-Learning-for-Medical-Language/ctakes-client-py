@@ -4,7 +4,7 @@ import os
 import json
 
 from ctakesclient.typesystem import CtakesJSON, Polarity, UmlsConcept, MatchText
-from test_resources import PathResource, LoadResource
+from .test_resources import PathResource, LoadResource
 
 class TestCtakesJSON(unittest.TestCase):
 
