@@ -12,10 +12,10 @@ class TestNegationTransformer(unittest.TestCase):
             self.assertEqual(list(), self.false_positives(note))
 
     def false_positives(self, note: note_negated_denies()):
-        ner = ctakes.client.extract(note)
+        ner = ctakesclient.client.extract(note)
         symptoms = ner.list_sign_symptom()
         spans = ner.list_spans(symptoms)
-        polarities_cnlp = ctakes.transformer.list_polarity(sentence=note, spans=spans)
+        polarities_cnlp = ctakesclient.transformer.list_polarity(sentence=note, spans=spans)
 
         fp = list()
 
@@ -28,10 +28,10 @@ class TestNegationTransformer(unittest.TestCase):
         return fp
 
     def assertPolarityCompatible(self, text: str):
-        ner = ctakes.client.extract(text)
+        ner = ctakesclient.client.extract(text)
         symptoms = ner.list_sign_symptom()
         polarities_ctakes = ner.list_polarity(symptoms)
-        polarities_cnlp = ctakes.transformer.list_polarity(text, ner.list_spans(symptoms))
+        polarities_cnlp = ctakesclient.transformer.list_polarity(text, ner.list_spans(symptoms))
 
         self.assertEqual(polarities_ctakes, polarities_cnlp, text)
 
@@ -39,7 +39,7 @@ class TestNegationTransformer(unittest.TestCase):
         print('###############################################################################')
         print(text)
 
-        ner = ctakes.client.extract(text)
+        ner = ctakesclient.client.extract(text)
 
         matches = ner.list_match()
         spans = ner.list_spans(matches)
@@ -47,7 +47,7 @@ class TestNegationTransformer(unittest.TestCase):
         for match in matches:
             print(f'{match.polarity.name}\t{match.span()}\t{match.text}\t\t{match.type.value}')
 
-        polarities_cnlp = ctakes.transformer.list_polarity(text, spans)
+        polarities_cnlp = ctakesclient.transformer.list_polarity(text, spans)
         polarities_ctakes = ner.list_polarity(spans)
 
         print('###############################################################################')

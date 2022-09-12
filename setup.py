@@ -9,14 +9,14 @@ with open(os.path.join(here, 'README.rst'), encoding='utf-8') as f:
     long_descr = f.read()
 
 setup(
-    name='ctakes-client',
-    version='0.2.4',
+    name='ctakesclient',
+    version='1.0.0',
     description='cTAKES client support for accessing cTAKES COVID REST service',
     long_description=long_descr,
-    url='https://github.com/comorbidity/ctakes-client-python',
+    url='https://github.com/Machine-Learning-for-Medical-Language/ctakes-client-py',
     author='Andy McMurry, PhD',
     license='Apache License 2.0',
     keywords='Apache cTAKES clinical NLP Unified Medical Language System',
     include_package_data=True,
-    packages=["ctakes", "tests"]
+    packages=["ctakesclient", "tests"]
 )

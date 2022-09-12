@@ -2,12 +2,12 @@ from typing import List
 import logging
 import json
 import unittest
-import ctakes
-from ctakes.typesystem import Polarity
+import ctakesclient
+from ctakesclient.typesystem import Polarity
 from tests.test_resources import PathResource, LoadResource
 
 def covid_symptoms() -> dict:
-    return ctakes.filesystem.map_cui_pref(PathResource.covid_symptoms.value)
+    return ctakesclient.filesystem.map_cui_pref(PathResource.covid_symptoms.value)
 
 def note_negated_ros_review_of_symptoms() -> str:
     return LoadResource.test_negation.value
@@ -32,7 +32,7 @@ class TestNegationCtakesDefaultContext(unittest.TestCase):
     https://cwiki.apache.org/confluence/display/CTAKES/cTAKES+3.0+-+NE+Contexts
     """
     def test_ctakes_covid_symptoms(self):
-        ner = ctakes.client.extract(note_negated_ros_review_of_symptoms())
+        ner = ctakesclient.client.extract(note_negated_ros_review_of_symptoms())
 
         symptoms_dict = covid_symptoms()
         positive_list = ner.list_concept(Polarity.pos)
@@ -48,12 +48,12 @@ class TestNegationCtakesDefaultContext(unittest.TestCase):
     def test_patient_denies(self):
         text = note_negated_denies()
 
-        false_positives = ctakes.client.extract(text).list_match_text()
+        false_positives = ctakesclient.client.extract(text).list_match_text()
         self.assertEqual(list(), false_positives)
 
     def test_history_of_headache(self):
         text = note_positive_headache()
-        self.assertTrue('headache' in ctakes.client.extract(text).list_match_text())
+        self.assertTrue('headache' in ctakesclient.client.extract(text).list_match_text())
 
 
 if __name__ == '__main__':

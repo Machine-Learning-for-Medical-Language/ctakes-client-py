@@ -4,7 +4,7 @@ Server server locally or use a remote server (https://github.com/Machine-Learnin
 ::
    export URL_CTAKES_URL='http://localhost:8080/ctakes-web-rest/service/analyze'
 
-   ner = ctakes.client.extract(physician_note, url=URL_CTAKES_URL)
+   ner = ctakesclient.client.extract(physician_note, url=URL_CTAKES_URL)
 
 Setup Clinical NLP Transformers  (Optional)
 ===============================================
@@ -18,4 +18,4 @@ cNLP transformer can be fed the original sentence and the ctakes spans (text reg
     spans = ner.list_spans(symptoms)
 
     polarities_ctakes = ner.list_polarity(matches=symptoms)
-    polarities_cnlp = ctakes.transformer.list_polarity(physician_note, spans, url=URL_CNLP_NEGATION)
+    polarities_cnlp = ctakesclient.transformer.list_polarity(physician_note, spans, url=URL_CNLP_NEGATION)

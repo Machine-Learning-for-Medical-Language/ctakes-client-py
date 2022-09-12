@@ -2,9 +2,9 @@ from typing import List
 import os
 import logging
 import requests
-from ctakes.exceptions import TypeSystemError, ClientError
-from ctakes.typesystem import Span, Polarity, CtakesJSON
-from ctakes.typesystem import UmlsTypeMention, UmlsConcept, MatchText
+from ctakesclient.exceptions import TypeSystemError, ClientError
+from ctakesclient.typesystem import Span, Polarity, CtakesJSON
+from ctakesclient.typesystem import UmlsTypeMention, UmlsConcept, MatchText
 
 #######################################################################################################################
 #

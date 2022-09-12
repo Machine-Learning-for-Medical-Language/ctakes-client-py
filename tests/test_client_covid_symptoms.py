@@ -2,7 +2,7 @@ import logging
 import os
 import json
 import unittest
-import ctakes
+import ctakesclient
 from tests.test_resources import PathResource, LoadResource
 
 def pretty(result: dict):
@@ -26,7 +26,7 @@ class TestCtakesClient(unittest.TestCase):
 
         actual = list()
         for symptom in expected.keys():
-            found = ctakes.client.extract(symptom).list_match_text()
+            found = ctakesclient.client.extract(symptom).list_match_text()
             if symptom in found:
                 actual.append(symptom)
 
@@ -40,7 +40,7 @@ class TestCtakesClient(unittest.TestCase):
         https://www.cdc.gov/coronavirus/2019-ncov/symptoms-testing/symptoms.html
         """
         for bsv in LoadResource.covid_symptoms.value:
-            ner = ctakes.client.extract(bsv.text)
+            ner = ctakesclient.client.extract(bsv.text)
 
             cui_list = list()
             text_list = list()
@@ -66,8 +66,8 @@ class TestCtakesClient(unittest.TestCase):
         physician_note = LoadResource.physician_note_text.value
         expected = LoadResource.physician_note_json.value
 
-        actual1 = ctakes.client.extract(physician_note).as_json()
-        actual2 = ctakes.client.extract(physician_note).as_json()
+        actual1 = ctakesclient.client.extract(physician_note).as_json()
+        actual2 = ctakesclient.client.extract(physician_note).as_json()
 
         unittest.TestCase.maxDiff = None
 

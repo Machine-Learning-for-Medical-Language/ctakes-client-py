@@ -2,8 +2,8 @@ from typing import List
 import os
 import logging
 import requests
-from ctakes.exceptions import ClientError
-from ctakes.typesystem import Span, Polarity
+from ctakesclient.exceptions import ClientError
+from ctakesclient.typesystem import Span, Polarity
 
 #######################################################################################################################
 #
