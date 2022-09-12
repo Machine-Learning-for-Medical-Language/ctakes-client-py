@@ -1,20 +1,18 @@
-from typing import List
+"""HTTP client for medical language"""
+
 import os
 import logging
 import requests
-from ctakesclient.exceptions import TypeSystemError, ClientError
-from ctakesclient.typesystem import Span, Polarity, CtakesJSON
-from ctakesclient.typesystem import UmlsTypeMention, UmlsConcept, MatchText
+from ctakesclient.typesystem import CtakesJSON
 
-#######################################################################################################################
-#
-# HTTP Client for Medical Language
+###############################################################################
 #
 # https://github.com/Machine-Learning-for-Medical-Language/ctakes-covid-container
 #
 # https://github.com/Machine-Learning-for-Medical-Language/cnlp_transformers#negation-api
 #
-#######################################################################################################################
+###############################################################################
+
 
 def get_url_ctakes_rest() -> str:
     """
@@ -22,18 +20,23 @@ def get_url_ctakes_rest() -> str:
 
     :return: URL_CTAKES_REST env variable or default using localhost
     """
-    return os.environ.get('URL_CTAKES_REST', 'http://localhost:8080/ctakes-web-rest/service/analyze')
+    return os.environ.get(
+        'URL_CTAKES_REST',
+        'http://localhost:8080/ctakes-web-rest/service/analyze')
 
-def post(sentence:str, url=get_url_ctakes_rest()) -> dict:
+
+def post(sentence: str, url=get_url_ctakes_rest()) -> dict:
     """
     :param sentence: clinical text to send to cTAKES
     :param url: cTAKES REST server fully qualified path
     :return:
     """
     logging.debug(url)
-    return requests.post(url, data=sentence).json()
+    # TODO: consider exposing a pass-through timeout parameter
+    return requests.post(url, data=sentence).json()  # pylint: disable=missing-timeout
 
-def extract(sentence:str, url=get_url_ctakes_rest()) -> CtakesJSON:
+
+def extract(sentence: str, url=get_url_ctakes_rest()) -> CtakesJSON:
     """
     :param sentence: clinical text to send to cTAKES
     :param url: cTAKES REST server fully qualified path

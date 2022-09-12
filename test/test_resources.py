@@ -1,10 +1,14 @@
+"""Resource helpers for use in tests"""
+
 import os
 from enum import Enum
 import unittest
 from ctakesclient import filesystem
 
+
 def path(filename):
     return os.path.join(os.path.dirname(__file__), 'resources', filename)
+
 
 def load(filepath):
     if str(filepath).endswith('.json'):
@@ -19,23 +23,27 @@ def load(filepath):
 
 
 class PathResource(Enum):
-    covid_symptoms = path('covid_symptoms.bsv')
-    physician_note_text = path('test_physician_note.txt')
-    physician_note_json = path('test_physician_note.json')
-    test_negation = path('test_negation_hard.txt')
-    semantic_groups = path('SemGroups_2018.bsv')
+    COVID_SYMPTOMS = path('covid_symptoms.bsv')
+    PHYSICIAN_NOTE_TEXT = path('test_physician_note.txt')
+    PHYSICIAN_NOTE_JSON = path('test_physician_note.json')
+    TEST_NEGATION = path('test_negation_hard.txt')
+    SEMANTIC_GROUPS = path('SemGroups_2018.bsv')
+
 
 class LoadResource(Enum):
-    covid_symptoms = load(PathResource.covid_symptoms.value)
-    physician_note_text = load(PathResource.physician_note_text.value)
-    physician_note_json = load(PathResource.physician_note_json.value)
-    test_negation = load(PathResource.test_negation.value)
-    semantic_groups = load(PathResource.semantic_groups.value)
+    COVID_SYMPTOMS = load(PathResource.COVID_SYMPTOMS.value)
+    PHYSICIAN_NOTE_TEXT = load(PathResource.PHYSICIAN_NOTE_TEXT.value)
+    PHYSICIAN_NOTE_JSON = load(PathResource.PHYSICIAN_NOTE_JSON.value)
+    TEST_NEGATION = load(PathResource.TEST_NEGATION.value)
+    SEMANTIC_GROUPS = load(PathResource.SEMANTIC_GROUPS.value)
+
 
 class TestResourceValidity(unittest.TestCase):
+    """Test case for sanity checking resources"""
 
     def assertExists(self, resource_file):
-        self.assertTrue(os.path.exists(resource_file), f'resource did not exist: {resource_file}')
+        self.assertTrue(os.path.exists(resource_file),
+                        f'resource did not exist: {resource_file}')
 
     def test_resource_exists(self):
         for res in PathResource:

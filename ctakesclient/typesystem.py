@@ -1,19 +1,17 @@
+"""UMLS (Unified Medical Language System)"""
 import json
 import logging
 from typing import List
 from enum import Enum
 
-#######################################################################################################################
-#
-# UMLS (Unified Medical Language System)
-#
-#######################################################################################################################
+
 class UmlsTypeMention(Enum):
     """
     Semantic Types in the UMLS (Unified Medical Language System)
     https://lhncbc.nlm.nih.gov/ii/tools/MetaMap/documentation/SemanticTypesAndGroups.html
     Semantic type groupings here:
     """
+    # pylint: disable=invalid-name
     DiseaseDisorder = 'DiseaseDisorderMention'
     SignSymptom = 'SignSymptomMention'
     AnatomicalSite = 'AnatomicalSiteMention'
@@ -21,7 +19,10 @@ class UmlsTypeMention(Enum):
     Procedure = 'ProcedureMention'
     CustomDict = 'IdentifiedAnnotation'
 
+
 class UmlsConcept:
+    """Concept in the UMLS (Unified Medical Language System)"""
+
     def __init__(self, source=None):
         """
         * CUI   Concept Unique Identifier
@@ -36,14 +37,15 @@ class UmlsConcept:
 
         :param source: contains UMLS concept metadata
         """
-        self.codingScheme = None
+        self.codingScheme = None  # pylint: disable=invalid-name
         self.code = None
         self.cui = None
         self.tui = None
 
-        if source: self.from_json(source)
+        if source:
+            self.from_json(source)
 
-    def from_json(self, source:dict) -> None:
+    def from_json(self, source: dict) -> None:
         """
         :param source: contains UMLS Concept source
         """
@@ -53,7 +55,12 @@ class UmlsConcept:
         self.tui = source.get('tui')
 
     def as_json(self) -> dict:
-        return {'code': self.code, 'cui': self.cui, 'codingScheme': self.codingScheme,  'tui': self.tui}
+        return {
+            'code': self.code,
+            'cui': self.cui,
+            'codingScheme': self.codingScheme,
+            'tui': self.tui
+        }
 
     def as_string(self) -> str:
         """
@@ -64,11 +71,12 @@ class UmlsConcept:
     def __str__(self):
         return self.as_string()
 
-#######################################################################################################################
+###############################################################################
 #
 # JSON Responses from CTAKES REST Server
 #
-#######################################################################################################################
+###############################################################################
+
 
 class Polarity(Enum):
     """"
@@ -76,14 +84,17 @@ class Polarity(Enum):
     NegEx algorithm popularized by Wendy Chapman et al
     https://www.sciencedirect.com/science/article/pii/S1532046401910299
     """
+    # pylint: disable=invalid-name
     pos = 0
     neg = -1
+
 
 class Span:
     """
     Helper class to strongly type sharing of TextSpan similar to cTAKES package:
     https://ctakes.apache.org/apidocs/4.0.0/org/apache/ctakes/typesystem/type/textspan/package-summary.html
     """
+
     def __init__(self, begin: int, end: int):
         """
         :param begin: first character position for a MatchText
@@ -101,16 +112,20 @@ class Span:
     def __str__(self):
         return str(self.key())
 
+
 class MatchText:
+    """A fragment of text that may match a concept and polarity"""
+
     def __init__(self, source=None):
         self.begin = None
         self.end = None
         self.text = None
         self.polarity = None
         self.type = None
-        self.conceptAttributes = None
+        self.conceptAttributes = None  # pylint: disable=invalid-name
 
-        if source: self.from_json(source)
+        if source:
+            self.from_json(source)
 
     def span(self) -> Span:
         return Span(self.begin, self.end)
@@ -136,18 +151,19 @@ class MatchText:
     @staticmethod
     def sort_concepts(unsorted: List[UmlsConcept]) -> List[UmlsConcept]:
         """
-        :param unsorted: guarantees responses from ctakes server are identically ordered
+        :param unsorted: guarantees responses from ctakes server are
+                         identically ordered
         :return: sorted list of concepts.
         """
         return sorted(unsorted, key=UmlsConcept.as_string)
 
-    def from_json(self, source:dict):
+    def from_json(self, source: dict):
         self.begin = source.get('begin')
         self.end = source.get('end')
         self.text = source.get('text')
         self.type = self.parse_mention(source.get('type'))
         self.polarity = self.parse_polarity(source.get('polarity'))
-        self.conceptAttributes = list()
+        self.conceptAttributes = []
 
         # sort list of concepts ensuring same ordering
         unsorted = list(UmlsConcept(c) for c in source.get('conceptAttributes'))
@@ -156,26 +172,28 @@ class MatchText:
             self.conceptAttributes.append(c)
 
     def as_json(self):
-        _polarity = self.polarity.value
-        _concepts = [c.as_json() for c in self.conceptAttributes]
-        return {'begin': self.begin, 'end': self.end, 'text': self.text,
-                'polarity': _polarity,
-                'conceptAttributes': _concepts, 'type': self.type.value}
+        polarity_json = self.polarity.value
+        concepts_json = [c.as_json() for c in self.conceptAttributes]
+        return {
+            'begin': self.begin,
+            'end': self.end,
+            'text': self.text,
+            'polarity': polarity_json,
+            'conceptAttributes': concepts_json,
+            'type': self.type.value
+        }
 
-#######################################################################################################################
-#
-# Ctakes JSON contain "MatchText" with list of "UmlsConcept"
-#
-#######################################################################################################################
+
 class CtakesJSON:
+    """Ctakes JSON contain MatchText with list of UmlsConcept"""
 
     def __init__(self, source=None):
-        self.mentions = dict()
+        self.mentions = {}
         if source:
             self.from_json(source)
 
     def list_concept(self, polarity=None) -> List[UmlsConcept]:
-        concat = list()
+        concat = []
         for match in self.list_match(polarity=polarity):
             concat += match.conceptAttributes
         return concat
@@ -192,16 +210,19 @@ class CtakesJSON:
     def list_spans(self, matches: list) -> List[tuple]:
         return list(m.span().key() for m in matches)
 
-    def list_polarity(self, matches:list) -> List[Polarity]:
+    def list_polarity(self, matches: list) -> List[Polarity]:
         return list(m.polarity for m in matches)
 
-    def list_match(self, polarity=None, filter_umls_type=None) -> List[MatchText]:
-        logging.debug(f'list_match(polarity={polarity}, filter_umls_type={filter_umls_type}')
+    def list_match(self,
+                   polarity=None,
+                   filter_umls_type=None) -> List[MatchText]:
+        logging.debug('list_match(polarity=%s, filter_umls_type=%s', polarity,
+                      filter_umls_type)
 
         if polarity is not None:
             polarity = MatchText.parse_polarity(polarity)
 
-        concat = list()
+        concat = []
         for semtype, matches in self.mentions.items():
             if (filter_umls_type is None) or (semtype == filter_umls_type):
                 if polarity is None:
@@ -213,7 +234,9 @@ class CtakesJSON:
         return concat
 
     def list_match_text(self, polarity=None) -> List[str]:
-        return list(m.text for m in self.list_match(polarity=polarity, filter_umls_type=None))
+        return list(
+            m.text
+            for m in self.list_match(polarity=polarity, filter_umls_type=None))
 
     def list_sign_symptom(self, polarity=None) -> List[MatchText]:
         return self.list_match(polarity, UmlsTypeMention.SignSymptom)
@@ -237,19 +260,16 @@ class CtakesJSON:
         for mention, match_list in source.items():
             semtype = MatchText.parse_mention(mention)
 
-            if semtype not in self.mentions.keys():
-                self.mentions[semtype] = list()
+            if semtype not in self.mentions:
+                self.mentions[semtype] = []
 
             for m in match_list:
                 self.mentions[semtype].append(MatchText(m))
 
     def as_json(self):
-        res = dict()
+        res = {}
         for mention, match_list in self.mentions.items():
             match_json = [m.as_json() for m in match_list]
 
             res[mention.value] = match_json
         return res
-
-
-
