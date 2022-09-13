@@ -1,0 +1,31 @@
+[project]
+name = "ctakesclient"
+version = "1.0.0"
+requires-python = ">= 3.10"
+dependencies = [
+    "requests",
+]
+authors = [
+  { name="Andy McMurry, PhD", email="andrew.mcmurry@childrens.harvard.edu" },
+  { name="Michael Terry", email="michael.terry@childrens.harvard.edu" },
+  { name="Tim Miller", email="timothy.miller@childrens.harvard.edu" },
+]
+description = "cTAKES client support for accessing cTAKES REST services"
+readme = "README.rst"
+license = { text="Apache License 2.0" }
+classifiers = [
+    "License :: OSI Approved :: Apache Software License",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+]
+
+[project.urls]
+"Homepage" = "https://github.com/Machine-Learning-for-Medical-Language/ctakes-client-py"
+
+[build-system]
+requires = ["setuptools >= 61.0"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools]
+packages = ["ctakesclient"]
