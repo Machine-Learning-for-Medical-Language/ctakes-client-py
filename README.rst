@@ -1,5 +1,3 @@
-.. contents:: ctakes-client-py
-
 Purpose: Extract Medical Concepts from Physician Notes
 =======================================================
 This package simplifies communication with CTAKES NLP servers which produce matches with UMLS Concepts.
@@ -11,14 +9,18 @@ This package simplifies communication with CTAKES NLP servers which produce matc
 Quickstart
 ==============================
 Clinical text fragment or entire physician note.
+
 ::
+
    physician_note = 'Chief Complaint: Patient c/o cough, denies fever, recent COVID test negative. Denies smoking.'
    output = ctakesclient.post(physician_note)
 
 Output
 ==========================================
-This client parses responses into lists of MatchText and UmlsConcept. 
+This client parses responses into lists of MatchText and UmlsConcept.
+
 ::
+
     CtakesJSON(output)
 
     list_match() -> List[MatchText]
@@ -40,36 +42,28 @@ MatchText: Physician Notes
 ===================================
 MatchText(s) are the character positions in the physician note where a UmlsConcept was found.
 
-.. image:: README/diagram/MatchText.png
+.. image:: https://raw.githubusercontent.com/Machine-Learning-for-Medical-Language/ctakes-client-py/main/README/diagram/MatchText.png
   :width: 400
   :alt: MatchText::= begin end text polarity UmlsConcept+
 
 MatchText: Polarity
 ===================================
-.. image:: README/diagram/polarity.png
+.. image:: https://raw.githubusercontent.com/Machine-Learning-for-Medical-Language/ctakes-client-py/main/README/diagram/polarity.png
 
 UMLS Concept
 ================================================
-.. image:: README/diagram/UmlsConcept.png
-.. image:: README/diagram/cui.png
-.. image:: README/diagram/tui.png
+.. image:: https://raw.githubusercontent.com/Machine-Learning-for-Medical-Language/ctakes-client-py/main/README/diagram/UmlsConcept.png
+.. image:: https://raw.githubusercontent.com/Machine-Learning-for-Medical-Language/ctakes-client-py/main/README/diagram/cui.png
+.. image:: https://raw.githubusercontent.com/Machine-Learning-for-Medical-Language/ctakes-client-py/main/README/diagram/tui.png
 
 UMLS Vocabulary
 ================================================
-.. image:: README/diagram/codingScheme.png
-.. image:: README/diagram/code.png
-    
+.. image:: https://raw.githubusercontent.com/Machine-Learning-for-Medical-Language/ctakes-client-py/main/README/diagram/codingScheme.png
+.. image:: https://raw.githubusercontent.com/Machine-Learning-for-Medical-Language/ctakes-client-py/main/README/diagram/code.png
+
 UMLS Semantic Types and Groups
 =========================================================
-For convenience, the list of UMLS Semantic Types is provided here.
+You can browse the `list of UMLS Semantic Types`_ at the
+National Library of Medicine.
 
-.. csv-table:: Semantic Types and Groupings
-   :file: README/SemGroups_2018.csv
-   :widths: 10, 20, 10, 60
-   :header-rows: 1
-
-   
-   
-   
-
-	      
+.. _list of UMLS Semantic Types: https://uts.nlm.nih.gov/uts/umls/semantic-network/root
