@@ -2,7 +2,7 @@ import unittest
 import os
 import json
 
-from ctakes.typesystem import CtakesJSON, Polarity
+from ctakesclient.typesystem import CtakesJSON, Polarity
 from test_resources import PathResource, LoadResource
 
 class TestCtakesJSON(unittest.TestCase):

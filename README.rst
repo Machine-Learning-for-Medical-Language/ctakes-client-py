@@ -1,4 +1,4 @@
-.. contents:: ctakes-client-python
+.. contents:: ctakes-client-py
 
 Purpose: Extract Medical Concepts from Physician Notes
 =======================================================
@@ -13,7 +13,7 @@ Quickstart
 Clinical text fragment or entire physician note.
 ::
    physician_note = 'Chief Complaint: Patient c/o cough, denies fever, recent COVID test negative. Denies smoking.'
-   output = ctakes.post(physician_note)
+   output = ctakesclient.post(physician_note)
 
 Output
 ==========================================

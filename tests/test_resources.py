@@ -1,7 +1,7 @@
 import os
 from enum import Enum
 import unittest
-from ctakes import filesystem
+from ctakesclient import filesystem
 
 def path(filename):
     return os.path.join(os.getcwd(), f'../resources/{filename}')

@@ -1,7 +1,7 @@
 from typing import List
 import logging
 import json
-from ctakes.exceptions import BSVError
+from ctakesclient.exceptions import BSVError
 
 #######################################################################################################################
 # Filetype: *.bsv
