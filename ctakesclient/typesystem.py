@@ -1,3 +1,4 @@
+import json
 import logging
 from typing import List
 from enum import Enum
@@ -52,8 +53,16 @@ class UmlsConcept:
         self.tui = source.get('tui')
 
     def as_json(self) -> dict:
-        return {'code':self.code, 'cui':self.cui, 'codingScheme': self.codingScheme,  'tui': self.tui}
+        return {'code': self.code, 'cui': self.cui, 'codingScheme': self.codingScheme,  'tui': self.tui}
 
+    def as_string(self) -> str:
+        """
+        :return: string representation, also serves as "key" for sorting.
+        """
+        return json.dumps(self.as_json(), indent=4)
+
+    def __str__(self):
+        return self.as_string()
 
 #######################################################################################################################
 #
@@ -118,11 +127,19 @@ class MatchText:
             raise Exception(f'polarity unknown: {polarity}')
 
     @staticmethod
-    def parse_mention(mention:str) -> UmlsTypeMention:
+    def parse_mention(mention: str) -> UmlsTypeMention:
         if mention == 'IdentifiedAnnotation':
             return UmlsTypeMention.CustomDict
         else:
             return UmlsTypeMention[mention.replace('Mention', '')]
+
+    @staticmethod
+    def sort_concepts(unsorted: List[UmlsConcept]) -> List[UmlsConcept]:
+        """
+        :param unsorted: guarantees responses from ctakes server are identically ordered
+        :return: sorted list of concepts.
+        """
+        return sorted(unsorted, key=UmlsConcept.as_string)
 
     def from_json(self, source:dict):
         self.begin = source.get('begin')
@@ -132,8 +149,11 @@ class MatchText:
         self.polarity = self.parse_polarity(source.get('polarity'))
         self.conceptAttributes = list()
 
-        for c in source.get('conceptAttributes'):
-            self.conceptAttributes.append(UmlsConcept(c))
+        # sort list of concepts ensuring same ordering
+        unsorted = list(UmlsConcept(c) for c in source.get('conceptAttributes'))
+
+        for c in MatchText.sort_concepts(unsorted):
+            self.conceptAttributes.append(c)
 
     def as_json(self):
         _polarity = self.polarity.value
