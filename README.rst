@@ -42,24 +42,24 @@ MatchText: Physician Notes
 ===================================
 MatchText(s) are the character positions in the physician note where a UmlsConcept was found.
 
-.. image:: https://raw.githubusercontent.com/Machine-Learning-for-Medical-Language/ctakes-client-py/main/README/diagram/MatchText.png
+.. image:: https://raw.githubusercontent.com/Machine-Learning-for-Medical-Language/ctakes-client-py/de43929/docs/diagram/MatchText.png
   :width: 400
   :alt: MatchText::= begin end text polarity UmlsConcept+
 
 MatchText: Polarity
 ===================================
-.. image:: https://raw.githubusercontent.com/Machine-Learning-for-Medical-Language/ctakes-client-py/main/README/diagram/polarity.png
+.. image:: https://raw.githubusercontent.com/Machine-Learning-for-Medical-Language/ctakes-client-py/de43929/docs/diagram/polarity.png
 
 UMLS Concept
 ================================================
-.. image:: https://raw.githubusercontent.com/Machine-Learning-for-Medical-Language/ctakes-client-py/main/README/diagram/UmlsConcept.png
-.. image:: https://raw.githubusercontent.com/Machine-Learning-for-Medical-Language/ctakes-client-py/main/README/diagram/cui.png
-.. image:: https://raw.githubusercontent.com/Machine-Learning-for-Medical-Language/ctakes-client-py/main/README/diagram/tui.png
+.. image:: https://raw.githubusercontent.com/Machine-Learning-for-Medical-Language/ctakes-client-py/de43929/docs/diagram/UmlsConcept.png
+.. image:: https://raw.githubusercontent.com/Machine-Learning-for-Medical-Language/ctakes-client-py/de43929/docs/diagram/cui.png
+.. image:: https://raw.githubusercontent.com/Machine-Learning-for-Medical-Language/ctakes-client-py/de43929/docs/diagram/tui.png
 
 UMLS Vocabulary
 ================================================
-.. image:: https://raw.githubusercontent.com/Machine-Learning-for-Medical-Language/ctakes-client-py/main/README/diagram/codingScheme.png
-.. image:: https://raw.githubusercontent.com/Machine-Learning-for-Medical-Language/ctakes-client-py/main/README/diagram/code.png
+.. image:: https://raw.githubusercontent.com/Machine-Learning-for-Medical-Language/ctakes-client-py/de43929/docs/diagram/codingScheme.png
+.. image:: https://raw.githubusercontent.com/Machine-Learning-for-Medical-Language/ctakes-client-py/de43929/docs/diagram/code.png
 
 UMLS Semantic Types and Groups
 =========================================================
