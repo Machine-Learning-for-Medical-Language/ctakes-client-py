@@ -1,8 +1,8 @@
 import logging
 import json
 import unittest
-import ctakes
-from tests.test_resources import PathResource, LoadResource
+import ctakesclient
+from test.test_resources import PathResource, LoadResource
 
 class TestClientCtakesRestServer(unittest.TestCase):
 
@@ -14,8 +14,8 @@ class TestClientCtakesRestServer(unittest.TestCase):
         physician_note = LoadResource.physician_note_text.value
         expected = LoadResource.physician_note_json.value
 
-        actual1 = ctakes.client.extract(physician_note).as_json()
-        actual2 = ctakes.client.extract(physician_note).as_json()
+        actual1 = ctakesclient.client.extract(physician_note).as_json()
+        actual2 = ctakesclient.client.extract(physician_note).as_json()
 
         unittest.TestCase.maxDiff = None
 

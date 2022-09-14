@@ -1,5 +1,5 @@
 from typing import List
-from tests.test_negation import *
+from test.test_negation import *
 
 def list_false_positive_ss(physician_note:str) -> List[str]:
     """

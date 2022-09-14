@@ -3,7 +3,7 @@ import os
 import json
 import unittest
 import ctakesclient
-from tests.test_resources import PathResource, LoadResource
+from test.test_resources import PathResource, LoadResource
 
 def pretty(result: dict):
     print(json.dumps(result, indent=4))
