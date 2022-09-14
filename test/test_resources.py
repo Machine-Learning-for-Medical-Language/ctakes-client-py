@@ -4,7 +4,7 @@ import unittest
 from ctakesclient import filesystem
 
 def path(filename):
-    return os.path.join(os.getcwd(), f'resources/{filename}')
+    return os.path.join(os.path.dirname(__file__), 'resources', filename)
 
 def load(filepath):
     if str(filepath).endswith('.json'):
