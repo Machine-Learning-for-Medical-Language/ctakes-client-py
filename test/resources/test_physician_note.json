@@ -7,13 +7,13 @@
             "polarity": -1,
             "conceptAttributes": [
                 {
-                    "code": "51185008",
+                    "code": "261179002",
                     "cui": "C0817096",
                     "codingScheme": "SNOMEDCT_US",
                     "tui": "T029"
                 },
                 {
-                    "code": "261179002",
+                    "code": "51185008",
                     "cui": "C0817096",
                     "codingScheme": "SNOMEDCT_US",
                     "tui": "T029"
@@ -66,13 +66,13 @@
                     "tui": "T184"
                 },
                 {
-                    "code": "422400008",
+                    "code": "300359004",
                     "cui": "C0042963",
                     "codingScheme": "SNOMEDCT_US",
                     "tui": "T184"
                 },
                 {
-                    "code": "300359004",
+                    "code": "422400008",
                     "cui": "C0042963",
                     "codingScheme": "SNOMEDCT_US",
                     "tui": "T184"
@@ -102,13 +102,13 @@
             "polarity": -1,
             "conceptAttributes": [
                 {
-                    "code": "36456004",
+                    "code": "363871006",
                     "cui": "C0278060",
                     "codingScheme": "SNOMEDCT_US",
                     "tui": "T033"
                 },
                 {
-                    "code": "363871006",
+                    "code": "36456004",
                     "cui": "C0278060",
                     "codingScheme": "SNOMEDCT_US",
                     "tui": "T033"
@@ -123,13 +123,13 @@
             "polarity": 0,
             "conceptAttributes": [
                 {
-                    "code": "62315008",
+                    "code": "267060006",
                     "cui": "C0011991",
                     "codingScheme": "SNOMEDCT_US",
                     "tui": "T184"
                 },
                 {
-                    "code": "267060006",
+                    "code": "62315008",
                     "cui": "C0011991",
                     "codingScheme": "SNOMEDCT_US",
                     "tui": "T184"
@@ -144,13 +144,13 @@
             "polarity": 0,
             "conceptAttributes": [
                 {
-                    "code": "49727002",
+                    "code": "263731006",
                     "cui": "C0010200",
                     "codingScheme": "SNOMEDCT_US",
                     "tui": "T184"
                 },
                 {
-                    "code": "263731006",
+                    "code": "49727002",
                     "cui": "C0010200",
                     "codingScheme": "SNOMEDCT_US",
                     "tui": "T184"

@@ -1,7 +1,7 @@
 import unittest
 
 import ctakesclient
-from tests.test_resources import PathResource
+from test.test_resources import PathResource
 
 class TestCovidSymptomsBSV(unittest.TestCase):
 

@@ -3,14 +3,19 @@ import os
 import json
 import unittest
 import ctakesclient
-from tests.test_resources import PathResource, LoadResource
+from test.test_resources import PathResource, LoadResource
 
 def pretty(result: dict):
     print(json.dumps(result, indent=4))
 
+@unittest.skip("https://github.com/comorbidity/ctakes-client-python/issues/6")
 class TestCtakesClient(unittest.TestCase):
 
     def test_covid_symptoms_medical_synonyms(self):
+        """
+        Test if COVID19 symptom synonyms are mapped in the BSV dictionary.
+        https://github.com/Machine-Learning-for-Medical-Language/ctakes-covid-container/blob/main/covid.bsv
+        """
         expected = {'SOB': 'Shortness Of Breath',
                     'HA': 'Headache',
                     'Myalgias': 'Muscle aches and pain',
@@ -38,6 +43,10 @@ class TestCtakesClient(unittest.TestCase):
         """
         Symptoms of COVID-19
         https://www.cdc.gov/coronavirus/2019-ncov/symptoms-testing/symptoms.html
+
+        Test if every COVID symptom is found in server dictionary.
+        https://github.com/comorbidity/ctakes-client-python/blob/main/resources/covid_symptoms.bsv -->
+        https://github.com/Machine-Learning-for-Medical-Language/ctakes-covid-container/blob/main/covid.bsv
         """
         for bsv in LoadResource.covid_symptoms.value:
             ner = ctakesclient.client.extract(bsv.text)
@@ -61,19 +70,6 @@ class TestCtakesClient(unittest.TestCase):
                 logging.error(err)
 
                 self.assertTrue(bsv.cui in cui_list, err)
-
-    def test_physician_note(self):
-        physician_note = LoadResource.physician_note_text.value
-        expected = LoadResource.physician_note_json.value
-
-        actual1 = ctakesclient.client.extract(physician_note).as_json()
-        actual2 = ctakesclient.client.extract(physician_note).as_json()
-
-        unittest.TestCase.maxDiff = None
-
-        self.assertDictEqual(expected, actual1, 'JSON did not match round trip serialization')
-        self.assertDictEqual(actual1, actual2, 'calling service twice produces same results')
-
 
 if __name__ == '__main__':
     unittest.main()
