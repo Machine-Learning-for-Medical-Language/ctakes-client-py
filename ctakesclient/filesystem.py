@@ -1,20 +1,30 @@
+"""File loading and parsing"""
+
 from typing import List
 import logging
 import json
 from ctakesclient.exceptions import BSVError
 
-#######################################################################################################################
+###############################################################################
 # Filetype: *.bsv
 #
 # BSV = Bar|Separated|Value
 #
-#######################################################################################################################
+###############################################################################
+
 
 class BsvConcept:
     """
     BSV flat file of UMLS Concept
     """
-    def __init__(self, cui=None, tui=None, code=None, vocab=None, text=None, pref=None):
+
+    def __init__(self,
+                 cui=None,
+                 tui=None,
+                 code=None,
+                 vocab=None,
+                 text=None,
+                 pref=None):
         """
         BSV file format =
         CUI|TUI|CODE|VOCAB|TXT|PREF
@@ -24,9 +34,11 @@ class BsvConcept:
 
         :param cui: CUI from UMLS or NA for "identified annotation"
         :param code: CODE or "identified annotation" code
-        :param vocab: SNOMEDCT_US or other vocab https://www.nlm.nih.gov/research/umls/sourcereleasedocs/index.html
+        :param vocab: SNOMEDCT_US or other vocab
+                      https://www.nlm.nih.gov/research/umls/sourcereleasedocs/index.html
         :param text: string representation
-        :param pref: preferred terms https://www.nlm.nih.gov/research/umls/new_users/online_learning/Meta_004.html
+        :param pref: preferred terms
+                     https://www.nlm.nih.gov/research/umls/new_users/online_learning/Meta_004.html
         """
         self.cui = cui
         self.tui = tui
@@ -64,17 +76,19 @@ class BsvConcept:
         self.pref = source[5]
 
     def to_bsv(self):
-        return f'{self.cui}|{self.tui}|{self.code}|{self.vocab}|{self.text}|{self.pref}'
+        return (f'{self.cui}|{self.tui}|{self.code}|{self.vocab}|'
+                f'{self.text}|{self.pref}')
 
     def __str__(self):
         return self.to_bsv()
 
-#######################################################################################################################
+
+###############################################################################
 # Filetype: *.bsv
 #
 # BSV Semantic Types
 #
-#######################################################################################################################
+###############################################################################
 class BsvSemanticType:
     """
     BSV file of Unified Medical Language System Groups
@@ -83,7 +97,12 @@ class BsvSemanticType:
     TODO: cTAKES also has a Mentions grouping of UMLS Types
     https://lhncbc.nlm.nih.gov/ii/tools/MetaMap/documentation/SemanticTypesAndGroups.html
     """
-    def __init__(self, group_id=None, group_label=None, tui=None, tui_label=None):
+
+    def __init__(self,
+                 group_id=None,
+                 group_label=None,
+                 tui=None,
+                 tui_label=None):
         """
         :param group_id: UMLS Semantic Group Abbreviation
         :param group_label: UMLS Semantic Group Label (longer than abbreviation)
@@ -125,61 +144,67 @@ class BsvSemanticType:
     def __str__(self):
         return self.to_bsv()
 
-#######################################################################################################################
+
+###############################################################################
 # FUNCTIONS for file handling
 #
 # File Common Helper functions with INFO logging
 #
-#######################################################################################################################
+###############################################################################
 def list_bsv(filename, class_bsv) -> list:
     """
     :param filename: BSV filename to parse
     :param class_bsv: what type of BSV resource to construct
     :return: list of BSV entries
     """
-    entries = list()
+    entries = []
     for line in read_text_lines(filename):
         if line.startswith('#'):
-            logging.info(f'found header : {line} : {filename}')
+            logging.info('found header : %s : %s', line, filename)
         else:
             parsed = class_bsv()
             parsed.from_bsv(line.strip())
             entries.append(parsed)
     return entries
 
+
 def list_bsv_semantics(filename) -> List[BsvSemanticType]:
     return list_bsv(filename, BsvSemanticType)
 
+
 def list_bsv_concept(filename) -> List[BsvConcept]:
     return list_bsv(filename, BsvConcept)
+
 
 def map_cui_pref(filename) -> dict:
     """
     :param filename: see BSV file, where rows are CUI|TUI|CODE|VOCAB|TXT|PREF
     :return: map of {cui:text} labels
     """
-    cui_map = dict()
+    cui_map = {}
     for bsv in list_bsv_concept(filename):
         cui_map[bsv.cui] = bsv.pref.strip()
     return cui_map
 
-#######################################################################################################################
+
+###############################################################################
 #
 # File Common Helper functions with INFO logging
 #
-#######################################################################################################################
+###############################################################################
 def read_text(filename) -> str:
-    logging.info(f'read_text({filename})')
-    with open(filename, 'r') as fp:
+    logging.info('read_text(%s)', filename)
+    with open(filename, 'r', encoding='utf-8') as fp:
         return fp.read()
 
+
 def read_text_lines(filename) -> List[str]:
-    logging.info(f'read_text({filename})')
-    with open(filename, 'r') as fp:
+    logging.info('read_text_lines(%s)', filename)
+    with open(filename, 'r', encoding='utf-8') as fp:
         return fp.readlines()
 
-def read_json(filename) -> dict:
-    logging.info(f'read_json({filename})')
-    with open(filename, 'r') as fp:
-        return json.load(fp)
 
+def read_json(filename) -> dict:
+    logging.info('read_json(%s)', filename)
+    with open(filename, 'r', encoding='utf-8') as fp:
+        return json.load(fp)
