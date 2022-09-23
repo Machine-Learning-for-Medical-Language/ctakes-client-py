@@ -31,5 +31,9 @@ build-backend = "setuptools.build_meta"
 packages = ["ctakesclient"]
 
 [project.optional-dependencies]
+docs = [
+    "sphinx < 6",
+    "sphinx-rtd-theme",
+]
 tests = [
 ]
