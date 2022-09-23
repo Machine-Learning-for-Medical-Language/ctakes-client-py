@@ -1,7 +1,7 @@
 [project]
 name = "ctakesclient"
-version = "1.0.1"
-requires-python = ">= 3.10"
+version = "1.0.3"
+requires-python = ">= 3.7"
 dependencies = [
     "requests",
 ]
@@ -29,3 +29,7 @@ build-backend = "setuptools.build_meta"
 
 [tool.setuptools]
 packages = ["ctakesclient"]
+
+[project.optional-dependencies]
+tests = [
+]
