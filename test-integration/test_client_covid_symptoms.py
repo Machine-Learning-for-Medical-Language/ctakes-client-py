@@ -3,7 +3,7 @@
 import json
 import unittest
 import ctakesclient
-from .test_resources import LoadResource
+from test.test_resources import LoadResource
 
 
 def pretty(result: dict):
@@ -26,8 +26,8 @@ class TestCtakesClient(unittest.TestCase):
             'Myalgias': 'Muscle aches and pain',
             'Chills': 'Fever or chills',
             'Post-tussive': 'after Coughing',
-            'tussive':'related to Coughing',
-            'Pharyngitis':'sore throat',
+            'tussive': 'related to Coughing',
+            'Pharyngitis': 'sore throat',
             'Odynophagia': 'sore throat',
             'Loss of taste': 'Anosmia',
             'Loss of smell': 'Anosmia',
