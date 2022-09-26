@@ -1,0 +1,176 @@
+
+
+CHIEF COMPLAINT: Patient AF is a 50-year-old hepatitis C positive African-
+American man presenting with a 2-day history of abdominal pain and distention
+with nausea and vomiting.
+
+HISTORY OF PRESENT ILLNESS: AF 's symptoms began 2 days ago, and he has
+not passed gas or had any bowel movements. He has not eaten anything, and has
+vomited 8 times. AF reports 10/10 pain in the LLQ.
+
+PAST MEDICAL HISTORY: AF 's past medical history is significant for an
+abdominal injury during the Vietnam War which required surgery, and multiple
+episodes of small bowel obstruction and abdominal pain. Other elements of his
+history include alcoholism, cocaine abuse, alcoholic hepatitis, hepatitis C
+positive, acute pancreatitis, chronic pancreatitis, appendicitis, liver
+hematoma/contusion, Hodgkin's Disease, constipation, diarrhea, paralytic
+ileus, anemia, multiple blood transfusions, chorioretinitis, pneumonia, and
+"crack chest pain"
+
+PAST SURGICAL HISTORY: AF has had multiple abdominal surgeries, including
+Bill Roth Procedure Type 1 (partial gastrectomy) during Vietnam War, at least
+2 exploratory laparotomies and enterolysis procedures (1993; 2000), and
+appendectomy
+
+MEDICATIONS: None.
+
+ALLERGIES: Iodine, IV contrast (anaphylaxis), and seafood/shellfish.
+
+FAMILY HISTORY: Noncontributory.
+
+SOCIAL HISTORY: AF was born and raised in San Francisco. His father was an
+alcoholic. He currently lives with his sister, and does not work; he collects
+a pension.
+
+HEALTH-RELATED BEHAVIORS: AF reports that he smokes 1 to 2 cigarettes per
+day, and drinks 40 ounces of beer per day.
+
+REVIEW OF SYSTEMS: Noncontributory, except that patient reports a 6 pound
+weight loss since his symptoms began, and reports multiple transfusions for
+anemia.
+
+PHYSICAL EXAM:  
+Vital Signs: T: 37.1 BP: 127/94 HR: 125 RR: 16 O2 Sat: 95% room air.  
+General: 50 year old African-American man in acute distress, writhing on
+gurney and rubbing abdomen.  
+Skin: well healed abdominal scar extending along the linea alba, from the
+xiphoid process to the pubic tubercle; another scar at McBurney's Point, about
+3 or 4 inches long.  
+HEENT: PERRL, EOMI, O/P clear-dry.  
+Neck: Supple, no LAD.  
+Heart: Tachycardic, regular rhythm; nl S1 & S2; 2/6 systolic murmur heard best
+over left sternal border.  
+Lungs: CTAB.  
+Abdomen: Multiple scars (see Skin); firm and distended; TTP, especially in
+LLQ, with rebound tenderness; guarding difficult to assess secondary to
+distention; tinkling and high-pitched bowel sounds, particularly in upper
+quadrants; ventral hernia near umbilicus.  
+Rectal: Normal tone, guiac negative.  
+Extremities: Mormal.  
+Vascular: Normal distal pulses.  
+Lymphatics: Enlarged, nontender anterior cervical and inguinal lymph nodes.  
+Neurological: A&OX4 and cooperative.
+
+STUDIES:  
+CXR: Clear lung fields; NGT in stomach.  
+Abdominal CT: Low attenuation signal in internal superior left lobe of the
+liver, distended sludge-filled gallbladder, 8mm dilated CBD, no free air, no
+free fluid, small bowel loops consistent with but not definitive of
+obstruction.
+
+ASSESSMENT: AF is a 50-year-old African-American man with abdominal pain
+and distention, obstipation, and vomiting. The differential diagnosis includes
+paralytic ileus and mechanical obstruction. Paralytic ileus, which is
+characterized by absence of bowel sounds, gas scattered in the GI tract,
+dilation of the entire bowel, and a recent abdominal surgery, is unlikely in
+this case. AF is more likely suffering from a bowel obstruction: he has
+multiple risk factors (past abdominal surgery, multiple episodes of
+obstruction from adhesions) and symptoms and signs (bowel sounds, vomiting)
+consistent with obstruction.
+
+Mechanical bowel obstruction can be caused by:  
+1. Adhesions (most cases): typically from prior surgeries.  
+2. Hernias (second most common cause).  
+3. Tumors (15% of cases): rare in small intestine; most common cause of large
+intestine obstruction.  
+4. Intussusception (especially in kids).  
+5. Volvulus (especially in elderly).  
+6. Obturation: fecal impactions, gallstone ileus, parasitic infections.  
+7. Inflammatory lesions: TB, regional enteritis, ulcerative colitis,
+amebiasis.  
+8. Vascular obstruction: embolism, increased venous pressure,
+hypercoagulability, vascular disease; especially in elderly.
+
+Given the patient's history of multiple abdominal surgeries and adhesions
+causing small bowel obstruction, AF's obstruction is most likely caused by
+adhesions.
+
+One question to answer in any patient presenting with bowel obstruction is
+whether the obstruction is in the small or large intestine. In small bowel
+obstruction, the pain is sharp and frequent, with early vomiting and
+electrolyte imbalance. In contrast, large bowel obstruction may present in
+elderly patients without vomiting, and typically without hernias or a history
+of abdominal surgery. Radiographic studies can definitively locate the site of
+the obstruction. In this patient, though the radiographic evidence was
+equivocal, the presence of vomiting and the quality and frequency of his pain
+suggested small bowel obstruction.
+
+PLAN: There has been a great deal of debate about the best way to treat
+patients with mechanical obstruction. I will focus on the question of whether
+a patient should be managed conservatively or with an operation. This question
+is vital because mechanical obstruction may lead to strangulation and
+perforation, life-threatening consequences. There is no reliable way to
+determine whether the patient is already suffering from strangulated bowel,
+and next to impossible to predict which patients will suffer from
+strangulation.
+
+Patients that have hernias are sent immediately to the operating room for a
+repair; the surgeon will resect any nonviable bowel. For patients suffering
+from an obstruction due to adhesions, the decision becomes difficult. Fifteen
+percent of these patients may have strangulating obstruction. Simple
+(nonstrangulating) bowel obstruction typically presents with intermittent,
+colicky pain. Strangulating obstruction, in contrast, usually presents with
+steady unrelenting pain. Other signs include a palpable mass, increased
+temperature and heart rate, and lab studies indicating acute inflammation.
+
+Several studies have examined the ability of these signs to predict when
+strangulation is present. After a study of 238 patients with small bowel
+obstruction, Stewardson et al. (1978) suggest that physicians, instead of
+considering individual signs, look at a combination of "classic findings"
+including leukocytosis, fever, tachycardia, and localized tenderness. They
+recommend conservative treatment only for patients with none or only one of
+these signs. Ninety percent of patients with strangulated bowel had two or
+more signs. Bizer et al. (1981), on the other hand, found no correlation
+between these signs and the presence of strangulation. They did find a
+correlation with age, feculent vomiting, peristaltitic sounds, and a white
+cell count above 18,000.
+
+It is clear that there are no absolute guidelines determining whether a
+patient can be treated conservatively or must get an operation. Improvements
+in imaging techniques in the recent past have aided in these critical
+decisions. Computed tomography can frequently be used to diagnose
+strangulation, however in the majority of cases misses the diagnosis.
+Apparently, the decision to operate ultimately falls on the judgment of the
+surgeon who must take into account all of the findings in combination.
+
+The operative treatment of mechanical obstruction is removing the obstruction
+resecting nonviable bowel, and creating a bypass if necessary. Conservative
+treatment primarily includes decompression, rehydration, and frequent
+monitoring. The physician must also decide on what type of tube should be used
+to decompress, and how long the nonoperative treatment will be attempted
+before resorting to surgery. The question of the tube has been a controversy
+for years, some advocating the nasogastric tube for all patients, others
+advocating a nasointestinal tube for distal obstructions. Maglinte et al.
+(2001) explain that nasointestinal tubes are more effective at decompressing
+distal obstructions, and suggest that physicians use a multipurpose tube that
+can be used as a nasogatric tube, a nasointestinal tube, and a diagnostic tool
+(can provide route for enteroclysis). Nasogastric tubes are especially unable
+to decompress distal distention in patients with a competent pyloric
+sphincter.
+
+Finally, the length of the trial period of nonoperative management is also
+debatable. Seror et al. (1993) suggest a 5-day trial to allow time for
+spontaneous resolution, and report a 73% success rate in a study of patients
+with a history of bowel surgery. In contrast, Deutsch et al. (1989) suggest
+only a 24 hour trial of conservative therapy, and only for patients with
+partial obstruction. Again, it appears as though this decision presently is at
+the discretion of the surgeon caring for the patient.
+
+In the case of patient AF, his findings made the decision to operate
+particularly difficult. He was clearly tachycardic; his WBC was elevated, but
+not above 18,000. His abdominal pain was steady and unrelenting, and could be
+localized to the LLQ, but he was afebrile. His abdominal CT was consistent
+with small bowel obstruction, but not definitive. In the end, based on the
+team's desire to avoid another abdominal surgery that could lead to more
+adhesions and another obstruction, we chose conservative management, with
+nasogastric tube decompression, rehydration, and close observation.

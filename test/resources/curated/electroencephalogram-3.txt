@@ -1,0 +1,17 @@
+
+
+A 21-channel digital electroencephalogram is performed on the patient,
+predominantly in a drowsy and sleepy state. In brief periods of wakefulness,
+significant muscle artifact is noted bilaterally. With drowsiness, the
+recording slows, and with the sleep, vertex activity is noted. Recording is
+somewhat disorganized for age with intermixed theta and alpha activity. At
+times, higher voltage slowing is noted over the right compared to the left
+hemisphere head regions. Rare sharp wave activity is noted generally on the
+right over the C4 electrode, but rarely on the left over the T3 electrode. No
+spike-and-wave activity is noted.
+
+IMPRESSION: Abnormal electroencephalogram revealing generalized poorly
+organized slowing, with more prominent slowing noted at the right compared to
+the left hemisphere head regions and rare sharp wave activity noted
+bilaterally, somewhat more prevalent on the right. Clinical correlation is
+suggested.

@@ -1,0 +1,44 @@
+
+
+DIAGNOSIS: Shortness of breath. Fatigue and weakness. Hypertension.
+Hyperlipidemia.
+
+INDICATION: To evaluate for coronary artery disease.
+
+TEST: Myocardial perfusion study at rest and stress, gated SPECT wall
+motion study at stress and calculation of ejection fraction.
+
+RADIOPHARMACEUTICAL: Technetium 99m and Tetrofosmin.
+
+DOSE: Dose was 10.8mCi at rest and 30.7mCi at stress intravenous.
+
+DESCRIPTION: Stress test was performed on Bruce protocol for 5 minutes and
+3 seconds.
+
+Baseline heart rate was 75 bpm. Maximum heart rate was 98 bpm. The patient did
+not achieve submax target heart rate. Stress test was nondiagnostic for
+ischemia.
+
+Blood pressure response was flat during the stress test. Resting blood
+pressure was 138/78 reaching 130/80 at peak exercise. The patient did not
+experience chest pain during exercise or post exercise. Resting EKG shows
+normal sinus rhythm with anteroseptal wall myocardial infarction, age
+undetermined, and nonspecific ST-T changes. Nonspecific ST-T changes at post
+exercise. The EKG did not show ST segment changes diagnostic for ischemia. The
+patient had myocardial perfusion imaging performed using Technetium 99m and
+Tetrofosmin, 10.8mCi at rest and 30.7mCi at peak exercise. Imaging was
+performed using tomographic technique.
+
+FINDING: The left ventricle was normal in size. There was no myocardial
+perfusion defect noted.
+
+Resting gated SPECT wall motion study reveals normal left ventricular wall
+motion with ejection fraction of 77%.
+
+Regional wall motion was normal.
+
+IMPRESSION:  
+1. Normal myocardial perfusion study.  
+2. Normal response to exercise.  
+3. Normal left ventricular wall motion with ejection fraction of 77%.  
+4. Resting right ventricular function was normal.

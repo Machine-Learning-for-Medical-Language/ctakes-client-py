@@ -1,0 +1,18 @@
+
+
+ADMISSION DIAGNOSIS:  
+1. Respiratory arrest.  
+2 . End-stage chronic obstructive pulmonary disease.  
+3. Coronary artery disease.  
+4. History of hypertension.
+
+DISCHARGE DIAGNOSIS:  
+1. Status post-respiratory arrest.  
+2. Chronic obstructive pulmonary disease.  
+3. Congestive heart failure.  
+4. History of coronary artery disease.  
+5. History of hypertension.
+
+SUMMARY: The patient is a 49-year-old man who was admitted to the hospital
+in respiratory distress, and had to be intubated shortly after admission to
+the emergency room. The patient
