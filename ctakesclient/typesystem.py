@@ -1,10 +1,19 @@
 """UMLS (Unified Medical Language System)"""
 import json
 import logging
+from collections import OrderedDict
 from typing import List
 from enum import Enum
 
+###############################################################################
+#
+# UMLS Unified Medical Language System
+#
+###############################################################################
 
+###############################################################################
+# UMLS Semantic Types
+###############################################################################
 class UmlsTypeMention(Enum):
     """
     Semantic Types in the UMLS (Unified Medical Language System)
@@ -19,7 +28,9 @@ class UmlsTypeMention(Enum):
     Procedure = 'ProcedureMention'
     CustomDict = 'IdentifiedAnnotation'
 
-
+###############################################################################
+# UMLS Concepts
+###############################################################################
 class UmlsConcept:
     """Concept in the UMLS (Unified Medical Language System)"""
 
@@ -78,6 +89,10 @@ class UmlsConcept:
 ###############################################################################
 
 
+###############################################################################
+# Match: Text, Span, Polarity
+###############################################################################
+
 class Polarity(Enum):
     """"
     Polarity means "negation" like "patient denies cough".
@@ -130,45 +145,18 @@ class MatchText:
     def span(self) -> Span:
         return Span(self.begin, self.end)
 
-    @staticmethod
-    def parse_polarity(polarity) -> Polarity:
-        if isinstance(polarity, Polarity):
-            return polarity
-        elif polarity == -1:
-            return Polarity.neg
-        elif polarity == 0:
-            return Polarity.pos
-        else:
-            raise Exception(f'polarity unknown: {polarity}')
-
-    @staticmethod
-    def parse_mention(mention: str) -> UmlsTypeMention:
-        if mention == 'IdentifiedAnnotation':
-            return UmlsTypeMention.CustomDict
-        else:
-            return UmlsTypeMention[mention.replace('Mention', '')]
-
-    @staticmethod
-    def sort_concepts(unsorted: List[UmlsConcept]) -> List[UmlsConcept]:
-        """
-        :param unsorted: guarantees responses from ctakes server are
-                         identically ordered
-        :return: sorted list of concepts.
-        """
-        return sorted(unsorted, key=UmlsConcept.as_string)
-
     def from_json(self, source: dict):
         self.begin = source.get('begin')
         self.end = source.get('end')
         self.text = source.get('text')
-        self.type = self.parse_mention(source.get('type'))
-        self.polarity = self.parse_polarity(source.get('polarity'))
+        self.type = parse_mention(source.get('type'))
+        self.polarity = parse_polarity(source.get('polarity'))
         self.conceptAttributes = []
 
         # sort list of concepts ensuring same ordering
         unsorted = list(UmlsConcept(c) for c in source.get('conceptAttributes'))
 
-        for c in MatchText.sort_concepts(unsorted):
+        for c in sort_concepts(unsorted):
             self.conceptAttributes.append(c)
 
     def as_json(self):
@@ -183,6 +171,9 @@ class MatchText:
             'type': self.type.value
         }
 
+###############################################################################
+# Match: Text, Span, Polarity
+###############################################################################
 
 class CtakesJSON:
     """Ctakes JSON contain MatchText with list of UmlsConcept"""
@@ -204,6 +195,9 @@ class CtakesJSON:
     def list_concept_tui(self, polarity=None) -> List[str]:
         return [c.tui for c in self.list_concept(polarity)]
 
+    def list_concept_vocab(self, polarity=None) -> List[str]:
+        return [c.codingScheme for c in self.list_concept(polarity)]
+
     def list_concept_code(self, polarity=None) -> List[str]:
         return [c.code for c in self.list_concept(polarity)]
 
@@ -220,7 +214,7 @@ class CtakesJSON:
                       filter_umls_type)
 
         if polarity is not None:
-            polarity = MatchText.parse_polarity(polarity)
+            polarity = parse_polarity(polarity)
 
         concat = []
         for semtype, matches in self.mentions.items():
@@ -261,9 +255,27 @@ class CtakesJSON:
     def list_identified_annotation(self, polarity=None) -> List[MatchText]:
         return self.list_match(polarity, UmlsTypeMention.CustomDict)
 
+    def term_freq_summary(self) -> dict:
+        """
+        :return: dictionary of term frequency calculations
+        """
+        terms_cui = self.list_concept_cui()
+        terms_code = self.list_concept_code()
+        terms_vocab = self.list_concept_vocab()
+        terms_text = self.list_match_text()
+        terms_polarity = [p.name for p in self.list_polarity(self.list_match())]
+        terms_type = [t.name for t in self.list_match_type()]
+
+        return {'text': CtakesJSON.term_freq(terms_text),
+                'cui': CtakesJSON.term_freq(terms_cui),
+                'code': CtakesJSON.term_freq(terms_code),
+                'vocab': CtakesJSON.term_freq(terms_vocab),
+                'type': CtakesJSON.term_freq(terms_type),
+                'polarity': CtakesJSON.term_freq(terms_polarity)}
+
     def from_json(self, source: dict) -> None:
         for mention, match_list in source.items():
-            semtype = MatchText.parse_mention(mention)
+            semtype = parse_mention(mention)
 
             if semtype not in self.mentions:
                 self.mentions[semtype] = []
@@ -278,3 +290,64 @@ class CtakesJSON:
 
             res[mention.value] = match_json
         return res
+
+
+###############################################################################
+#
+# Helper Functions
+#
+###############################################################################
+
+###############################################################################
+# Parsing Types
+###############################################################################
+
+def parse_polarity(polarity) -> Polarity:
+    if isinstance(polarity, Polarity):
+        return polarity
+    elif polarity == -1:
+        return Polarity.neg
+    elif polarity == 0:
+        return Polarity.pos
+    else:
+        raise Exception(f'polarity unknown: {polarity}')
+
+def parse_mention(mention: str) -> UmlsTypeMention:
+    if mention == 'IdentifiedAnnotation':
+        return UmlsTypeMention.CustomDict
+    else:
+        return UmlsTypeMention[mention.replace('Mention', '')]
+
+###############################################################################
+# Sorting
+###############################################################################
+
+def sort_concepts(unsorted: List[UmlsConcept]) -> List[UmlsConcept]:
+    """
+    :param unsorted: guarantees responses from ctakes server are
+                     identically ordered
+    :return: sorted list of concepts.
+    """
+    return sorted(unsorted, key=UmlsConcept.as_string)
+
+###############################################################################
+# Term Frequency
+###############################################################################
+
+def term_freq(term_list: list) -> dict:
+    """
+    Term Frequency calculation
+    :param term_list: String, CUI, CODE, or other "term"
+    :return: OrderedDict sorted by count descending
+    """
+    tf = dict()
+    for term in term_list:
+        if term not in tf.keys():
+            tf[term] = 1
+        else:
+            tf[term] += 1
+
+    ordered = OrderedDict()
+    for k in sorted(tf, key=tf.get, reverse=True):
+        ordered[k] = tf[k]
+    return ordered

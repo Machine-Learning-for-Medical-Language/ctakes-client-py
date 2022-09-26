@@ -4,7 +4,7 @@ from collections import OrderedDict
 from typing import List
 import json
 import ctakesclient
-from test.test_resources import curated, synthetic, list_files
+from test.test_resources import curated, synthetic, list_resources
 
 def read_text(filepath:str) -> str:
     with open(filepath, 'r') as f:
@@ -14,25 +14,13 @@ def read_json(filepath:str) -> dict:
     with open(filepath, 'r') as f:
         return json.load(f)
 
-def list_corpus(corpus=curated(), extension='.txt') -> List[str]:
-    """
-    :param corpus: physician notes collection
-    :param extension: .txt or other collection
-    :return: List sorted
-    """
-    files = list()
-    for f in list_files(corpus):
-        if f.endswith(extension):
-            files.append(f)
-    return sorted(files)
-
 def list_corpus_zip(corpus=curated()):
     """
     :param corpus: physician notes collection
     :return: Iterable collection of sorted TXT and JSON files
     """
-    files_txt = list_corpus(corpus, '.txt')
-    files_json = list_corpus(corpus, '.txt.json')
+    files_txt = list_resources(corpus, '.txt')
+    files_json = list_resources(corpus, '.txt.json')
     return zip(files_txt, files_json)
 
 def post_corpus_to_server(corpus=curated()) -> List[str]:
@@ -44,7 +32,7 @@ def post_corpus_to_server(corpus=curated()) -> List[str]:
     logging.getLogger().setLevel(logging.DEBUG)
 
     processed = list()
-    for path_txt in list_corpus(corpus, '.txt'):
+    for path_txt in list_resources(corpus, '.txt'):
 
         text = read_text(path_txt)
         logging.debug(path_txt)
@@ -87,7 +75,7 @@ def term_freq_corpus(corpus=curated(), write_json=True) -> dict:
     terms_cui = list()
     terms_polarity = list()
 
-    for path_json in list_corpus(corpus, '.txt.json'):
+    for path_json in list_resources(corpus, '.txt.json'):
         reader = ctakesclient.CtakesJSON(read_json(path_json))
 
         terms_cui += reader.list_concept_cui()

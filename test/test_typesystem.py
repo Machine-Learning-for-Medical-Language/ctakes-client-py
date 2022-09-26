@@ -3,6 +3,7 @@
 import unittest
 
 from ctakesclient.typesystem import CtakesJSON, Polarity, UmlsConcept, MatchText
+from ctakesclient.typesystem import sort_concepts
 from .test_resources import LoadResource
 
 
@@ -69,12 +70,12 @@ class TestCtakesJSON(unittest.TestCase):
         concept_attributes3 = [loinc1, snomed1, snomed2]
         concept_attributes4 = [loinc1, snomed2, snomed1]
 
-        self.assertEqual(MatchText.sort_concepts(concept_attributes1),
-                         MatchText.sort_concepts(concept_attributes2))
-        self.assertEqual(MatchText.sort_concepts(concept_attributes1),
-                         MatchText.sort_concepts(concept_attributes3))
-        self.assertEqual(MatchText.sort_concepts(concept_attributes1),
-                         MatchText.sort_concepts(concept_attributes4))
+        self.assertEqual(sort_concepts(concept_attributes1),
+                         sort_concepts(concept_attributes2))
+        self.assertEqual(sort_concepts(concept_attributes1),
+                         sort_concepts(concept_attributes3))
+        self.assertEqual(sort_concepts(concept_attributes1),
+                         sort_concepts(concept_attributes4))
 
 
 if __name__ == '__main__':

@@ -1,6 +1,7 @@
 """Resource helpers for use in tests"""
 
 import os
+from typing import List
 from enum import Enum
 import unittest
 from ctakesclient import filesystem
@@ -12,12 +13,18 @@ def path(filename):
     """
     return os.path.join(os.path.dirname(__file__), 'resources', filename)
 
-def list_files(basedir):
+def list_resources(basedir, extension=None) -> List[str]:
     """
-    :param basedir: folder like "resources", "curated", or "synthetic"
-    :return:
+    :param basedir: folder like "/opt/ctakes-client-py/resources/curated" or curated()
+    :param extension: .txt, .json, or None
+    :return: List sorted
     """
-    return [os.path.join(basedir, filename) for filename in os.listdir(basedir)]
+    file_list = list()
+    for filename in os.listdir(basedir):
+        f = os.path.join(basedir, filename)
+        if (extension is None) or (f.endswith(extension)):
+            file_list.append(f)
+    return sorted(file_list)
 
 def curated():
     """
