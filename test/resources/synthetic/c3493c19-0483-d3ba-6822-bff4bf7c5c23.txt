@@ -1,0 +1,132 @@
+
+2021-05-14
+
+# Chief Complaint
+No complaints.
+
+# History of Present Illness
+Monty345
+ is a 11 year-old non-hispanic white male. Patient has a history of muscle pain (finding), covid-19, fever (finding), sputum finding (finding), headache (finding), joint pain (finding), cough (finding), suspected covid-19.
+
+# Social History
+ Patient has never smoked.
+
+
+Patient comes from a middle socioeconomic background.
+
+Patient currently has UnitedHealthcare.
+
+# Allergies
+No Known Allergies.
+
+# Medications
+No Active Medications.
+
+# Assessment and Plan
+Patient is presenting with viral sinusitis (disorder). 
+
+## Plan
+
+
+
+
+2020-11-19
+
+# Chief Complaint
+No complaints.
+
+# History of Present Illness
+Monty345
+ is a 11 year-old non-hispanic white male. Patient has a history of muscle pain (finding), covid-19, fever (finding), sputum finding (finding), headache (finding), joint pain (finding), cough (finding), suspected covid-19.
+
+# Social History
+ Patient has never smoked.
+
+
+Patient comes from a middle socioeconomic background.
+
+Patient currently has Blue Cross Blue Shield.
+
+# Allergies
+No Known Allergies.
+
+# Medications
+No Active Medications.
+
+# Assessment and Plan
+
+
+## Plan
+Patient was given the following immunizations: tdap, influenza, seasonal, injectable, preservative free, hpv, quadrivalent, meningococcal mcv4p. 
+
+
+
+2020-02-29
+
+# Chief Complaint
+No complaints.
+
+# History of Present Illness
+Monty345
+ is a 10 year-old non-hispanic white male.
+
+# Social History
+ Patient has never smoked.
+
+
+Patient comes from a middle socioeconomic background.
+
+Patient currently has Blue Cross Blue Shield.
+
+# Allergies
+No Known Allergies.
+
+# Medications
+No Active Medications.
+
+# Assessment and Plan
+Patient is presenting with headache (finding), cough (finding), sputum finding (finding), muscle pain (finding), joint pain (finding), fever (finding), suspected covid-19, covid-19. 
+
+## Plan
+
+The following procedures were conducted:
+- face mask (physical object)
+The patient was placed on a careplan:
+- infectious disease care plan (record artifact)
+- infectious disease care plan (record artifact)
+
+
+
+2019-11-14
+
+# Chief Complaint
+No complaints.
+
+# History of Present Illness
+Monty345
+ is a 10 year-old non-hispanic white male.
+
+# Social History
+ Patient has never smoked.
+
+
+Patient comes from a middle socioeconomic background.
+
+Patient currently has Blue Cross Blue Shield.
+
+# Allergies
+No Known Allergies.
+
+# Medications
+No Active Medications.
+
+# Assessment and Plan
+
+
+## Plan
+Patient was given the following immunizations: influenza, seasonal, injectable, preservative free. 
+The following procedures were conducted:
+- medication reconciliation (procedure)
+
+
+
