@@ -238,6 +238,11 @@ class CtakesJSON:
             m.text
             for m in self.list_match(polarity=polarity, filter_umls_type=None))
 
+    def list_match_type(self, polarity=None) -> List[str]:
+        return list(
+            m.type
+            for m in self.list_match(polarity=polarity, filter_umls_type=None))
+
     def list_sign_symptom(self, polarity=None) -> List[MatchText]:
         return self.list_match(polarity, UmlsTypeMention.SignSymptom)
 

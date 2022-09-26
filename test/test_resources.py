@@ -5,10 +5,33 @@ from enum import Enum
 import unittest
 from ctakesclient import filesystem
 
-
 def path(filename):
+    """
+    :param filename: basename of file like 'covid_symptoms.bsv'
+    :return: path to file
+    """
     return os.path.join(os.path.dirname(__file__), 'resources', filename)
 
+def list_files(basedir):
+    """
+    :param basedir: folder like "resources", "curated", or "synthetic"
+    :return:
+    """
+    return [os.path.join(basedir, filename) for filename in os.listdir(basedir)]
+
+def curated():
+    """
+    *** NOT PHI NOT REAL PATIENTS**
+    :return: curated directory containing 2363 "stories" about typical patient vists.
+    """
+    return os.path.join(os.path.dirname(__file__), 'resources', 'curated')
+
+def synthetic():
+    """
+    *** NOT PHI NOT REAL PATIENTS**
+    :return: Synthea (AI generative process) physican note examples
+    """
+    return os.path.join(os.path.dirname(__file__), 'resources', 'synthetic')
 
 def load(filepath):
     if str(filepath).endswith('.json'):
