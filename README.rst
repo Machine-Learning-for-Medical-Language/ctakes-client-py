@@ -1,6 +1,6 @@
 Purpose: Extract Medical Concepts from Physician Notes
 =======================================================
-This package simplifies communication with CTAKES NLP servers which produce matches with UMLS Concepts.
+This package simplifies communication with cTAKES NLP servers which produce matches with UMLS Concepts.
 
 - Clinical Text and Knowledge Extraction System (http://ctakes.apache.org)  
 - UMLS Unified Medical Language System / National Library of Medicine (https://nlm.nih.gov/research/umls)
@@ -10,10 +10,10 @@ Quickstart
 ==============================
 Clinical text fragment or entire physician note.
 
-::
+.. code-block:: python3
 
    physician_note = 'Chief Complaint: Patient c/o cough, denies fever, recent COVID test negative. Denies smoking.'
-   output = ctakesclient.post(physician_note)
+   output = ctakesclient.client.post(physician_note)
 
 Output
 ==========================================

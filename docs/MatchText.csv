@@ -1,6 +1,0 @@
-Property, Description
-text, matched string in physician note like "Hepatocellular Carcinoma"
-polarity, True/False negation of medical concept like "no evidence of Hepatocellular Carcinoma"
-begin, first character position in physician note
-end, last character position in physician note
-conceptAttributes, List[UmlConcept] referenced from the match text.
