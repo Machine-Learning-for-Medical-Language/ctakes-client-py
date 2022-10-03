@@ -1,6 +1,6 @@
 [project]
 name = "ctakesclient"
-version = "1.0.3"
+version = "1.0.4"
 # We'll want to officially support 3.6 until we no longer care about CentOS 7
 requires-python = ">= 3.6"
 dependencies = [
