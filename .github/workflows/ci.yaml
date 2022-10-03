@@ -4,10 +4,10 @@ on: [push]
 jobs:
   unittest:
     name: unit tests
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-20.04 # Can bump once we drop support for py3.6
     strategy:
       matrix:
-        python-version: ["3.7", "3.8", "3.9", "3.10"]
+        python-version: ["3.6", "3.7", "3.8", "3.9", "3.10"]
 
     steps:
       - uses: actions/checkout@v3
@@ -21,7 +21,12 @@ jobs:
         run: |
           python -m pip install --upgrade pip
           pip install pytest
-          pip install .[tests]
+          # Once we drop support for py3.6, we can use standard pip install again.
+          # The issue is that we need setuptools 61.0 for pyproject.toml support,
+          # but setuptools 59.7 dropped support for py3.6.
+          # But for now, manually install all requirements:
+          pip install requests
+          # pip install .[tests]
 
       - name: Test with pytest
         run: |
