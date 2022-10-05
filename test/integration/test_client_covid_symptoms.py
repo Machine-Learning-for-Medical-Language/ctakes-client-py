@@ -3,7 +3,7 @@
 import json
 import unittest
 import ctakesclient
-from .test_resources import LoadResource
+from test.test_resources import LoadResource
 
 
 def pretty(result: dict):

@@ -20,26 +20,27 @@ def get_url_ctakes_rest() -> str:
 
     :return: URL_CTAKES_REST env variable or default using localhost
     """
-    return os.environ.get(
-        'URL_CTAKES_REST',
-        'http://localhost:8080/ctakes-web-rest/service/analyze')
+    url = os.environ.get('URL_CTAKES_REST')
+    return url or 'http://localhost:8080/ctakes-web-rest/service/analyze'
 
 
-def post(sentence: str, url=get_url_ctakes_rest()) -> dict:
+def post(sentence: str, url: str = None) -> dict:
     """
     :param sentence: clinical text to send to cTAKES
     :param url: cTAKES REST server fully qualified path
     :return:
     """
+    url = url or get_url_ctakes_rest()
     logging.debug(url)
     # TODO: consider exposing a pass-through timeout parameter
     return requests.post(url, data=sentence).json()  # pylint: disable=missing-timeout
 
 
-def extract(sentence: str, url=get_url_ctakes_rest()) -> CtakesJSON:
+def extract(sentence: str, url: str = None) -> CtakesJSON:
     """
     :param sentence: clinical text to send to cTAKES
     :param url: cTAKES REST server fully qualified path
     :return: CtakesJSON wrapper
     """
+    url = url or get_url_ctakes_rest()
     return CtakesJSON(post(sentence, url))
