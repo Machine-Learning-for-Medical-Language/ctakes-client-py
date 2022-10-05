@@ -4,12 +4,7 @@ import json
 import unittest
 import ctakesclient
 from ctakesclient.typesystem import Polarity
-from test.test_resources import PathResource, LoadResource
-
-
-def covid_symptoms() -> dict:
-    return ctakesclient.filesystem.map_cui_pref(
-        PathResource.COVID_SYMPTOMS.value)
+from test.test_resources import LoadResource
 
 
 def note_negated_ros_review_of_symptoms() -> str:
@@ -45,7 +40,7 @@ class TestNegationCtakesDefaultContext(unittest.TestCase):
     def test_ctakes_covid_symptoms(self):
         ner = ctakesclient.client.extract(note_negated_ros_review_of_symptoms())
 
-        symptoms_dict = covid_symptoms()
+        symptoms_dict = ctakesclient.filesystem.covid_symptoms()
         symptoms_fp = []
 
         for match in ner.list_match(Polarity.pos):

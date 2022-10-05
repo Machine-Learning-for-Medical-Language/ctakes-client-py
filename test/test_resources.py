@@ -6,7 +6,7 @@ import unittest
 from ctakesclient import filesystem
 
 
-def path(filename):
+def path(filename) -> str:
     return os.path.join(os.path.dirname(__file__), 'resources', filename)
 
 
@@ -15,27 +15,20 @@ def load(filepath):
         return filesystem.read_json(filepath)
     elif str(filepath).endswith('.txt'):
         return filesystem.read_text(filepath)
-    if str(filepath).endswith('.bsv'):
-        if 'SemGroups' in filepath:
-            return filesystem.list_bsv_semantics(filepath)
-        else:
-            return filesystem.list_bsv_concept(filepath)
 
 
 class PathResource(Enum):
-    COVID_SYMPTOMS = path('covid_symptoms.bsv')
+    CONCEPTS_BSV = path('concepts.bsv')
     PHYSICIAN_NOTE_TEXT = path('test_physician_note.txt')
     PHYSICIAN_NOTE_JSON = path('test_physician_note.json')
+    SEMANTICS_BSV = path('semantics.bsv')
     TEST_NEGATION = path('test_negation_hard.txt')
-    SEMANTIC_GROUPS = path('SemGroups_2018.bsv')
 
 
 class LoadResource(Enum):
-    COVID_SYMPTOMS = load(PathResource.COVID_SYMPTOMS.value)
     PHYSICIAN_NOTE_TEXT = load(PathResource.PHYSICIAN_NOTE_TEXT.value)
     PHYSICIAN_NOTE_JSON = load(PathResource.PHYSICIAN_NOTE_JSON.value)
     TEST_NEGATION = load(PathResource.TEST_NEGATION.value)
-    SEMANTIC_GROUPS = load(PathResource.SEMANTIC_GROUPS.value)
 
 
 class TestResourceValidity(unittest.TestCase):
