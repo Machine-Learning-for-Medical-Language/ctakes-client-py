@@ -3,7 +3,6 @@
 import json
 import unittest
 import ctakesclient
-from test.test_resources import LoadResource
 
 
 def pretty(result: dict):
@@ -50,11 +49,11 @@ class TestCtakesClient(unittest.TestCase):
         https://www.cdc.gov/coronavirus/2019-ncov/symptoms-testing/symptoms.html
 
         Test if every COVID symptom is found in server dictionary.
-        https://github.com/Machine-Learning-for-Medical-Language/ctakes-client-py/blob/main/test/resources/covid_symptoms.bsv
+        https://github.com/Machine-Learning-for-Medical-Language/ctakes-client-py/blob/main/ctakesclient/resources/covid_symptoms.bsv
         -->
         https://github.com/Machine-Learning-for-Medical-Language/ctakes-covid-container/blob/main/covid.bsv
         """
-        for bsv in LoadResource.COVID_SYMPTOMS.value:
+        for bsv in ctakesclient.filesystem.covid_symptoms():
             ner = ctakesclient.client.extract(bsv.text)
 
             cui_list = []
