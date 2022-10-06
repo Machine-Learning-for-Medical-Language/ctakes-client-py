@@ -1,0 +1,263 @@
+
+2021-05-11
+
+# Chief Complaint
+No complaints.
+
+# History of Present Illness
+Ethan766
+ is a 3 year-old non-hispanic white male. Patient has a history of otitis media, acute viral pharyngitis (disorder), viral sinusitis (disorder).
+
+# Social History
+ Patient has never smoked.
+
+
+Patient comes from a middle socioeconomic background.
+
+Patient currently has Aetna.
+
+# Allergies
+No Known Allergies.
+
+# Medications
+amoxicillin 500 mg oral tablet; cefuroxime 250 mg oral tablet; ibuprofen 100 mg oral tablet; amoxicillin 250 mg / clavulanate 125 mg oral tablet
+
+# Assessment and Plan
+
+
+## Plan
+
+
+
+
+2021-03-28
+
+# Chief Complaint
+No complaints.
+
+# History of Present Illness
+Ethan766
+ is a 3 year-old non-hispanic white male. Patient has a history of otitis media, acute viral pharyngitis (disorder).
+
+# Social History
+ Patient has never smoked.
+
+
+Patient comes from a middle socioeconomic background.
+
+Patient currently has Aetna.
+
+# Allergies
+No Known Allergies.
+
+# Medications
+amoxicillin 500 mg oral tablet; cefuroxime 250 mg oral tablet; ibuprofen 100 mg oral tablet
+
+# Assessment and Plan
+Patient is presenting with viral sinusitis (disorder). 
+
+## Plan
+
+The patient was prescribed the following medications:
+- amoxicillin 250 mg / clavulanate 125 mg oral tablet
+
+
+
+2021-01-09
+
+# Chief Complaint
+No complaints.
+
+# History of Present Illness
+Ethan766
+ is a 3 year-old non-hispanic white male. Patient has a history of otitis media, acute viral pharyngitis (disorder).
+
+# Social History
+ Patient has never smoked.
+
+
+Patient comes from a middle socioeconomic background.
+
+Patient currently has Aetna.
+
+# Allergies
+No Known Allergies.
+
+# Medications
+amoxicillin 500 mg oral tablet; ibuprofen 100 mg oral tablet
+
+# Assessment and Plan
+Patient is presenting with otitis media. 
+
+## Plan
+
+The patient was prescribed the following medications:
+- cefuroxime 250 mg oral tablet
+- ibuprofen 100 mg oral tablet
+
+
+
+2020-11-10
+
+# Chief Complaint
+No complaints.
+
+# History of Present Illness
+Ethan766
+ is a 2 year-old non-hispanic white male. Patient has a history of otitis media, acute viral pharyngitis (disorder).
+
+# Social History
+ Patient has never smoked.
+
+
+Patient comes from a middle socioeconomic background.
+
+Patient currently has Blue Cross Blue Shield.
+
+# Allergies
+No Known Allergies.
+
+# Medications
+amoxicillin 500 mg oral tablet; ibuprofen 100 mg oral tablet
+
+# Assessment and Plan
+
+
+## Plan
+Patient was given the following immunizations: influenza, seasonal, injectable, preservative free. 
+The following procedures were conducted:
+- medication reconciliation (procedure)
+
+
+
+2020-06-22
+
+# Chief Complaint
+No complaints.
+
+# History of Present Illness
+Ethan766
+ is a 2 year-old non-hispanic white male. Patient has a history of acute viral pharyngitis (disorder).
+
+# Social History
+ Patient has never smoked.
+
+
+Patient comes from a middle socioeconomic background.
+
+Patient currently has Blue Cross Blue Shield.
+
+# Allergies
+No Known Allergies.
+
+# Medications
+No Active Medications.
+
+# Assessment and Plan
+Patient is presenting with otitis media. 
+
+## Plan
+
+The patient was prescribed the following medications:
+- amoxicillin 500 mg oral tablet
+- ibuprofen 100 mg oral tablet
+
+
+
+2020-05-12
+
+# Chief Complaint
+No complaints.
+
+# History of Present Illness
+Ethan766
+ is a 2 year-old non-hispanic white male. Patient has a history of acute viral pharyngitis (disorder).
+
+# Social History
+ Patient has never smoked.
+
+
+Patient comes from a middle socioeconomic background.
+
+Patient currently has Blue Cross Blue Shield.
+
+# Allergies
+No Known Allergies.
+
+# Medications
+No Active Medications.
+
+# Assessment and Plan
+
+
+## Plan
+Patient was given the following immunizations: hep a, ped/adol, 2 dose. 
+The following procedures were conducted:
+- medication reconciliation (procedure)
+
+
+
+2020-01-14
+
+# Chief Complaint
+No complaints.
+
+# History of Present Illness
+Ethan766
+ is a 2 year-old non-hispanic white male.
+
+# Social History
+ Patient has never smoked.
+
+
+Patient comes from a middle socioeconomic background.
+
+Patient currently has Blue Cross Blue Shield.
+
+# Allergies
+No Known Allergies.
+
+# Medications
+No Active Medications.
+
+# Assessment and Plan
+Patient is presenting with acute viral pharyngitis (disorder). 
+
+## Plan
+
+The following procedures were conducted:
+- throat culture (procedure)
+
+
+
+2019-11-12
+
+# Chief Complaint
+No complaints.
+
+# History of Present Illness
+Ethan766
+ is a 1 year-old non-hispanic white male.
+
+# Social History
+ Patient has never smoked.
+
+
+Patient comes from a middle socioeconomic background.
+
+Patient currently has Humana.
+
+# Allergies
+No Known Allergies.
+
+# Medications
+No Active Medications.
+
+# Assessment and Plan
+
+
+## Plan
+Patient was given the following immunizations: influenza, seasonal, injectable, preservative free. 
+
+
+

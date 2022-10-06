@@ -1,0 +1,11 @@
+
+
+OBSERVATIONS: FEV1 is 3.76, 103% predicted. FVC is 4.98, 110% predicted.
+Ratio is 75. FEF 25-75 is 3.053, 82% predicted, postbronchodilator improves by
+35%. DLCO is 35, 121% predicted. Residual volume is 3.04, 139% predicted.
+Total lung capacity is 8.34, 120% predicted.
+
+Flow volume loop reviewed.
+
+INTERPRETATION: Mild restrictive airflow limitation. Clinical correlation
+is recommended.

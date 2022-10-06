@@ -1,0 +1,409 @@
+
+2020-12-21
+
+# Chief Complaint
+No complaints.
+
+# History of Present Illness
+Raven88
+ is a 22 year-old non-hispanic white female. Patient has a history of covid-19, part-time employment (finding), normal pregnancy, fever (finding), cough (finding), loss of taste (finding), suspected covid-19.
+
+# Social History
+ Patient is an active smoker.
+ Patient identifies as heterosexual.
+
+Patient comes from a high socioeconomic background.
+ Patient has completed some college courses.
+Patient currently has Medicaid.
+
+# Allergies
+No Known Allergies.
+
+# Medications
+No Active Medications.
+
+# Assessment and Plan
+Patient is presenting with part-time employment (finding), limited social contact (finding). 
+
+## Plan
+Patient was given the following immunizations: influenza, seasonal, injectable, preservative free, td (adult) preservative free, hep b, adult, meningococcal mcv4p. 
+The following procedures were conducted:
+- assessment of health and social care needs (procedure)
+- screening for domestic abuse (procedure)
+- depression screening (procedure)
+- depression screening using patient health questionnaire two-item score (procedure)
+- assessment of substance use (procedure)
+- assessment using alcohol use disorders identification test - consumption (procedure)
+
+
+
+2020-03-05
+
+# Chief Complaint
+No complaints.
+
+# History of Present Illness
+Raven88
+ is a 21 year-old non-hispanic white female. Patient has a history of part-time employment (finding), normal pregnancy.
+
+# Social History
+ Patient is an active smoker.
+ Patient identifies as heterosexual.
+
+Patient comes from a high socioeconomic background.
+ Patient has completed some college courses.
+Patient currently has Medicaid.
+
+# Allergies
+No Known Allergies.
+
+# Medications
+No Active Medications.
+
+# Assessment and Plan
+Patient is presenting with cough (finding), fever (finding), loss of taste (finding), suspected covid-19, covid-19. 
+
+## Plan
+
+The following procedures were conducted:
+- face mask (physical object)
+The patient was placed on a careplan:
+- infectious disease care plan (record artifact)
+- infectious disease care plan (record artifact)
+
+
+
+2020-02-17
+
+# Chief Complaint
+No complaints.
+
+# History of Present Illness
+Raven88
+ is a 21 year-old non-hispanic white female. Patient has a history of part-time employment (finding), normal pregnancy.
+
+# Social History
+ Patient is an active smoker.
+ Patient identifies as heterosexual.
+
+Patient comes from a high socioeconomic background.
+ Patient has completed some college courses.
+Patient currently has Blue Cross Blue Shield.
+
+# Allergies
+No Known Allergies.
+
+# Medications
+No Active Medications.
+
+# Assessment and Plan
+
+
+## Plan
+
+The following procedures were conducted:
+- physical examination following birth
+- depression screening
+
+
+
+2020-01-06
+
+# Chief Complaint
+No complaints.
+
+# History of Present Illness
+Raven88
+ is a 21 year-old non-hispanic white female. Patient has a history of part-time employment (finding), normal pregnancy.
+
+# Social History
+ Patient is an active smoker.
+ Patient identifies as heterosexual.
+
+Patient comes from a high socioeconomic background.
+ Patient has completed some college courses.
+Patient currently has Blue Cross Blue Shield.
+
+# Allergies
+No Known Allergies.
+
+# Medications
+No Active Medications.
+
+# Assessment and Plan
+
+
+## Plan
+
+The following procedures were conducted:
+- episiotomy
+- childbirth
+
+
+
+2019-12-30
+
+# Chief Complaint
+No complaints.
+
+# History of Present Illness
+Raven88
+ is a 21 year-old non-hispanic white female. Patient has a history of part-time employment (finding), normal pregnancy.
+
+# Social History
+ Patient is an active smoker.
+ Patient identifies as heterosexual.
+
+Patient comes from a high socioeconomic background.
+ Patient has completed some college courses.
+Patient currently has Blue Cross Blue Shield.
+
+# Allergies
+No Known Allergies.
+
+# Medications
+No Active Medications.
+
+# Assessment and Plan
+
+
+## Plan
+
+The following procedures were conducted:
+- evaluation of uterine fundal height
+- auscultation of the fetal heart
+
+
+
+2019-12-23
+
+# Chief Complaint
+No complaints.
+
+# History of Present Illness
+Raven88
+ is a 21 year-old non-hispanic white female. Patient has a history of part-time employment (finding), normal pregnancy.
+
+# Social History
+ Patient is an active smoker.
+ Patient identifies as heterosexual.
+
+Patient comes from a high socioeconomic background.
+ Patient has completed some college courses.
+Patient currently has Blue Cross Blue Shield.
+
+# Allergies
+No Known Allergies.
+
+# Medications
+No Active Medications.
+
+# Assessment and Plan
+
+
+## Plan
+
+The following procedures were conducted:
+- evaluation of uterine fundal height
+- auscultation of the fetal heart
+
+
+
+2019-12-16
+
+# Chief Complaint
+No complaints.
+
+# History of Present Illness
+Raven88
+ is a 21 year-old non-hispanic white female. Patient has a history of part-time employment (finding), normal pregnancy.
+
+# Social History
+ Patient is an active smoker.
+ Patient identifies as heterosexual.
+
+Patient comes from a high socioeconomic background.
+ Patient has completed some college courses.
+Patient currently has Blue Cross Blue Shield.
+
+# Allergies
+No Known Allergies.
+
+# Medications
+No Active Medications.
+
+# Assessment and Plan
+
+
+## Plan
+
+The following procedures were conducted:
+- evaluation of uterine fundal height
+- auscultation of the fetal heart
+
+
+
+2019-12-02
+
+# Chief Complaint
+No complaints.
+
+# History of Present Illness
+Raven88
+ is a 21 year-old non-hispanic white female. Patient has a history of part-time employment (finding), normal pregnancy.
+
+# Social History
+ Patient is an active smoker.
+ Patient identifies as heterosexual.
+
+Patient comes from a high socioeconomic background.
+ Patient has completed some college courses.
+Patient currently has Blue Cross Blue Shield.
+
+# Allergies
+No Known Allergies.
+
+# Medications
+No Active Medications.
+
+# Assessment and Plan
+
+
+## Plan
+
+The following procedures were conducted:
+- streptococcus pneumoniae group b antigen test
+- evaluation of uterine fundal height
+- auscultation of the fetal heart
+
+
+
+2019-11-04
+
+# Chief Complaint
+No complaints.
+
+# History of Present Illness
+Raven88
+ is a 21 year-old non-hispanic white female. Patient has a history of part-time employment (finding), normal pregnancy.
+
+# Social History
+ Patient is an active smoker.
+ Patient identifies as heterosexual.
+
+Patient comes from a high socioeconomic background.
+ Patient has completed some college courses.
+Patient currently has Blue Cross Blue Shield.
+
+# Allergies
+No Known Allergies.
+
+# Medications
+No Active Medications.
+
+# Assessment and Plan
+
+
+## Plan
+
+The following procedures were conducted:
+- evaluation of uterine fundal height
+- auscultation of the fetal heart
+
+
+
+2019-05-20
+
+# Chief Complaint
+No complaints.
+
+# History of Present Illness
+Raven88
+ is a 20 year-old non-hispanic white female. Patient has a history of part-time employment (finding).
+
+# Social History
+ Patient is an active smoker.
+ Patient identifies as heterosexual.
+
+Patient comes from a high socioeconomic background.
+ Patient has completed some college courses.
+Patient currently has Blue Cross Blue Shield.
+
+# Allergies
+No Known Allergies.
+
+# Medications
+No Active Medications.
+
+# Assessment and Plan
+Patient is presenting with normal pregnancy. 
+
+## Plan
+
+The patient was placed on a careplan:
+- routine antenatal care
+
+
+
+2017-12-18
+
+# Chief Complaint
+No complaints.
+
+# History of Present Illness
+Raven88
+ is a 19 year-old non-hispanic white female.
+
+# Social History
+ Patient is an active smoker.
+ Patient identifies as heterosexual.
+
+Patient comes from a high socioeconomic background.
+ Patient has completed some college courses.
+Patient currently has Humana.
+
+# Allergies
+No Known Allergies.
+
+# Medications
+No Active Medications.
+
+# Assessment and Plan
+Patient is presenting with part-time employment (finding). 
+
+## Plan
+
+
+
+
+2016-12-12
+
+# Chief Complaint
+No complaints.
+
+# History of Present Illness
+Raven88
+ is a 18 year-old non-hispanic white female.
+
+# Social History
+ Patient is an active smoker.
+ Patient identifies as heterosexual.
+
+Patient comes from a high socioeconomic background.
+ Patient has completed some college courses.
+Patient currently has Humana.
+
+# Allergies
+No Known Allergies.
+
+# Medications
+No Active Medications.
+
+# Assessment and Plan
+Patient is presenting with received higher education (finding). 
+
+## Plan
+
+
+
+

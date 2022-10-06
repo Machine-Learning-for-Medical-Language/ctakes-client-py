@@ -1,0 +1,585 @@
+
+2021-03-30
+
+# Chief Complaint
+No complaints.
+
+# History of Present Illness
+Antwan357
+ is a 40 year-old non-hispanic white male. Patient has a history of covid-19, fever (finding), not in labor force (finding), full-time employment (finding), sore throat symptom (finding), suspected covid-19, stress (finding).
+
+# Social History
+Patient is married. Patient is an active smoker and is an alcoholic.
+ Patient identifies as heterosexual.
+
+Patient comes from a middle socioeconomic background.
+ Patient has a high school education.
+Patient currently has Anthem.
+
+# Allergies
+No Known Allergies.
+
+# Medications
+No Active Medications.
+
+# Assessment and Plan
+Patient is presenting with body mass index 30+ - obesity (finding), full-time employment (finding), limited social contact (finding). 
+
+## Plan
+Patient was given the following immunizations: influenza, seasonal, injectable, preservative free, hep a, adult. 
+The following procedures were conducted:
+- assessment of health and social care needs (procedure)
+- medication reconciliation (procedure)
+- assessment of anxiety (procedure)
+- depression screening (procedure)
+- depression screening using patient health questionnaire two-item score (procedure)
+- assessment of substance use (procedure)
+- screening for drug abuse (procedure)
+
+
+
+2020-03-07
+
+# Chief Complaint
+No complaints.
+
+# History of Present Illness
+Antwan357
+ is a 38 year-old non-hispanic white male. Patient has a history of not in labor force (finding), full-time employment (finding), stress (finding).
+
+# Social History
+Patient is married. Patient is an active smoker and is an alcoholic.
+ Patient identifies as heterosexual.
+
+Patient comes from a middle socioeconomic background.
+ Patient has a high school education.
+Patient currently has Anthem.
+
+# Allergies
+No Known Allergies.
+
+# Medications
+No Active Medications.
+
+# Assessment and Plan
+Patient is presenting with sore throat symptom (finding), fever (finding), suspected covid-19, covid-19. 
+
+## Plan
+
+The following procedures were conducted:
+- face mask (physical object)
+The patient was placed on a careplan:
+- infectious disease care plan (record artifact)
+- infectious disease care plan (record artifact)
+
+
+
+2018-06-12
+
+# Chief Complaint
+No complaints.
+
+# History of Present Illness
+Antwan357
+ is a 37 year-old non-hispanic white male. Patient has a history of full-time employment (finding), stress (finding).
+
+# Social History
+Patient is married. Patient is an active smoker and is an alcoholic.
+ Patient identifies as heterosexual.
+
+Patient comes from a middle socioeconomic background.
+ Patient has a high school education.
+Patient currently has Humana.
+
+# Allergies
+No Known Allergies.
+
+# Medications
+No Active Medications.
+
+# Assessment and Plan
+Patient is presenting with not in labor force (finding). 
+
+## Plan
+
+
+
+
+2018-05-15
+
+# Chief Complaint
+No complaints.
+
+# History of Present Illness
+Antwan357
+ is a 37 year-old non-hispanic white male. Patient has a history of full-time employment (finding), stress (finding).
+
+# Social History
+Patient is married. Patient is an active smoker and is an alcoholic.
+ Patient identifies as heterosexual.
+
+Patient comes from a middle socioeconomic background.
+ Patient has a high school education.
+Patient currently has Humana.
+
+# Allergies
+No Known Allergies.
+
+# Medications
+No Active Medications.
+
+# Assessment and Plan
+Patient is presenting with osteoarthritis of knee. 
+
+## Plan
+
+The patient was prescribed the following medications:
+- naproxen sodium 220 mg oral tablet
+The patient was placed on a careplan:
+- musculoskeletal care
+
+
+
+2015-06-09
+
+# Chief Complaint
+No complaints.
+
+# History of Present Illness
+Antwan357
+ is a 34 year-old non-hispanic white male. Patient has a history of full-time employment (finding), stress (finding).
+
+# Social History
+Patient is married. Patient is an active smoker and is an alcoholic.
+ Patient identifies as heterosexual.
+
+Patient comes from a middle socioeconomic background.
+ Patient has a high school education.
+Patient currently has UnitedHealthcare.
+
+# Allergies
+No Known Allergies.
+
+# Medications
+No Active Medications.
+
+# Assessment and Plan
+Patient is presenting with full-time employment (finding). 
+
+## Plan
+
+
+
+
+2012-06-05
+
+# Chief Complaint
+No complaints.
+
+# History of Present Illness
+Antwan357
+ is a 31 year-old non-hispanic white male. Patient has a history of full-time employment (finding), stress (finding).
+
+# Social History
+Patient is married. Patient is an active smoker and is an alcoholic.
+ Patient identifies as heterosexual.
+
+Patient comes from a middle socioeconomic background.
+ Patient has a high school education.
+Patient currently has Cigna Health.
+
+# Allergies
+No Known Allergies.
+
+# Medications
+No Active Medications.
+
+# Assessment and Plan
+Patient is presenting with full-time employment (finding). 
+
+## Plan
+
+
+
+
+2009-06-02
+
+# Chief Complaint
+No complaints.
+
+# History of Present Illness
+Antwan357
+ is a 28 year-old non-hispanic white male. Patient has a history of full-time employment (finding), stress (finding).
+
+# Social History
+Patient is married. Patient is an active smoker and is an alcoholic.
+ Patient identifies as heterosexual.
+
+Patient comes from a middle socioeconomic background.
+ Patient has a high school education.
+Patient currently has Cigna Health.
+
+# Allergies
+No Known Allergies.
+
+# Medications
+No Active Medications.
+
+# Assessment and Plan
+Patient is presenting with full-time employment (finding). 
+
+## Plan
+
+
+
+
+2008-03-04
+
+# Chief Complaint
+No complaints.
+
+# History of Present Illness
+Antwan357
+ is a 26 year-old non-hispanic white male. Patient has a history of full-time employment (finding), stress (finding).
+
+# Social History
+Patient is married. Patient is an active smoker and is an alcoholic.
+ Patient identifies as heterosexual.
+
+Patient comes from a middle socioeconomic background.
+ Patient has a high school education.
+Patient currently has NO INSURANCE.
+
+# Allergies
+No Known Allergies.
+
+# Medications
+No Active Medications.
+
+# Assessment and Plan
+Patient is presenting with full-time employment (finding), victim of intimate partner abuse (finding). 
+
+## Plan
+
+
+
+
+2006-05-30
+
+# Chief Complaint
+No complaints.
+
+# History of Present Illness
+Antwan357
+ is a 25 year-old non-hispanic white male. Patient has a history of full-time employment (finding).
+
+# Social History
+Patient is married. Patient is an active smoker and is an alcoholic.
+ Patient identifies as heterosexual.
+
+Patient comes from a middle socioeconomic background.
+ Patient has a high school education.
+Patient currently has NO INSURANCE.
+
+# Allergies
+No Known Allergies.
+
+# Medications
+No Active Medications.
+
+# Assessment and Plan
+Patient is presenting with full-time employment (finding), stress (finding). 
+
+## Plan
+
+
+
+
+2004-07-29
+
+# Chief Complaint
+No complaints.
+
+# History of Present Illness
+Antwan357
+ is a 23 year-old non-hispanic white male. Patient has a history of full-time employment (finding).
+
+# Social History
+Patient is married. Patient is an active smoker and is an alcoholic.
+ Patient identifies as heterosexual.
+
+Patient comes from a middle socioeconomic background.
+ Patient has a high school education.
+Patient currently has Aetna.
+
+# Allergies
+No Known Allergies.
+
+# Medications
+No Active Medications.
+
+# Assessment and Plan
+Patient is presenting with lisinopril. 
+
+## Plan
+
+The patient was prescribed the following medications:
+- loratadine 10 mg oral tablet
+- nda020800 0.3 ml epinephrine 1 mg/ml auto-injector
+The patient was placed on a careplan:
+- self-care interventions (procedure)
+
+
+
+2004-07-17
+
+# Chief Complaint
+No complaints.
+
+# History of Present Illness
+Antwan357
+ is a 23 year-old non-hispanic white male. Patient has a history of full-time employment (finding).
+
+# Social History
+Patient is married. Patient is an active smoker and is an alcoholic.
+ Patient identifies as heterosexual.
+
+Patient comes from a middle socioeconomic background.
+ Patient has a high school education.
+Patient currently has Aetna.
+
+# Allergies
+No Known Allergies.
+
+# Medications
+No Active Medications.
+
+# Assessment and Plan
+
+
+## Plan
+
+The patient was prescribed the following medications:
+- hydrocortisone 10 mg/ml topical cream
+
+
+
+2003-05-27
+
+# Chief Complaint
+No complaints.
+
+# History of Present Illness
+Antwan357
+ is a 22 year-old non-hispanic white male. Patient has a history of full-time employment (finding).
+
+# Social History
+Patient is married. Patient is an active smoker and is an alcoholic.
+ Patient identifies as heterosexual.
+
+Patient comes from a middle socioeconomic background.
+ Patient has a high school education.
+Patient currently has Humana.
+
+# Allergies
+No Known Allergies.
+
+# Medications
+No Active Medications.
+
+# Assessment and Plan
+Patient is presenting with full-time employment (finding). 
+
+## Plan
+
+
+
+
+2002-09-03
+
+# Chief Complaint
+No complaints.
+
+# History of Present Illness
+Antwan357
+ is a 21 year-old non-hispanic white male. Patient has a history of full-time employment (finding).
+
+# Social History
+Patient is married. Patient is an active smoker and is an alcoholic.
+ Patient identifies as heterosexual.
+
+Patient comes from a middle socioeconomic background.
+ Patient has a high school education.
+Patient currently has Humana.
+
+# Allergies
+No Known Allergies.
+
+# Medications
+No Active Medications.
+
+# Assessment and Plan
+Patient is presenting with full-time employment (finding). 
+
+## Plan
+
+
+
+
+2002-07-14
+
+# Chief Complaint
+No complaints.
+
+# History of Present Illness
+Antwan357
+ is a 21 year-old non-hispanic white male. Patient has a history of full-time employment (finding).
+
+# Social History
+Patient is married. Patient is an active smoker and is an alcoholic.
+ Patient identifies as heterosexual.
+
+Patient comes from a middle socioeconomic background.
+ Patient has a high school education.
+Patient currently has Blue Cross Blue Shield.
+
+# Allergies
+No Known Allergies.
+
+# Medications
+No Active Medications.
+
+# Assessment and Plan
+Patient is presenting with full-time employment (finding). 
+
+## Plan
+
+
+
+
+2002-06-25
+
+# Chief Complaint
+No complaints.
+
+# History of Present Illness
+Antwan357
+ is a 21 year-old non-hispanic white male. Patient has a history of full-time employment (finding).
+
+# Social History
+Patient is married. Patient is an active smoker and is an alcoholic.
+ Patient identifies as heterosexual.
+
+Patient comes from a middle socioeconomic background.
+ Patient has a high school education.
+Patient currently has Blue Cross Blue Shield.
+
+# Allergies
+No Known Allergies.
+
+# Medications
+No Active Medications.
+
+# Assessment and Plan
+Patient is presenting with full-time employment (finding). 
+
+## Plan
+
+
+
+
+2000-05-23
+
+# Chief Complaint
+No complaints.
+
+# History of Present Illness
+Antwan357
+ is a 19 year-old non-hispanic white male. Patient has a history of full-time employment (finding).
+
+# Social History
+Patient is married. Patient is an active smoker and is an alcoholic.
+ Patient identifies as heterosexual.
+
+Patient comes from a middle socioeconomic background.
+ Patient has a high school education.
+Patient currently has Aetna.
+
+# Allergies
+No Known Allergies.
+
+# Medications
+No Active Medications.
+
+# Assessment and Plan
+Patient is presenting with full-time employment (finding). 
+
+## Plan
+
+
+
+
+1999-05-18
+
+# Chief Complaint
+No complaints.
+
+# History of Present Illness
+Antwan357
+ is a 18 year-old non-hispanic white male.
+
+# Social History
+ Patient is an active smoker and is an alcoholic.
+ Patient identifies as heterosexual.
+
+Patient comes from a middle socioeconomic background.
+ Patient has a high school education.
+Patient currently has Humana.
+
+# Allergies
+No Known Allergies.
+
+# Medications
+No Active Medications.
+
+# Assessment and Plan
+Patient is presenting with received certificate of high school equivalency (finding), full-time employment (finding). 
+
+## Plan
+
+
+
+
+1994-06-10
+
+# Chief Complaint
+No complaints.
+
+# History of Present Illness
+Antwan357
+ is a 13 year-old non-hispanic white male.
+
+# Social History
+ Patient quite smoking at age 19 and is an alcoholic.
+
+
+Patient comes from a middle socioeconomic background.
+
+Patient currently has Cigna Health.
+
+# Allergies
+No Known Allergies.
+
+# Medications
+No Active Medications.
+
+# Assessment and Plan
+
+
+## Plan
+
+The patient was placed on a careplan:
+- musculoskeletal care
+
+
+

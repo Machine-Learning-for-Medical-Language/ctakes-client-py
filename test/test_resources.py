@@ -1,14 +1,44 @@
 """Resource helpers for use in tests"""
 
 import os
+from typing import List
 from enum import Enum
 import unittest
 from ctakesclient import filesystem
 
-
 def path(filename):
+    """
+    :param filename: basename of file like 'covid_symptoms.bsv'
+    :return: path to file
+    """
     return os.path.join(os.path.dirname(__file__), 'resources', filename)
 
+def list_resources(basedir, extension=None) -> List[str]:
+    """
+    :param basedir: folder like "/opt/ctakes-client-py/resources/curated" or curated()
+    :param extension: .txt, .json, or None
+    :return: List sorted
+    """
+    file_list = list()
+    for filename in os.listdir(basedir):
+        f = os.path.join(basedir, filename)
+        if (extension is None) or (f.endswith(extension)):
+            file_list.append(f)
+    return sorted(file_list)
+
+def curated():
+    """
+    *** NOT PHI NOT REAL PATIENTS**
+    :return: curated directory containing 2363 "stories" about typical patient vists.
+    """
+    return os.path.join(os.path.dirname(__file__), 'resources', 'curated')
+
+def synthetic():
+    """
+    *** NOT PHI NOT REAL PATIENTS**
+    :return: Synthea (AI generative process) physican note examples
+    """
+    return os.path.join(os.path.dirname(__file__), 'resources', 'synthetic')
 
 def load(filepath):
     if str(filepath).endswith('.json'):

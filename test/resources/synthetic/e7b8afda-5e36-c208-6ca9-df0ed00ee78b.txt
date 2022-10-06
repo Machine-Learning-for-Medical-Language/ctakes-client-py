@@ -1,0 +1,744 @@
+
+2021-02-18
+
+# Chief Complaint
+No complaints.
+
+# History of Present Illness
+Lyndon118
+ is a 38 year-old non-hispanic white male. Patient has a history of covid-19, dyspnea (finding), not in labor force (finding), passive conjunctival congestion (finding), reports of violence in the environment (finding), wheezing (finding), full-time employment (finding), loss of taste (finding), suspected covid-19, social isolation (finding), stress (finding).
+
+# Social History
+Patient is married. Patient is temporarily homeless. Patient has a documented history of opioid addiction. Patient is an active smoker and is an alcoholic.
+ Patient identifies as heterosexual.
+
+Patient comes from a low socioeconomic background.
+ Patient did not finish high school.
+Patient currently has Anthem.
+
+# Allergies
+No Known Allergies.
+
+# Medications
+ibuprofen 400 mg oral tablet [ibu]
+
+# Assessment and Plan
+Patient is presenting with full-time employment (finding). 
+
+## Plan
+Patient was given the following immunizations: influenza, seasonal, injectable, preservative free. 
+The following procedures were conducted:
+- assessment of health and social care needs (procedure)
+- depression screening (procedure)
+- depression screening using patient health questionnaire two-item score (procedure)
+The patient was prescribed the following medications:
+- ibuprofen 400 mg oral tablet [ibu]
+
+
+
+2020-05-25
+
+# Chief Complaint
+No complaints.
+
+# History of Present Illness
+Lyndon118
+ is a 37 year-old non-hispanic white male. Patient has a history of covid-19, dyspnea (finding), not in labor force (finding), passive conjunctival congestion (finding), reports of violence in the environment (finding), wheezing (finding), full-time employment (finding), loss of taste (finding), suspected covid-19, social isolation (finding), stress (finding).
+
+# Social History
+Patient is married. Patient is temporarily homeless. Patient has a documented history of opioid addiction. Patient is an active smoker and is an alcoholic.
+ Patient identifies as heterosexual.
+
+Patient comes from a low socioeconomic background.
+ Patient did not finish high school.
+Patient currently has Blue Cross Blue Shield.
+
+# Allergies
+No Known Allergies.
+
+# Medications
+ibuprofen 400 mg oral tablet [ibu]
+
+# Assessment and Plan
+
+
+## Plan
+
+
+
+
+2020-04-25
+
+# Chief Complaint
+No complaints.
+
+# History of Present Illness
+Lyndon118
+ is a 37 year-old non-hispanic white male. Patient has a history of covid-19, dyspnea (finding), not in labor force (finding), passive conjunctival congestion (finding), reports of violence in the environment (finding), wheezing (finding), full-time employment (finding), loss of taste (finding), suspected covid-19, social isolation (finding), stress (finding).
+
+# Social History
+Patient is married. Patient is temporarily homeless. Patient has a documented history of opioid addiction. Patient is an active smoker and is an alcoholic.
+ Patient identifies as heterosexual.
+
+Patient comes from a low socioeconomic background.
+ Patient did not finish high school.
+Patient currently has Blue Cross Blue Shield.
+
+# Allergies
+No Known Allergies.
+
+# Medications
+ibuprofen 400 mg oral tablet [ibu]
+
+# Assessment and Plan
+
+
+## Plan
+
+
+
+
+2020-03-26
+
+# Chief Complaint
+No complaints.
+
+# History of Present Illness
+Lyndon118
+ is a 37 year-old non-hispanic white male. Patient has a history of covid-19, dyspnea (finding), not in labor force (finding), passive conjunctival congestion (finding), reports of violence in the environment (finding), wheezing (finding), full-time employment (finding), loss of taste (finding), suspected covid-19, social isolation (finding), stress (finding).
+
+# Social History
+Patient is married. Patient is temporarily homeless. Patient has a documented history of opioid addiction. Patient is an active smoker and is an alcoholic.
+ Patient identifies as heterosexual.
+
+Patient comes from a low socioeconomic background.
+ Patient did not finish high school.
+Patient currently has Blue Cross Blue Shield.
+
+# Allergies
+No Known Allergies.
+
+# Medications
+ibuprofen 400 mg oral tablet [ibu]
+
+# Assessment and Plan
+
+
+## Plan
+
+
+
+
+2020-03-06
+
+# Chief Complaint
+No complaints.
+
+# History of Present Illness
+Lyndon118
+ is a 37 year-old non-hispanic white male. Patient has a history of not in labor force (finding), reports of violence in the environment (finding), full-time employment (finding), social isolation (finding), stress (finding).
+
+# Social History
+Patient is married. Patient is temporarily homeless. Patient has a documented history of opioid addiction. Patient is an active smoker and is an alcoholic.
+ Patient identifies as heterosexual.
+
+Patient comes from a low socioeconomic background.
+ Patient did not finish high school.
+Patient currently has Blue Cross Blue Shield.
+
+# Allergies
+No Known Allergies.
+
+# Medications
+ibuprofen 400 mg oral tablet [ibu]
+
+# Assessment and Plan
+Patient is presenting with passive conjunctival congestion (finding), dyspnea (finding), wheezing (finding), loss of taste (finding), suspected covid-19, covid-19. 
+
+## Plan
+
+The following procedures were conducted:
+- face mask (physical object)
+The patient was placed on a careplan:
+- infectious disease care plan (record artifact)
+- infectious disease care plan (record artifact)
+
+
+
+2020-03-05
+
+# Chief Complaint
+No complaints.
+
+# History of Present Illness
+Lyndon118
+ is a 37 year-old non-hispanic white male. Patient has a history of not in labor force (finding), reports of violence in the environment (finding), full-time employment (finding), social isolation (finding), stress (finding).
+
+# Social History
+Patient is married. Patient is temporarily homeless. Patient has a documented history of opioid addiction. Patient is an active smoker and is an alcoholic.
+ Patient identifies as heterosexual.
+
+Patient comes from a low socioeconomic background.
+ Patient did not finish high school.
+Patient currently has Blue Cross Blue Shield.
+
+# Allergies
+No Known Allergies.
+
+# Medications
+ibuprofen 400 mg oral tablet [ibu]
+
+# Assessment and Plan
+
+
+## Plan
+
+
+
+
+2020-02-13
+
+# Chief Complaint
+No complaints.
+
+# History of Present Illness
+Lyndon118
+ is a 37 year-old non-hispanic white male. Patient has a history of not in labor force (finding), full-time employment (finding), social isolation (finding), stress (finding).
+
+# Social History
+Patient is married. Patient is temporarily homeless. Patient has a documented history of opioid addiction. Patient is an active smoker and is an alcoholic.
+ Patient identifies as heterosexual.
+
+Patient comes from a low socioeconomic background.
+ Patient did not finish high school.
+Patient currently has Blue Cross Blue Shield.
+
+# Allergies
+No Known Allergies.
+
+# Medications
+ibuprofen 400 mg oral tablet [ibu]
+
+# Assessment and Plan
+Patient is presenting with full-time employment (finding), reports of violence in the environment (finding). 
+
+## Plan
+Patient was given the following immunizations: influenza, seasonal, injectable, preservative free. 
+The following procedures were conducted:
+- assessment of health and social care needs (procedure)
+- medication reconciliation (procedure)
+The patient was prescribed the following medications:
+- ibuprofen 400 mg oral tablet [ibu]
+
+
+
+2019-02-07
+
+# Chief Complaint
+No complaints.
+
+# History of Present Illness
+Lyndon118
+ is a 36 year-old non-hispanic white male. Patient has a history of full-time employment (finding), social isolation (finding), stress (finding).
+
+# Social History
+Patient is married. Patient is temporarily homeless. Patient has a documented history of opioid addiction. Patient is an active smoker and is an alcoholic.
+ Patient identifies as heterosexual.
+
+Patient comes from a low socioeconomic background.
+ Patient did not finish high school.
+Patient currently has Humana.
+
+# Allergies
+No Known Allergies.
+
+# Medications
+ibuprofen 400 mg oral tablet [ibu]
+
+# Assessment and Plan
+Patient is presenting with not in labor force (finding). 
+
+## Plan
+
+The patient was prescribed the following medications:
+- ibuprofen 400 mg oral tablet [ibu]
+
+
+
+2018-02-01
+
+# Chief Complaint
+No complaints.
+
+# History of Present Illness
+Lyndon118
+ is a 35 year-old non-hispanic white male. Patient has a history of full-time employment (finding), social isolation (finding), stress (finding).
+
+# Social History
+Patient is married. Patient is temporarily homeless. Patient has a documented history of opioid addiction. Patient is an active smoker and is an alcoholic.
+ Patient identifies as heterosexual.
+
+Patient comes from a low socioeconomic background.
+ Patient did not finish high school.
+Patient currently has Aetna.
+
+# Allergies
+No Known Allergies.
+
+# Medications
+ibuprofen 400 mg oral tablet [ibu]
+
+# Assessment and Plan
+Patient is presenting with full-time employment (finding). 
+
+## Plan
+
+The patient was prescribed the following medications:
+- ibuprofen 400 mg oral tablet [ibu]
+
+
+
+2017-01-21
+
+# Chief Complaint
+No complaints.
+
+# History of Present Illness
+Lyndon118
+ is a 34 year-old non-hispanic white male. Patient has a history of full-time employment (finding), social isolation (finding), stress (finding).
+
+# Social History
+Patient is married. Patient is temporarily homeless. Patient has a documented history of opioid addiction. Patient is an active smoker and is an alcoholic.
+ Patient identifies as heterosexual.
+
+Patient comes from a low socioeconomic background.
+ Patient did not finish high school.
+Patient currently has Humana.
+
+# Allergies
+No Known Allergies.
+
+# Medications
+ibuprofen 400 mg oral tablet [ibu]
+
+# Assessment and Plan
+Patient is presenting with full-time employment (finding). 
+
+## Plan
+
+The patient was prescribed the following medications:
+- ibuprofen 400 mg oral tablet [ibu]
+
+
+
+2016-01-21
+
+# Chief Complaint
+No complaints.
+
+# History of Present Illness
+Lyndon118
+ is a 33 year-old non-hispanic white male. Patient has a history of full-time employment (finding), social isolation (finding), stress (finding).
+
+# Social History
+Patient is married. Patient is temporarily homeless. Patient has a documented history of opioid addiction. Patient is an active smoker and is an alcoholic.
+ Patient identifies as heterosexual.
+
+Patient comes from a low socioeconomic background.
+ Patient did not finish high school.
+Patient currently has UnitedHealthcare.
+
+# Allergies
+No Known Allergies.
+
+# Medications
+ibuprofen 400 mg oral tablet [ibu]
+
+# Assessment and Plan
+Patient is presenting with full-time employment (finding). 
+
+## Plan
+
+The patient was prescribed the following medications:
+- ibuprofen 400 mg oral tablet [ibu]
+
+
+
+2015-01-15
+
+# Chief Complaint
+No complaints.
+
+# History of Present Illness
+Lyndon118
+ is a 32 year-old non-hispanic white male. Patient has a history of full-time employment (finding), social isolation (finding).
+
+# Social History
+Patient is married. Patient is temporarily homeless. Patient has a documented history of opioid addiction. Patient is an active smoker and is an alcoholic.
+ Patient identifies as heterosexual.
+
+Patient comes from a low socioeconomic background.
+ Patient did not finish high school.
+Patient currently has Anthem.
+
+# Allergies
+No Known Allergies.
+
+# Medications
+ibuprofen 400 mg oral tablet [ibu]
+
+# Assessment and Plan
+Patient is presenting with full-time employment (finding), stress (finding). 
+
+## Plan
+
+The patient was prescribed the following medications:
+- ibuprofen 400 mg oral tablet [ibu]
+
+
+
+2014-02-01
+
+# Chief Complaint
+No complaints.
+
+# History of Present Illness
+Lyndon118
+ is a 31 year-old non-hispanic white male. Patient has a history of full-time employment (finding), social isolation (finding).
+
+# Social History
+Patient is married. Patient is temporarily homeless. Patient has a documented history of opioid addiction. Patient is an active smoker and is an alcoholic.
+ Patient identifies as heterosexual.
+
+Patient comes from a low socioeconomic background.
+ Patient did not finish high school.
+Patient currently has UnitedHealthcare.
+
+# Allergies
+No Known Allergies.
+
+# Medications
+No Active Medications.
+
+# Assessment and Plan
+Patient is presenting with chronic low back pain (finding), fibromyalgia (disorder). 
+
+## Plan
+
+The patient was prescribed the following medications:
+- ibuprofen 400 mg oral tablet [ibu]
+
+
+
+2012-06-09
+
+# Chief Complaint
+No complaints.
+
+# History of Present Illness
+Lyndon118
+ is a 29 year-old non-hispanic white male. Patient has a history of full-time employment (finding), social isolation (finding).
+
+# Social History
+Patient is married. Patient is temporarily homeless. Patient has a documented history of opioid addiction. Patient is an active smoker and is an alcoholic.
+ Patient identifies as heterosexual.
+
+Patient comes from a low socioeconomic background.
+ Patient did not finish high school.
+Patient currently has Anthem.
+
+# Allergies
+No Known Allergies.
+
+# Medications
+No Active Medications.
+
+# Assessment and Plan
+Patient is presenting with full-time employment (finding). 
+
+## Plan
+
+
+
+
+2011-01-06
+
+# Chief Complaint
+No complaints.
+
+# History of Present Illness
+Lyndon118
+ is a 28 year-old non-hispanic white male. Patient has a history of full-time employment (finding), social isolation (finding).
+
+# Social History
+Patient is married. Patient is temporarily homeless. Patient has a documented history of opioid addiction. Patient is an active smoker and is an alcoholic.
+ Patient identifies as heterosexual.
+
+Patient comes from a low socioeconomic background.
+ Patient did not finish high school.
+Patient currently has Humana.
+
+# Allergies
+No Known Allergies.
+
+# Medications
+No Active Medications.
+
+# Assessment and Plan
+Patient is presenting with full-time employment (finding). 
+
+## Plan
+
+
+
+
+2010-09-25
+
+# Chief Complaint
+No complaints.
+
+# History of Present Illness
+Lyndon118
+ is a 27 year-old non-hispanic white male. Patient has a history of full-time employment (finding), social isolation (finding).
+
+# Social History
+Patient is married. Patient is temporarily homeless. Patient has a documented history of opioid addiction. Patient is an active smoker and is an alcoholic.
+ Patient identifies as heterosexual.
+
+Patient comes from a low socioeconomic background.
+ Patient did not finish high school.
+Patient currently has Humana.
+
+# Allergies
+No Known Allergies.
+
+# Medications
+No Active Medications.
+
+# Assessment and Plan
+Patient is presenting with drug overdose. 
+
+## Plan
+
+The patient was placed on a careplan:
+- care plan (record artifact)
+
+
+
+2008-01-03
+
+# Chief Complaint
+No complaints.
+
+# History of Present Illness
+Lyndon118
+ is a 25 year-old non-hispanic white male. Patient has a history of full-time employment (finding), social isolation (finding).
+
+# Social History
+Patient is married. Patient is temporarily homeless. Patient has a documented history of opioid addiction. Patient is an active smoker and is an alcoholic.
+ Patient identifies as heterosexual.
+
+Patient comes from a low socioeconomic background.
+ Patient did not finish high school.
+Patient currently has NO INSURANCE.
+
+# Allergies
+No Known Allergies.
+
+# Medications
+No Active Medications.
+
+# Assessment and Plan
+Patient is presenting with full-time employment (finding). 
+
+## Plan
+
+
+
+
+2004-12-30
+
+# Chief Complaint
+No complaints.
+
+# History of Present Illness
+Lyndon118
+ is a 22 year-old non-hispanic white male. Patient has a history of full-time employment (finding), social isolation (finding).
+
+# Social History
+Patient is married. Patient is temporarily homeless. Patient has a documented history of opioid addiction. Patient is an active smoker and is an alcoholic.
+ Patient identifies as heterosexual.
+
+Patient comes from a low socioeconomic background.
+ Patient did not finish high school.
+Patient currently has NO INSURANCE.
+
+# Allergies
+No Known Allergies.
+
+# Medications
+No Active Medications.
+
+# Assessment and Plan
+Patient is presenting with body mass index 30+ - obesity (finding). 
+
+## Plan
+
+
+
+
+2001-12-27
+
+# Chief Complaint
+No complaints.
+
+# History of Present Illness
+Lyndon118
+ is a 19 year-old non-hispanic white male.
+
+# Social History
+Patient is married. Patient is temporarily homeless. Patient has a documented history of opioid addiction. Patient is an active smoker and is an alcoholic.
+ Patient identifies as heterosexual.
+
+Patient comes from a low socioeconomic background.
+ Patient did not finish high school.
+Patient currently has NO INSURANCE.
+
+# Allergies
+No Known Allergies.
+
+# Medications
+No Active Medications.
+
+# Assessment and Plan
+Patient is presenting with full-time employment (finding), social isolation (finding). 
+
+## Plan
+
+
+
+
+2000-12-21
+
+# Chief Complaint
+No complaints.
+
+# History of Present Illness
+Lyndon118
+ is a 18 year-old non-hispanic white male.
+
+# Social History
+ Patient has a documented history of opioid addiction. Patient is an active smoker and is an alcoholic.
+ Patient identifies as heterosexual.
+
+Patient comes from a low socioeconomic background.
+ Patient did not finish high school.
+Patient currently has Cigna Health.
+
+# Allergies
+No Known Allergies.
+
+# Medications
+No Active Medications.
+
+# Assessment and Plan
+Patient is presenting with only received primary school education (finding), limited social contact (finding). 
+
+## Plan
+
+
+
+
+1998-11-24
+
+# Chief Complaint
+No complaints.
+
+# History of Present Illness
+Lyndon118
+ is a 16 year-old non-hispanic white male.
+
+# Social History
+ Patient has a documented history of opioid addiction. Patient has never smoked and is an alcoholic.
+ Patient identifies as heterosexual.
+
+Patient comes from a low socioeconomic background.
+
+Patient currently has NO INSURANCE.
+
+# Allergies
+No Known Allergies.
+
+# Medications
+No Active Medications.
+
+# Assessment and Plan
+Patient is presenting with chronic pain. 
+
+## Plan
+
+
+
+
+1997-07-12
+
+# Chief Complaint
+No complaints.
+
+# History of Present Illness
+Lyndon118
+ is a 14 year-old non-hispanic white male.
+
+# Social History
+ Patient has a documented history of opioid addiction. Patient has never smoked and is an alcoholic.
+
+
+Patient comes from a low socioeconomic background.
+
+Patient currently has NO INSURANCE.
+
+# Allergies
+No Known Allergies.
+
+# Medications
+No Active Medications.
+
+# Assessment and Plan
+Patient is presenting with impacted molars. 
+
+## Plan
+
+
+
+
+1996-12-30
+
+# Chief Complaint
+No complaints.
+
+# History of Present Illness
+Lyndon118
+ is a 14 year-old non-hispanic white male.
+
+# Social History
+ Patient has a documented history of opioid addiction. Patient has never smoked and is an alcoholic.
+
+
+Patient comes from a low socioeconomic background.
+
+Patient currently has NO INSURANCE.
+
+# Allergies
+No Known Allergies.
+
+# Medications
+No Active Medications.
+
+# Assessment and Plan
+Patient is presenting with chronic intractable migraine without aura. 
+
+## Plan
+
+
+
+
