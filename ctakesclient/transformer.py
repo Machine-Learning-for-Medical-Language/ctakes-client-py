@@ -34,7 +34,9 @@ def list_polarity(sentence: str, spans: list, url: str = None) -> List[Polarity]
     doc = {'doc_text': sentence, 'entities': spans}
 
     # TODO: consider exposing a pass-through timeout parameter
-    response = requests.post(url=url, json=doc).json()  # pylint: disable=missing-timeout
+    response = requests.post(url=url, json=doc)  # pylint: disable=missing-timeout
+    response.raise_for_status()
+    response = response.json()
     polarities = []
 
     for status in response['statuses']:
