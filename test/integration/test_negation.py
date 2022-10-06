@@ -4,7 +4,7 @@ import json
 import unittest
 import ctakesclient
 from ctakesclient.typesystem import Polarity
-from .test_resources import PathResource, LoadResource
+from test.test_resources import PathResource, LoadResource
 
 
 def covid_symptoms() -> dict:

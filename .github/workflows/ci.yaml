@@ -25,9 +25,7 @@ jobs:
 
       - name: Test with pytest
         run: |
-          # TODO: Expand our CI run to include the client/server tests too
-          # https://github.com/Machine-Learning-for-Medical-Language/ctakes-client-py/issues/10
-          python -m pytest test/test_filesystem.py test/test_resources.py test/test_typesystem.py
+          python -m pytest
 
   lint:
     runs-on: ubuntu-22.04
