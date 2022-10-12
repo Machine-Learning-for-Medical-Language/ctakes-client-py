@@ -4,6 +4,7 @@ import unittest
 import ctakesclient
 from test.test_resources import LoadResource
 
+
 class TestClientCtakesRestServer(unittest.TestCase):
     """Test case for REST requests"""
 
