@@ -96,5 +96,6 @@ class TestNegationTransformer(unittest.TestCase):
 
         self.assertEqual(polarities_ctakes, polarities_cnlp, text)
 
+
 if __name__ == '__main__':
     unittest.main()
