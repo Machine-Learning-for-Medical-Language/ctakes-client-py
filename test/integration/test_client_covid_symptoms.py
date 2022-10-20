@@ -9,6 +9,7 @@ def pretty(result: dict):
     print(json.dumps(result, indent=4))
 
 class Symptom(Enum):
+    # pylint: disable=invalid-name
     Cough = ['R05.9', '786.2', 'Post-tussive', 'tussive', 'Coughing']
     Fever = ['R50.9', '780.60', 'Fevers', 'Shivering', 'Shivers', 'Chills', 'Chilly']
     Diarrhea = ['R19.7', '787.91']
