@@ -1,8 +1,9 @@
 """File loading and parsing"""
 
-from typing import List
+from typing import List, Union
 import logging
 import json
+import os
 from ctakesclient.exceptions import BSVError
 
 ###############################################################################
@@ -76,8 +77,7 @@ class BsvConcept:
         self.pref = source[5]
 
     def to_bsv(self):
-        return (f'{self.cui}|{self.tui}|{self.code}|{self.vocab}|'
-                f'{self.text}|{self.pref}')
+        return f'{self.cui}|{self.tui}|{self.code}|{self.vocab}|{self.text}|{self.pref}'
 
     def __str__(self):
         return self.to_bsv()
@@ -151,7 +151,7 @@ class BsvSemanticType:
 # File Common Helper functions with INFO logging
 #
 ###############################################################################
-def list_bsv(filename, class_bsv) -> list:
+def list_bsv(filename: str, class_bsv) -> list:
     """
     :param filename: BSV filename to parse
     :param class_bsv: what type of BSV resource to construct
@@ -172,21 +172,24 @@ def list_bsv(filename, class_bsv) -> list:
     return entries
 
 
-def list_bsv_semantics(filename) -> List[BsvSemanticType]:
+def list_bsv_semantics(filename: str) -> List[BsvSemanticType]:
     return list_bsv(filename, BsvSemanticType)
 
 
-def list_bsv_concept(filename) -> List[BsvConcept]:
+def list_bsv_concept(filename: str) -> List[BsvConcept]:
     return list_bsv(filename, BsvConcept)
 
 
-def map_cui_pref(filename) -> dict:
+def map_cui_pref(concepts: Union[str, List[BsvConcept]]) -> dict:
     """
-    :param filename: see BSV file, where rows are CUI|TUI|CODE|VOCAB|TXT|PREF
+    :param concepts: a loaded BSV file, where rows are CUI|TUI|CODE|VOCAB|TXT|PREF, or a filename to load
     :return: map of {cui:text} labels
     """
+    if isinstance(concepts, str):
+        concepts = list_bsv_concept(concepts)
+
     cui_map = {}
-    for bsv in list_bsv_concept(filename):
+    for bsv in concepts:
         cui_map[bsv.cui] = bsv.pref.strip()
     return cui_map
 
@@ -212,3 +215,27 @@ def read_json(filename) -> dict:
     logging.info('read_json(%s)', filename)
     with open(filename, 'r', encoding='utf-8') as fp:
         return json.load(fp)
+
+
+###############################################################################
+#
+# Standard BSVs for wide-interest topics, shipped with ctakesclient
+#
+###############################################################################
+
+def _resource_file(filename: str) -> str:
+    return os.path.join(os.path.dirname(__file__), 'resources', filename)
+
+
+def covid_symptoms() -> List[BsvConcept]:
+    """Returns a list of known covid symptoms"""
+    return list_bsv_concept(_resource_file('covid_symptoms.bsv'))
+
+
+def umls_semantic_groups() -> List[BsvSemanticType]:
+    """
+    Returns a list of UMLS semantic groups
+
+    See https://lhncbc.nlm.nih.gov/ii/tools/MetaMap/documentation/SemanticTypesAndGroups.html
+    """
+    return list_bsv_semantics(_resource_file('SemGroups_2018.bsv'))

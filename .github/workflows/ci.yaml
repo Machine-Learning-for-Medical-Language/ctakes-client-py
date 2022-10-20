@@ -21,18 +21,11 @@ jobs:
         run: |
           python -m pip install --upgrade pip
           pip install pytest
-          # Once we drop support for py3.6, we can use standard pip install again.
-          # The issue is that we need setuptools 61.0 for pyproject.toml support,
-          # but setuptools 59.7 dropped support for py3.6.
-          # But for now, manually install all requirements:
-          pip install requests
-          # pip install .[tests]
+          pip install .[tests]
 
       - name: Test with pytest
         run: |
-          # TODO: Expand our CI run to include the client/server tests too
-          # https://github.com/Machine-Learning-for-Medical-Language/ctakes-client-py/issues/10
-          python -m pytest test/test_filesystem.py test/test_resources.py test/test_typesystem.py
+          python -m pytest
 
   lint:
     runs-on: ubuntu-22.04
@@ -42,8 +35,13 @@ jobs:
       - name: Install linters
         run: |
           python -m pip install --upgrade pip
-          pip install pylint
+          pip install pycodestyle pylint
+
+      - name: Run pycodestyle
+        run: |
+          pycodestyle --max-line-length=120 .
 
       - name: Run pylint
+        if: success() || failure() # still run pylint if pycodestyle fails
         run: |
           pylint ctakesclient/ scripts/* test/

@@ -129,17 +129,31 @@ def show_note(args, note):
     if note['error']:
         print('ERROR:', note['error'])
 
+    found_any = False
+
+    # Flatten mentions to allow for comma separated mentions
+    # That is, these are equivalent: "--mention A --mention B" and "--mention A,B"
+    mentions = {x for user_mention in args.mention for x in user_mention.split(',')}
+
     for count, diff in enumerate(note['differences'], start=1):
         if args.diff and args.diff != count:
             continue
 
         m = MatchText(source=diff['match'])
         cnlp = diff['cnlp_polarity']
+
+        if mentions and m.type.value not in mentions:
+            continue
+
         print(f'\n=== differing span {count} ({m.begin}-{m.end}): '
               f"{m.type.value}: '{m.text}' ===")
         print('cTAKES says:', m.polarity.name)
         print('cNLP says  :', Polarity(cnlp).name)
         print('Context:', note_context(note['note'], m))
+        found_any = True
+
+    if not found_any:
+        print('No matching differences found!')
 
 
 def report(parser, args):
@@ -187,9 +201,10 @@ def main():
     report_parser = subparsers.add_parser('show')
     report_parser.add_argument('pdr_path', metavar='notes.pdr.ndjson')
     report_parser.add_argument('--show-full', action='store_true')
-    report_parser.add_argument('--note', type=int, action='store')
-    report_parser.add_argument('--instance', type=int, action='store')
-    report_parser.add_argument('--diff', type=int, action='store')
+    report_parser.add_argument('--note', type=int, action='store', help='only show differences for this note number')
+    report_parser.add_argument('--instance', type=int, action='store', help='only show differences for this note ID')
+    report_parser.add_argument('--diff', type=int, action='store', help='only show this specific difference number')
+    report_parser.add_argument('--mention', action='append', default=[], help='only show these mention types')
     report_parser.set_defaults(func=report)
 
     args = parser.parse_args()

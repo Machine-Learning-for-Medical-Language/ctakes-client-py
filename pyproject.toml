@@ -1,6 +1,5 @@
 [project]
 name = "ctakesclient"
-version = "1.0.4"
 # We'll want to officially support 3.6 until we no longer care about CentOS 7
 requires-python = ">= 3.6"
 dependencies = [
@@ -20,16 +19,22 @@ classifiers = [
     "Programming Language :: Python :: 3",
     "Topic :: Software Development :: Libraries :: Python Modules",
 ]
+dynamic = ["version"]
 
 [project.urls]
 "Homepage" = "https://github.com/Machine-Learning-for-Medical-Language/ctakes-client-py"
 
 [build-system]
-requires = ["setuptools >= 61.0"]
-build-backend = "setuptools.build_meta"
+requires = ["flit_core >=3.4,<4"]
+build-backend = "flit_core.buildapi"
 
-[tool.setuptools]
-packages = ["ctakesclient"]
+[tool.flit.sdist]
+include = [
+    "docs/",
+    "scripts/",
+    "test/",
+    "LICENSE",
+]
 
 [project.optional-dependencies]
 docs = [
@@ -37,4 +42,5 @@ docs = [
     "sphinx-rtd-theme",
 ]
 tests = [
+    "pytest",
 ]
