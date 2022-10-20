@@ -159,8 +159,12 @@ def list_bsv(filename, class_bsv) -> list:
     """
     entries = []
     for line in read_text_lines(filename):
-        if line.startswith('#'):
+        if not line.strip():
+            pass    # OK (empty line)
+        elif line.startswith('#'):
             logging.info('found header : %s : %s', line, filename)
+        elif '|' not in line:
+            logging.error(f"malformed line: '{line}' ")
         else:
             parsed = class_bsv()
             parsed.from_bsv(line.strip())

@@ -96,12 +96,12 @@ C0027497|T184|R11.0|ICD10CM|R11.0|Nausea or vomiting
 C0027497|T184|787.02|ICD9CM|787.02|Nausea or vomiting
 
 C0042963|T184|422400008|SNOMEDCT_US|Vomiting|Nausea or vomiting
-C0042963|T184|0000013085|CHV|vomit||Nausea or vomiting
-C0042963|T184|0000013085|CHV|vomited||Nausea or vomiting
-C0042963|T184|0000013085|CHV|throwing up||Nausea or vomiting
-C0042963|T184|0000013085|CHV|throw up||Nausea or vomiting
-C0042963|T184|0000013085|CHV|threw up||Nausea or vomiting
-#C0042963|T184|0000013085|CHV|regurgitation||Nausea or vomiting
+C0042963|T184|0000013085|CHV|vomit|Nausea or vomiting
+C0042963|T184|0000013085|CHV|vomited|Nausea or vomiting
+C0042963|T184|0000013085|CHV|throwing up|Nausea or vomiting
+C0042963|T184|0000013085|CHV|throw up|Nausea or vomiting
+C0042963|T184|0000013085|CHV|threw up|Nausea or vomiting
+#C0042963|T184|0000013085|CHV|regurgitation|Nausea or vomiting
 #C0042963|T184|0000013085|CHV|regurgitated|Nausea or vomiting
 C0042963|T184|R11|ICD10CM|R11|Nausea or vomiting
 C0042963|T184|R11.1|ICD10CM|R11.1|Nausea or vomiting

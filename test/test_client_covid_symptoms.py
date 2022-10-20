@@ -22,8 +22,6 @@ class Symptom(Enum):
     Aches = ['784.0', 'Myalgias', 'Muscle Aches']
     Anosmia = ['R43', 'R43.0', 'Loss of smell']
 
-# pylint: disable-next=line-too-long
-@unittest.skip('https://github.com/Machine-Learning-for-Medical-Language/ctakes-client-py/issues/7')
 class TestCtakesClient(unittest.TestCase):
     """Test case for ctakes client extracting covid symptoms"""
 
