@@ -11,16 +11,16 @@ def pretty(result: dict):
 class Symptom(Enum):
     # pylint: disable=invalid-name
     Cough = ['R05.9', '786.2', 'Post-tussive', 'tussive', 'Coughing']
-    Fever = ['R50.9', '780.60', 'Fevers', 'Shivering', 'Shivers', 'Chills', 'Chilly']
-    Diarrhea = ['R19.7', '787.91']
-    Fatigue = ['R53.81', '780.79', 'Fatigued', 'Tired']
+    Fever = ['R50.9', '780.60', 'Fevers', 'Chills']
+    Diarrhea = ['R19.7', '787.91', 'Watery stool']
+    Fatigue = ['R53.81', '780.79', 'Fatigued']
     Nausea = ['R11.0', 'Nauseated', 'nauseous']
-    Congestion = ['R09.81', 'snuffles', 'runny nose', 'nasal congestion']
-    SoreThroat = ['M79.1', 'Pharyngitis', 'Odynophagia']
-    Headache = ['R51.9', 'R51', 'Headaches', 'Headaches', 'HA']
-    Dyspnea = ['R06.0', 'SOB', 'Short of Breath', 'Short Breath', 'Short Breathing']
-    Aches = ['784.0', 'Myalgias', 'Muscle Aches']
-    Anosmia = ['R43', 'R43.0', 'Loss of smell']
+    Congestion = ['R09.81', 'runny nose', 'nasal congestion']
+    SoreThroat = ['M79.1', 'Pharyngitis']
+    Headache = ['R51.9', 'R51', 'Headache', 'Headaches', 'HA']
+    Dyspnea = ['R06.0', 'SOB', 'Short of Breath']
+    Aches = ['Myalgias', 'Muscle Aches']
+    Anosmia = ['R43', 'R43.0', 'Loss of smell', 'loss of taste']
 
 class TestCtakesClient(unittest.TestCase):
     """Test case for ctakes client extracting covid symptoms"""
@@ -30,16 +30,28 @@ class TestCtakesClient(unittest.TestCase):
         Test if COVID19 symptom synonyms are mapped in the BSV dictionary.
         """
         expected = []
+        missed_icd = []
         actual = []
         for symptom in Symptom:
             for synonym in symptom.value:
-                expected.append(synonym)
-                found = ctakesclient.client.extract(symptom).list_match_text()
-                found = [hit.lower() for hit in found]
-                if symptom.lower() in found:
-                    actual.append(symptom)
+
+                text = f'Chief Complaint: {synonym}'
+                found = ctakesclient.client.extract(text).list_match_text()
+                found = [hit.title() for hit in found]
+
+                if synonym.title() in found:
+                    expected.append(synonym.title())
+                    actual.append(synonym.title())
+                # elif 3 > len(synonym):
+                #     warn.append(synonym)
+                elif '.' in synonym:
+                    missed_icd.append(synonym)
+                else:
+                    expected.append(synonym.title())
 
         diff = set(expected).difference(set(actual))
+
+        # print(warn)
 
         self.assertEqual(set(), diff, 'diff should be empty, missing')
 

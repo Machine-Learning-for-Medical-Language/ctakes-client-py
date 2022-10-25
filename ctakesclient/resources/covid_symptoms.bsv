@@ -78,6 +78,7 @@ C0231528|T184|68962001|SNOMEDCT_US|muscle pain|Muscle or body aches
 C0231528|T184|68962001|SNOMEDCT_US|muscle pains|Muscle or body aches
 C0231528|T184|68962001|SNOMEDCT_US|muscle soreness|Muscle or body aches
 C0231528|T184|68962001|SNOMEDCT_US|aching muscles|Muscle or body aches
+C0231528|T184|68962001|SNOMEDCT_US|muscle aches|Muscle or body aches
 C0231528|T184|M79.1|ICD10CM|M79.1|Muscle or body aches
 C0231528|T184|729.1|ICD9CM|729.1|Muscle or body aches
 C0281856|T184|82991003|SNOMEDCT_US|generalized aches and pains|Muscle or body aches
