@@ -1,4 +1,5 @@
 """Tests based on covid symptoms"""
+import logging
 from enum import Enum
 import json
 import unittest
@@ -30,7 +31,7 @@ class TestCtakesClient(unittest.TestCase):
         Test if COVID19 symptom synonyms are mapped in the BSV dictionary.
         """
         expected = []
-        missed_icd = []
+        miss_icd = []
         actual = []
         for symptom in Symptom:
             for synonym in symptom.value:
@@ -42,16 +43,17 @@ class TestCtakesClient(unittest.TestCase):
                 if synonym.title() in found:
                     expected.append(synonym.title())
                     actual.append(synonym.title())
-                # elif 3 > len(synonym):
-                #     warn.append(synonym)
+                elif len(synonym) < 3:
+                    miss_icd.append(synonym)
                 elif '.' in synonym:
-                    missed_icd.append(synonym)
+                    miss_icd.append(synonym)
                 else:
                     expected.append(synonym.title())
 
         diff = set(expected).difference(set(actual))
 
-        # print(warn)
+        if miss_icd:
+            logging.warning("missed ICD codes" % miss_icd)
 
         self.assertEqual(set(), diff, 'diff should be empty, missing')
 
