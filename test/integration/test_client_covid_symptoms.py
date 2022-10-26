@@ -1,5 +1,6 @@
 """Tests based on covid symptoms"""
-
+import logging
+from enum import Enum
 import json
 import unittest
 import ctakesclient
@@ -9,37 +10,53 @@ def pretty(result: dict):
     print(json.dumps(result, indent=4))
 
 
-# pylint: disable-next=line-too-long
-@unittest.skip('https://github.com/Machine-Learning-for-Medical-Language/ctakes-client-py/issues/7')
+class Symptom(Enum):
+    """Expected symptoms"""
+    # pylint: disable=invalid-name
+    Cough = ['R05.9', '786.2', 'Post-tussive', 'tussive', 'Coughing']
+    Fever = ['R50.9', '780.60', 'Fevers', 'Chills']
+    Diarrhea = ['R19.7', '787.91', 'Watery stool']
+    Fatigue = ['R53.81', '780.79', 'Fatigued']
+    Nausea = ['R11.0', 'Nauseated', 'nauseous']
+    Congestion = ['R09.81', 'runny nose', 'nasal congestion']
+    SoreThroat = ['M79.1', 'Pharyngitis']
+    Headache = ['R51.9', 'R51', 'Headache', 'Headaches', 'HA']
+    Dyspnea = ['R06.0', 'SOB', 'Short of Breath']
+    Aches = ['Myalgias', 'Muscle Aches']
+    Anosmia = ['R43', 'R43.0', 'Loss of smell', 'loss of taste']
+
+
 class TestCtakesClient(unittest.TestCase):
     """Test case for ctakes client extracting covid symptoms"""
 
     def test_covid_symptoms_medical_synonyms(self):
         """
         Test if COVID19 symptom synonyms are mapped in the BSV dictionary.
-        https://github.com/Machine-Learning-for-Medical-Language/ctakes-covid-container/blob/main/covid.bsv
         """
-        expected = {
-            'SOB': 'Shortness Of Breath',
-            'HA': 'Headache',
-            'Myalgias': 'Muscle aches and pain',
-            'Chills': 'Fever or chills',
-            'Post-tussive': 'after Coughing',
-            'tussive': 'related to Coughing',
-            'Pharyngitis': 'sore throat',
-            'Odynophagia': 'sore throat',
-            'Loss of taste': 'Anosmia',
-            'Loss of smell': 'Anosmia',
-            'Tired': 'Fatigue',
-        }
-
+        expected = []
+        miss_icd = []
         actual = []
-        for symptom in expected:
-            found = ctakesclient.client.extract(symptom).list_match_text()
-            if symptom in found:
-                actual.append(symptom)
+        for symptom in Symptom:
+            for synonym in symptom.value:
 
-        diff = set(expected.keys()).difference(set(actual))
+                text = f'Chief Complaint: {synonym}'
+                found = ctakesclient.client.extract(text).list_match_text()
+                found = [hit.title() for hit in found]
+
+                if synonym.title() in found:
+                    expected.append(synonym.title())
+                    actual.append(synonym.title())
+                elif len(synonym) < 3:
+                    miss_icd.append(synonym)
+                elif '.' in synonym:
+                    miss_icd.append(synonym)
+                else:
+                    expected.append(synonym.title())
+
+        diff = set(expected).difference(set(actual))
+
+        if miss_icd:
+            logging.warning('missed ICD codes %s', miss_icd)
 
         self.assertEqual(set(), diff, 'diff should be empty, missing')
 

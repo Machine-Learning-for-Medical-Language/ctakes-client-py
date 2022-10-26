@@ -17,10 +17,12 @@ class TestCovidSymptomsBSV(unittest.TestCase):
         for bsv in filesystem.covid_symptoms():
             self.assertTrue(bsv.cui.startswith('C'), 'Concept CUI expected')
             self.assertTrue(bsv.tui.startswith('T'), 'Type TUI expected')
-            self.assertEqual(bsv.vocab, 'SNOMEDCT_US',
-                             'clinical terms vocab expected')
             self.assertIsNotNone(bsv.text)
             self.assertIsNotNone(bsv.pref)
+
+            expected = ['SNOMEDCT_US', 'ICD9CM', 'ICD10CM', 'HPO', 'CHV', 'NCI']
+
+            self.assertTrue(bsv.vocab in expected, f'vocab not expected: {bsv.vocab}')
 
     def test_umls_semantic_types(self):
         bsv_list = filesystem.umls_semantic_groups()
