@@ -9,7 +9,9 @@ import ctakesclient
 def pretty(result: dict):
     print(json.dumps(result, indent=4))
 
+
 class Symptom(Enum):
+    """Expected symptoms"""
     # pylint: disable=invalid-name
     Cough = ['R05.9', '786.2', 'Post-tussive', 'tussive', 'Coughing']
     Fever = ['R50.9', '780.60', 'Fevers', 'Chills']
@@ -22,6 +24,7 @@ class Symptom(Enum):
     Dyspnea = ['R06.0', 'SOB', 'Short of Breath']
     Aches = ['Myalgias', 'Muscle Aches']
     Anosmia = ['R43', 'R43.0', 'Loss of smell', 'loss of taste']
+
 
 class TestCtakesClient(unittest.TestCase):
     """Test case for ctakes client extracting covid symptoms"""
@@ -53,7 +56,7 @@ class TestCtakesClient(unittest.TestCase):
         diff = set(expected).difference(set(actual))
 
         if miss_icd:
-            logging.warning("missed ICD codes" % miss_icd)
+            logging.warning('missed ICD codes %s', miss_icd)
 
         self.assertEqual(set(), diff, 'diff should be empty, missing')
 

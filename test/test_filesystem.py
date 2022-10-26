@@ -24,7 +24,6 @@ class TestCovidSymptomsBSV(unittest.TestCase):
 
             self.assertTrue(bsv.vocab in expected, f'vocab not expected: {bsv.vocab}')
 
-
     def test_umls_semantic_types(self):
         bsv_list = filesystem.umls_semantic_groups()
 
