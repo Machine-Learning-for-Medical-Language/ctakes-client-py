@@ -4,6 +4,7 @@ from enum import Enum
 import json
 import unittest
 import ctakesclient
+from ctakesclient.filesystem import covid_symptoms
 
 
 def pretty(result: dict):
@@ -25,6 +26,37 @@ class Symptom(Enum):
 
 class TestCtakesClient(unittest.TestCase):
     """Test case for ctakes client extracting covid symptoms"""
+
+    def test_chief_complaint_is_symptom(self):
+        for bsv in covid_symptoms():
+            res = ctakesclient.client.extract(bsv.text)
+
+            ss_list = res.list_sign_symptom()
+            match_list = res.list_match()
+
+            # validated manually
+            excludes = ['nasal congestion', # Nasal (anatomic site)
+                        'sore throat', # throat (anatomic site)
+                        'throat soreness',  # throat (anatomic site)
+                        'pharyngitis', # (DiseaseDisorder)
+                        'aching body', # body (anatomic site)
+                        'generalized body aches', # body (anatomic site)
+                        'generalized body pain',  # body (anatomic site)
+                        'body pain',  # body (anatomic site)
+                        'muscle aches', # muscle (anatomic site)
+                        'body aches', # body (anatomic site)
+                        'ache head', # head (anatomic site)
+                        'head pain', # head (anatomic site)
+                        'muscle pain', # muscle (anatomic site)
+                        'muscle pains',  # muscle (anatomic site)
+                        'muscle soreness']  # muscle (anatomic site)
+
+            chief_complaint = f'Chief Complaint: {bsv.text.lower()} .'
+
+            print(f'text\t{chief_complaint}')
+
+            if bsv.text.lower() not in excludes:
+                self.assertDictEqual({'root': match_list}, {'root': ss_list})
 
     def test_covid_symptoms_medical_synonyms(self):
         """
