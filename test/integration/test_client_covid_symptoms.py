@@ -9,6 +9,7 @@ from ctakesclient.filesystem import covid_symptoms
 def pretty(result: dict):
     print(json.dumps(result, indent=4))
 
+
 class Symptom(Enum):
     """COVID Symptom Synonyms for Testing"""
     # pylint: disable=invalid-name
@@ -23,6 +24,7 @@ class Symptom(Enum):
     Dyspnea = ['R06.0', 'SOB', 'Short of Breath']
     Aches = ['Myalgias', 'Muscle Aches']
     Anosmia = ['R43', 'R43.0', 'Loss of smell', 'loss of taste']
+
 
 class TestCtakesClient(unittest.TestCase):
     """Test case for ctakes client extracting covid symptoms"""
