@@ -12,10 +12,10 @@ def pretty(result: dict):
 
 class Symptom(Enum):
     # pylint: disable=invalid-name
-    Cough = ['R05.9', '786.2', 'Post-tussive', 'tussive', 'Coughing']
-    Fever = ['R50.9', '780.60', 'Fevers', 'Chills']
-    Diarrhea = ['R19.7', '787.91', 'Watery stool']
-    Fatigue = ['R53.81', '780.79', 'Fatigued']
+    Cough = ['R05.9', 'Post-tussive', 'tussive', 'Coughing']
+    Fever = ['R50.9', 'Fevers', 'Chills']
+    Diarrhea = ['R19.7', 'Watery stool']
+    Fatigue = ['R53.81', 'Fatigued']
     Nausea = ['R11.0', 'Nauseated', 'nauseous']
     Congestion = ['R09.81', 'runny nose', 'nasal congestion']
     SoreThroat = ['M79.1', 'Pharyngitis']
@@ -53,7 +53,7 @@ class TestCtakesClient(unittest.TestCase):
 
             chief_complaint = f'Chief Complaint: {bsv.text.lower()} .'
 
-            print(f'text\t{chief_complaint}')
+            # print(f'text\t{chief_complaint}')
 
             if bsv.text.lower() not in excludes:
                 self.assertDictEqual({'root': match_list}, {'root': ss_list})

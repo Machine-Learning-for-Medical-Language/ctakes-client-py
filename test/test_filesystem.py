@@ -20,10 +20,9 @@ class TestCovidSymptomsBSV(unittest.TestCase):
             self.assertIsNotNone(bsv.text)
             self.assertIsNotNone(bsv.pref)
 
-            expected = ['SNOMEDCT_US', 'ICD9CM', 'ICD10CM', 'HPO', 'CHV', 'NCI']
+            expected = ['SNOMEDCT_US', 'ICD10CM', 'HPO', 'CHV', 'NCI']
 
             self.assertTrue(bsv.vocab in expected, f'vocab not expected: {bsv.vocab}')
-
 
     def test_umls_semantic_types(self):
         bsv_list = filesystem.umls_semantic_groups()
