@@ -11,6 +11,7 @@ def pretty(result: dict):
     print(json.dumps(result, indent=4))
 
 class Symptom(Enum):
+    """COVID Symptom Synonyms for Testing"""
     # pylint: disable=invalid-name
     Cough = ['R05.9', 'Post-tussive', 'tussive', 'Coughing']
     Fever = ['R50.9', 'Fevers', 'Chills']
@@ -29,6 +30,11 @@ class TestCtakesClient(unittest.TestCase):
 
     def test_chief_complaint_is_symptom(self):
         for bsv in covid_symptoms():
+
+            chief_complaint = f'Chief Complaint: {bsv.text.lower()} .'
+
+            print(f'{chief_complaint}')
+
             res = ctakesclient.client.extract(bsv.text)
 
             ss_list = res.list_sign_symptom()
@@ -36,13 +42,23 @@ class TestCtakesClient(unittest.TestCase):
 
             # validated manually
             excludes = ['nasal congestion', # Nasal (anatomic site)
+                        'nasal discharge',  # Nasal (anatomic site)
+                        'bronchial cough', # Bronchial (anatomic site)
+                        'chest cough',  # Chest (anatomic site)
                         'sore throat', # throat (anatomic site)
                         'throat soreness',  # throat (anatomic site)
+                        'throat discomfort',  # throat (anatomic site)
+                        'painful throat',  # throat (anatomic site)
+                        'pain in throat',  # throat (anatomic site)
+                        'pain in the throat',  # throat (anatomic site)
+                        'pain in the pharynx',  # throat (anatomic site)
                         'pharyngitis', # (DiseaseDisorder)
                         'aching body', # body (anatomic site)
                         'generalized body aches', # body (anatomic site)
                         'generalized body pain',  # body (anatomic site)
                         'body pain',  # body (anatomic site)
+                        'throat pain',  # body (anatomic site)
+                        'muscle ache',  # muscle (anatomic site)
                         'muscle aches', # muscle (anatomic site)
                         'body aches', # body (anatomic site)
                         'ache head', # head (anatomic site)
@@ -50,10 +66,6 @@ class TestCtakesClient(unittest.TestCase):
                         'muscle pain', # muscle (anatomic site)
                         'muscle pains',  # muscle (anatomic site)
                         'muscle soreness']  # muscle (anatomic site)
-
-            chief_complaint = f'Chief Complaint: {bsv.text.lower()} .'
-
-            # print(f'text\t{chief_complaint}')
 
             if bsv.text.lower() not in excludes:
                 self.assertDictEqual({'root': match_list}, {'root': ss_list})
@@ -85,7 +97,7 @@ class TestCtakesClient(unittest.TestCase):
         diff = set(expected).difference(set(actual))
 
         if miss_icd:
-            logging.warning("missed ICD codes" % miss_icd)
+            logging.warning('missed ICD codes' % miss_icd)
 
         self.assertEqual(set(), diff, 'diff should be empty, missing')
 
