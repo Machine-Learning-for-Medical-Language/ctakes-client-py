@@ -96,9 +96,6 @@ class TestCtakesClient(unittest.TestCase):
 
         diff = set(expected).difference(set(actual))
 
-        if miss_icd:
-            logging.warning('missed ICD codes' % miss_icd)
-
         self.assertEqual(set(), diff, 'diff should be empty, missing')
 
     def test_covid_symptoms_exist_in_response(self):
