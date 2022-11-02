@@ -166,7 +166,7 @@ class MatchText:
         self.conceptAttributes = []
 
         # sort list of concepts ensuring same ordering
-        unsorted = list(UmlsConcept(c) for c in source.get('conceptAttributes'))
+        unsorted = list(UmlsConcept(c) for c in source.get('conceptAttributes', []))
 
         for c in MatchText.sort_concepts(unsorted):
             self.conceptAttributes.append(c)

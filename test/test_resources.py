@@ -22,12 +22,14 @@ class PathResource(Enum):
     PHYSICIAN_NOTE_TEXT = path('test_physician_note.txt')
     PHYSICIAN_NOTE_JSON = path('test_physician_note.json')
     SEMANTICS_BSV = path('semantics.bsv')
+    SYNTHETIC_JSON = path('synthetic.json')
     TEST_NEGATION = path('test_negation_hard.txt')
 
 
 class LoadResource(Enum):
     PHYSICIAN_NOTE_TEXT = load(PathResource.PHYSICIAN_NOTE_TEXT.value)
     PHYSICIAN_NOTE_JSON = load(PathResource.PHYSICIAN_NOTE_JSON.value)
+    SYNTHETIC_JSON = load(PathResource.SYNTHETIC_JSON.value)
     TEST_NEGATION = load(PathResource.TEST_NEGATION.value)
 
 
