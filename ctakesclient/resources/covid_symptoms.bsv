@@ -142,6 +142,7 @@ C0003126|T033|44169009|SNOMEDCT_US|Lost sense of smell|Loss of taste or smell
 C0003126|T033|44169009|SNOMEDCT_US|Lost the sense of smell|Loss of taste or smell
 C0003126|T033|44169009|SNOMEDCT_US|Lost smell|Loss of taste or smell
 C0003126|T033|44169009|SNOMEDCT_US|No sense of smell|Loss of taste or smell
+C0003126|T033|44169009|SNOMEDCT_US|could not smell|Loss of taste or smell
 C0003126|T033|R43|ICD10CM|R43|Loss of taste or smell
 C0003126|T033|R43.0|ICD10CM|R43.0|Loss of taste or smell
 C0003126|T033|HP:0000458|HPO|Loss of smell|Loss of taste or smell
