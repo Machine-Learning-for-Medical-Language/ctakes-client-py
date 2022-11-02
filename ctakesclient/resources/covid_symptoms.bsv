@@ -107,13 +107,13 @@ C0281856|T184|82991003|SNOMEDCT_US|generalized aches and pains|Muscle or body ac
 C0281856|T184|82991003|SNOMEDCT_US|generalized body aches|Muscle or body aches
 C0281856|T184|82991003|SNOMEDCT_US|body aches|Muscle or body aches
 C0281856|T184|82991003|SNOMEDCT_US|aching body|Muscle or body aches
-C0281856|T184|0000027418|CHV|generalized pain|Muscle or body ache
-C0281856|T184|0000027418|CHV|generalized ache|Muscle or body ache
-C0281856|T184|0000027418|CHV|generalized aches|Muscle or body ache
-C0281856|T184|0000027418|CHV|generalized aching|Muscle or body ache
-C0281856|T184|0000027418|CHV|generalized body pain|Muscle or body ache
-C0281856|T184|0000027418|CHV|pain generalized|Muscle or body ache
-C0281856|T184|0000027418|CHV|body pain|Muscle or body ache
+C0281856|T184|0000027418|CHV|generalized pain|Muscle or body aches
+C0281856|T184|0000027418|CHV|generalized ache|Muscle or body aches
+C0281856|T184|0000027418|CHV|generalized aches|Muscle or body aches
+C0281856|T184|0000027418|CHV|generalized aching|Muscle or body aches
+C0281856|T184|0000027418|CHV|generalized body pain|Muscle or body aches
+C0281856|T184|0000027418|CHV|pain generalized|Muscle or body aches
+C0281856|T184|0000027418|CHV|body pain|Muscle or body aches
 
 ##   Nausea or vomiting
 C0027497|T184|422587007|SNOMEDCT_US|Nausea|Nausea or vomiting
