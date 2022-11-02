@@ -1,9 +1,9 @@
 """Tests based on covid symptoms"""
-import logging
 from enum import Enum
 import json
 import unittest
 import ctakesclient
+from ctakesclient.filesystem import covid_symptoms
 
 
 def pretty(result: dict):
@@ -11,12 +11,12 @@ def pretty(result: dict):
 
 
 class Symptom(Enum):
-    """Expected symptoms"""
+    """COVID Symptom Synonyms for Testing"""
     # pylint: disable=invalid-name
-    Cough = ['R05.9', '786.2', 'Post-tussive', 'tussive', 'Coughing']
-    Fever = ['R50.9', '780.60', 'Fevers', 'Chills']
-    Diarrhea = ['R19.7', '787.91', 'Watery stool']
-    Fatigue = ['R53.81', '780.79', 'Fatigued']
+    Cough = ['R05.9', 'Post-tussive', 'tussive', 'Coughing']
+    Fever = ['R50.9', 'Fevers', 'Chills']
+    Diarrhea = ['R19.7', 'Watery stool']
+    Fatigue = ['R53.81', 'Fatigued']
     Nausea = ['R11.0', 'Nauseated', 'nauseous']
     Congestion = ['R09.81', 'runny nose', 'nasal congestion']
     SoreThroat = ['M79.1', 'Pharyngitis']
@@ -28,6 +28,48 @@ class Symptom(Enum):
 
 class TestCtakesClient(unittest.TestCase):
     """Test case for ctakes client extracting covid symptoms"""
+
+    def test_chief_complaint_is_symptom(self):
+        for bsv in covid_symptoms():
+
+            chief_complaint = f'Chief Complaint: {bsv.text.lower()} .'
+
+            print(f'{chief_complaint}')
+
+            res = ctakesclient.client.extract(bsv.text)
+
+            ss_list = res.list_sign_symptom()
+            match_list = res.list_match()
+
+            # validated manually
+            excludes = ['nasal congestion',   # Nasal (anatomic site)
+                        'nasal discharge',    # Nasal (anatomic site)
+                        'bronchial cough',    # Bronchial (anatomic site)
+                        'chest cough',        # Chest (anatomic site)
+                        'sore throat',        # throat (anatomic site)
+                        'throat soreness',    # throat (anatomic site)
+                        'throat discomfort',  # throat (anatomic site)
+                        'painful throat',     # throat (anatomic site)
+                        'pain in throat',     # throat (anatomic site)
+                        'pain in the throat',   # throat (anatomic site)
+                        'pain in the pharynx',  # throat (anatomic site)
+                        'pharyngitis',          # (DiseaseDisorder)
+                        'aching body',          # body (anatomic site)
+                        'generalized body aches',  # body (anatomic site)
+                        'generalized body pain',   # body (anatomic site)
+                        'body pain',     # body (anatomic site)
+                        'throat pain',   # body (anatomic site)
+                        'muscle ache',   # muscle (anatomic site)
+                        'muscle aches',  # muscle (anatomic site)
+                        'body aches',    # body (anatomic site)
+                        'ache head',     # head (anatomic site)
+                        'head pain',     # head (anatomic site)
+                        'muscle pain',   # muscle (anatomic site)
+                        'muscle pains',  # muscle (anatomic site)
+                        'muscle soreness']  # muscle (anatomic site)
+
+            if bsv.text.lower() not in excludes:
+                self.assertDictEqual({'root': match_list}, {'root': ss_list})
 
     def test_covid_symptoms_medical_synonyms(self):
         """
@@ -54,9 +96,6 @@ class TestCtakesClient(unittest.TestCase):
                     expected.append(synonym.title())
 
         diff = set(expected).difference(set(actual))
-
-        if miss_icd:
-            logging.warning('missed ICD codes %s', miss_icd)
 
         self.assertEqual(set(), diff, 'diff should be empty, missing')
 
