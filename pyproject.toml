@@ -12,7 +12,7 @@ authors = [
   { name="Tim Miller", email="timothy.miller@childrens.harvard.edu" },
 ]
 description = "cTAKES client support for accessing cTAKES REST services"
-readme = "README.rst"
+readme = "README.md"
 license = { text="Apache License 2.0" }
 classifiers = [
     "License :: OSI Approved :: Apache Software License",
@@ -39,6 +39,7 @@ include = [
 
 [project.optional-dependencies]
 docs = [
+    "myst-parser", # markdown support in sphinx
     "sphinx < 6",
     "sphinx-rtd-theme",
 ]
