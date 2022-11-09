@@ -33,11 +33,11 @@ class TestClientCtakesRestServer(unittest.TestCase):
         ner = ctakesclient.client.extract('patient feels 🤒 with fever')
 
         # Then confirm that our spans are correct (0-based and character-based)
-        self.assertEqual(1, len(ner.list_sign_symptom()))
-        symptom = ner.list_sign_symptom()[0]
-        self.assertEqual('fever', symptom.text)
-        self.assertEqual(21, symptom.begin)
-        self.assertEqual(26, symptom.end)
+        self.assertLess(0, len(ner.list_sign_symptom()))
+        for symptom in ner.list_sign_symptom():  # sometimes cTAKES breaks it into multiple matches
+            self.assertEqual('fever', symptom.text)
+            self.assertEqual(21, symptom.begin)
+            self.assertEqual(26, symptom.end)
 
 
 if __name__ == '__main__':

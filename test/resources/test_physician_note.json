@@ -39,6 +39,21 @@
             "type": "SignSymptomMention"
         },
         {
+            "begin": 35,
+            "end": 43,
+            "text": "headache",
+            "polarity": -1,
+            "conceptAttributes": [
+                {
+                    "code": "n/a",
+                    "cui": "C0018681",
+                    "codingScheme": "custom",
+                    "tui": "T184"
+                }
+            ],
+            "type": "SignSymptomMention"
+        },
+        {
             "begin": 48,
             "end": 54,
             "text": "nausea",
@@ -48,6 +63,21 @@
                     "code": "422587007",
                     "cui": "C0027497",
                     "codingScheme": "SNOMEDCT_US",
+                    "tui": "T184"
+                }
+            ],
+            "type": "SignSymptomMention"
+        },
+        {
+            "begin": 48,
+            "end": 54,
+            "text": "nausea",
+            "polarity": -1,
+            "conceptAttributes": [
+                {
+                    "code": "n/a",
+                    "cui": "C0027497",
+                    "codingScheme": "custom",
                     "tui": "T184"
                 }
             ],
@@ -75,6 +105,21 @@
                     "code": "422400008",
                     "cui": "C0042963",
                     "codingScheme": "SNOMEDCT_US",
+                    "tui": "T184"
+                }
+            ],
+            "type": "SignSymptomMention"
+        },
+        {
+            "begin": 58,
+            "end": 66,
+            "text": "vomiting",
+            "polarity": -1,
+            "conceptAttributes": [
+                {
+                    "code": "n/a",
+                    "cui": "C0042963",
+                    "codingScheme": "custom",
                     "tui": "T184"
                 }
             ],
@@ -138,6 +183,21 @@
             "type": "SignSymptomMention"
         },
         {
+            "begin": 113,
+            "end": 121,
+            "text": "Diarrhea",
+            "polarity": 0,
+            "conceptAttributes": [
+                {
+                    "code": "n/a",
+                    "cui": "C0011991",
+                    "codingScheme": "custom",
+                    "tui": "T184"
+                }
+            ],
+            "type": "SignSymptomMention"
+        },
+        {
             "begin": 137,
             "end": 142,
             "text": "cough",
@@ -157,98 +217,6 @@
                 }
             ],
             "type": "SignSymptomMention"
-        }
-    ],
-    "IdentifiedAnnotation": [
-        {
-            "begin": 12,
-            "end": 20,
-            "text": "symptoms",
-            "polarity": -1,
-            "conceptAttributes": [
-                {
-                    "code": "n/a",
-                    "cui": "BMV_122",
-                    "codingScheme": "custom",
-                    "tui": "TC0683368"
-                }
-            ],
-            "type": "IdentifiedAnnotation"
-        },
-        {
-            "begin": 35,
-            "end": 43,
-            "text": "headache",
-            "polarity": -1,
-            "conceptAttributes": [
-                {
-                    "code": "n/a",
-                    "cui": "DIS_33",
-                    "codingScheme": "custom",
-                    "tui": "T0NA"
-                }
-            ],
-            "type": "IdentifiedAnnotation"
-        },
-        {
-            "begin": 48,
-            "end": 54,
-            "text": "nausea",
-            "polarity": -1,
-            "conceptAttributes": [
-                {
-                    "code": "n/a",
-                    "cui": "DIS_43",
-                    "codingScheme": "custom",
-                    "tui": "T0NA"
-                }
-            ],
-            "type": "IdentifiedAnnotation"
-        },
-        {
-            "begin": 58,
-            "end": 66,
-            "text": "vomiting",
-            "polarity": -1,
-            "conceptAttributes": [
-                {
-                    "code": "n/a",
-                    "cui": "DIS_44",
-                    "codingScheme": "custom",
-                    "tui": "T0NA"
-                }
-            ],
-            "type": "IdentifiedAnnotation"
-        },
-        {
-            "begin": 71,
-            "end": 81,
-            "text": "chest pain",
-            "polarity": -1,
-            "conceptAttributes": [
-                {
-                    "code": "n/a",
-                    "cui": "DIS_10",
-                    "codingScheme": "custom",
-                    "tui": "T0NA"
-                }
-            ],
-            "type": "IdentifiedAnnotation"
-        },
-        {
-            "begin": 113,
-            "end": 121,
-            "text": "Diarrhea",
-            "polarity": 0,
-            "conceptAttributes": [
-                {
-                    "code": "n/a",
-                    "cui": "DIS_22",
-                    "codingScheme": "custom",
-                    "tui": "T0NA"
-                }
-            ],
-            "type": "IdentifiedAnnotation"
         },
         {
             "begin": 137,
@@ -258,12 +226,12 @@
             "conceptAttributes": [
                 {
                     "code": "n/a",
-                    "cui": "DIS_19",
+                    "cui": "C0010200",
                     "codingScheme": "custom",
-                    "tui": "TC0010200"
+                    "tui": "T184"
                 }
             ],
-            "type": "IdentifiedAnnotation"
+            "type": "SignSymptomMention"
         }
     ]
 }
