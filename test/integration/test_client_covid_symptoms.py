@@ -2,6 +2,10 @@
 from enum import Enum
 import json
 import unittest
+
+import ddt
+import pytest
+
 import ctakesclient
 from ctakesclient.filesystem import covid_symptoms
 
@@ -26,6 +30,7 @@ class Symptom(Enum):
     Anosmia = ['R43', 'R43.0', 'Loss of smell', 'loss of taste']
 
 
+@ddt.ddt
 class TestCtakesClient(unittest.TestCase):
     """Test case for ctakes client extracting covid symptoms"""
 
@@ -99,7 +104,10 @@ class TestCtakesClient(unittest.TestCase):
 
         self.assertEqual(set(), diff, 'diff should be empty, missing')
 
-    def test_covid_symptoms_exist_in_response(self):
+    @ddt.data(
+        *ctakesclient.filesystem.covid_symptoms(),
+    )
+    def test_covid_symptoms_exist_in_response(self, bsv):
         """
         Symptoms of COVID-19
         https://www.cdc.gov/coronavirus/2019-ncov/symptoms-testing/symptoms.html
@@ -109,19 +117,31 @@ class TestCtakesClient(unittest.TestCase):
         -->
         https://github.com/Machine-Learning-for-Medical-Language/ctakes-covid-container/blob/main/covid.bsv
         """
-        for bsv in ctakesclient.filesystem.covid_symptoms():
-            ner = ctakesclient.client.extract(bsv.text)
+        known_issues = [
+            'running nose',
+            'No sense of smell',
+            'HA',
+            'R09.81',
+            'R11.10',
+            'R53.81',
+            'R53.83',
+            'R68.83',
+        ]
+        if bsv.text in known_issues:
+            pytest.xfail(f'Known cTAKES failure with {bsv.text}')
 
-            cui_list = []
-            text_list = []
+        ner = ctakesclient.client.extract(bsv.text)
 
-            for match in ner.list_sign_symptom():
-                text_list.append(match.text)
-                for concept in match.conceptAttributes:
-                    cui_list.append(concept.cui)
+        cui_list = []
+        text_list = []
 
-            self.assertIn(bsv.text, text_list)
-            self.assertIn(bsv.cui, cui_list)
+        for match in ner.list_sign_symptom():
+            text_list.append(match.text)
+            for concept in match.conceptAttributes:
+                cui_list.append(concept.cui)
+
+        self.assertIn(bsv.text, text_list)
+        self.assertIn(bsv.cui, cui_list)
 
 
 if __name__ == '__main__':

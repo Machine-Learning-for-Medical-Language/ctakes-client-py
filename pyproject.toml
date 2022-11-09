@@ -44,5 +44,6 @@ docs = [
     "sphinx-rtd-theme",
 ]
 tests = [
+    "ddt",
     "pytest",
 ]
