@@ -3,7 +3,7 @@
 import unittest
 
 from ctakesclient.typesystem import CtakesJSON, Polarity, UmlsConcept, MatchText
-from .test_resources import LoadResource
+from tests.test_resources import LoadResource
 
 
 class TestCtakesJSON(unittest.TestCase):

@@ -6,7 +6,7 @@ import ctakesclient
 from ctakesclient import text2fhir
 from ctakesclient.typesystem import CtakesJSON, MatchText, Polarity
 
-from test.test_resources import LoadResource
+from tests.test_resources import LoadResource
 
 
 def expected_nlp_source() -> dict:

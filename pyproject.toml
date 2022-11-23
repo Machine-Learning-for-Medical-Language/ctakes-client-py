@@ -32,7 +32,7 @@ build-backend = "flit_core.buildapi"
 include = [
     "docs/",
     "scripts/",
-    "test/",
+    "tests/",
     "LICENSE",
 ]
 

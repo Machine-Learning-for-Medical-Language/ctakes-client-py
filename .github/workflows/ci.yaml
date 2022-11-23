@@ -44,4 +44,4 @@ jobs:
       - name: Run pylint
         if: success() || failure() # still run pylint if pycodestyle fails
         run: |
-          pylint ctakesclient/ scripts/* test/
+          pylint ctakesclient/ scripts/* tests/
