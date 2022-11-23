@@ -4,7 +4,7 @@ import json
 import unittest
 import ctakesclient
 from ctakesclient.typesystem import Polarity
-from test.test_resources import LoadResource
+from tests.test_resources import LoadResource
 
 
 def note_negated_ros_review_of_symptoms() -> str:

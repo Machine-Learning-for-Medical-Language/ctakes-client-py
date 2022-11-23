@@ -2,7 +2,7 @@
 
 import unittest
 import ctakesclient
-from test.test_resources import LoadResource
+from tests.test_resources import LoadResource
 
 
 class TestClientCtakesRestServer(unittest.TestCase):

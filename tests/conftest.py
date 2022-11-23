@@ -40,5 +40,5 @@ def pytest_collection_modifyitems(config, items):
     for item in items:
         rel_path = pathlib.Path(item.fspath).relative_to(root)
         # Skip anything in the integration folder
-        if str(rel_path).startswith('test/integration/'):
+        if str(rel_path).startswith('tests/integration/'):
             item.add_marker(skip_integration)

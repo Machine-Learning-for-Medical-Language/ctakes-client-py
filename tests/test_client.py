@@ -7,7 +7,7 @@ from unittest import mock
 from ctakesclient import client
 from ctakesclient.typesystem import Polarity
 
-from test.test_resources import LoadResource
+from tests.test_resources import LoadResource
 
 
 class TestClient(unittest.TestCase):
