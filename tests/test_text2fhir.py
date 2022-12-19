@@ -341,3 +341,17 @@ class TestText2Fhir(unittest.TestCase):
                 'reference': 'Patient/1234',
             },
         }, procedure)
+
+    def test_nlp_fhir(self):
+        """
+        Test conversion from NLP to FHIR (all types).
+        """
+        fhir = text2fhir.nlp_fhir('1234', '5678', 'ABCD', self.ctakes)
+
+        self.assertEqual(68, len(fhir))
+        self.assertSetEqual({
+            'Condition',
+            'MedicationStatement',
+            'Observation',
+            'Procedure',
+        }, {type(x).__name__ for x in fhir})
