@@ -7,6 +7,7 @@ from typing import List, Optional
 from fhirclient.models.codeableconcept import CodeableConcept
 from fhirclient.models.coding import Coding
 from fhirclient.models.condition import Condition
+from fhirclient.models.domainresource import DomainResource
 from fhirclient.models.extension import Extension
 from fhirclient.models.fhirreference import FHIRReference
 from fhirclient.models.observation import Observation
@@ -15,7 +16,7 @@ from fhirclient.models.procedure import Procedure
 from fhirclient.models.resource import Resource
 
 import ctakesclient
-from ctakesclient.typesystem import MatchText, Polarity, Span
+from ctakesclient.typesystem import CtakesJSON, MatchText, Polarity, Span
 
 
 ###############################################################################
@@ -429,3 +430,45 @@ def nlp_procedure(
     procedure.code = nlp_concept(nlp_match)
 
     return procedure
+
+
+def nlp_fhir(
+        subject_id: str,
+        encounter_id: str,
+        docref_id: str,
+        nlp_results: CtakesJSON,
+        source: Extension = None,
+        polarity: Polarity = Polarity.pos,
+) -> List[DomainResource]:
+    """
+    Returns all FHIR resources we can generate from a patient encounter.
+
+    This is useful if you are not separating out the types yourself, but dumping to a database or similar store,
+    where a downstream process will separate out and work upon the FHIR.
+
+    Use this method to get all FHIR resources for a note that is for a ** specific encounter **.
+    Be advised that a single note can reference past medical history.
+
+    :param subject_id: ID for Patient (isa REF can be UUID)
+    :param encounter_id: ID for visit (isa REF can be UUID)
+    :param docref_id: ID for DocumentReference (isa REF can be UUID)
+    :param nlp_results: response from cTAKES or other NLP Client
+    :param source: NLP Version information, if none is provided use version of ctakesclient.
+    :param polarity: filter only positive mentions by default
+    :return: List of FHIR Resources (DomainResource)
+    """
+    as_fhir = []
+
+    for match in nlp_results.list_sign_symptom(polarity):
+        as_fhir.append(nlp_observation(subject_id, encounter_id, docref_id, match, source))
+
+    for match in nlp_results.list_medication(polarity):
+        as_fhir.append(nlp_medication(subject_id, encounter_id, docref_id, match, source))
+
+    for match in nlp_results.list_disease_disorder(polarity):
+        as_fhir.append(nlp_condition(subject_id, encounter_id, docref_id, match, source))
+
+    for match in nlp_results.list_procedure(polarity):
+        as_fhir.append(nlp_procedure(subject_id, encounter_id, docref_id, match, source))
+
+    return as_fhir
