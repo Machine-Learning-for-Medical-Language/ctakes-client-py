@@ -36,6 +36,9 @@ include = [
     "LICENSE",
 ]
 
+[tool.bandit]
+exclude_dirs = ["tests"]
+
 [project.optional-dependencies]
 docs = [
     "myst-parser", # markdown support in sphinx
