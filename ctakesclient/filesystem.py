@@ -216,6 +216,10 @@ def read_json(filename) -> dict:
     with open(filename, 'r', encoding='utf-8') as fp:
         return json.load(fp)
 
+def write_json(filename, data: dict) -> None:
+    logging.info('write_json(%s)', filename)
+    with open(filename, 'w', encoding='utf-8') as fp:
+        json.dump(data, fp, indent=4)
 
 ###############################################################################
 #
