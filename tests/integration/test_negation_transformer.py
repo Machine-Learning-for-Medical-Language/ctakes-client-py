@@ -19,8 +19,7 @@ def list_false_positive_ss(physician_note: str) -> List[str]:
     ner = ctakesclient.client.extract(physician_note)
     symptoms = ner.list_sign_symptom()
     spans = ner.list_spans(symptoms)
-    polarities_cnlp = ctakesclient.transformer.list_polarity(
-        sentence=physician_note, spans=spans)
+    polarities_cnlp = ctakesclient.transformer.list_polarity(sentence=physician_note, spans=spans)
 
     fp = []
 
@@ -35,7 +34,7 @@ def list_false_positive_ss(physician_note: str) -> List[str]:
 
 
 def debug_helper(physician_note: str):
-    print('##################################################################')
+    print("##################################################################")
     print(physician_note)
 
     ner = ctakesclient.client.extract(physician_note)
@@ -44,19 +43,17 @@ def debug_helper(physician_note: str):
     spans = ner.list_spans(matches)
 
     for match in matches:
-        print(f'{match.polarity.name}\t{match.span()}\t{match.text}\t\t'
-              f'{match.type.value}')
+        print(f"{match.polarity.name}\t{match.span()}\t{match.text}\t\t" f"{match.type.value}")
 
-    polarities_cnlp = ctakesclient.transformer.list_polarity(
-        physician_note, spans)
+    polarities_cnlp = ctakesclient.transformer.list_polarity(physician_note, spans)
     polarities_ctakes = ner.list_polarity(spans)
 
-    print('##################################################################')
-    print('cNLP=')
+    print("##################################################################")
+    print("cNLP=")
     print(polarities_cnlp)
 
-    print('##################################################################')
-    print('cTAKES=')
+    print("##################################################################")
+    print("cTAKES=")
     print(polarities_ctakes)
 
 
@@ -77,25 +74,23 @@ class TestNegationTransformer(unittest.TestCase):
         self.assertEqual([], list_false_positive_ss(note_negated_denies()))
 
     # pylint: disable-next=line-too-long
-    @unittest.skip('https://github.com/Machine-Learning-for-Medical-Language/ctakes-client-py/issues/8')
+    @unittest.skip("https://github.com/Machine-Learning-for-Medical-Language/ctakes-client-py/issues/8")
     def test_negated_review_of_symptoms(self):
         """
         Test hard ROS section of a medical note.
         This is not yet 100% accurate and will take consider time to be perfect.
         Negation is not a solved problem in NLP community.
         """
-        self.assertEqual([], list_false_positive_ss(
-            note_negated_ros_review_of_symptoms()))
+        self.assertEqual([], list_false_positive_ss(note_negated_ros_review_of_symptoms()))
 
     def assertPolarityCompatible(self, text: str):
         ner = ctakesclient.client.extract(text)
         symptoms = ner.list_sign_symptom()
         polarities_ctakes = ner.list_polarity(symptoms)
-        polarities_cnlp = ctakesclient.transformer.list_polarity(
-            text, ner.list_spans(symptoms))
+        polarities_cnlp = ctakesclient.transformer.list_polarity(text, ner.list_spans(symptoms))
 
         self.assertEqual(polarities_ctakes, polarities_cnlp, text)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     unittest.main()

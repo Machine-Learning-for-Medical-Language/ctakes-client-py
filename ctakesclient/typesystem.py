@@ -11,13 +11,14 @@ class UmlsTypeMention(Enum):
     https://lhncbc.nlm.nih.gov/ii/tools/MetaMap/documentation/SemanticTypesAndGroups.html
     Semantic type groupings here:
     """
+
     # pylint: disable=invalid-name
-    DiseaseDisorder = 'DiseaseDisorderMention'
-    SignSymptom = 'SignSymptomMention'
-    AnatomicalSite = 'AnatomicalSiteMention'
-    Medication = 'MedicationMention'
-    Procedure = 'ProcedureMention'
-    CustomDict = 'IdentifiedAnnotation'
+    DiseaseDisorder = "DiseaseDisorderMention"
+    SignSymptom = "SignSymptomMention"
+    AnatomicalSite = "AnatomicalSiteMention"
+    Medication = "MedicationMention"
+    Procedure = "ProcedureMention"
+    CustomDict = "IdentifiedAnnotation"
 
 
 class UmlsConcept:
@@ -49,18 +50,13 @@ class UmlsConcept:
         """
         :param source: contains UMLS Concept source
         """
-        self.codingScheme = source.get('codingScheme')
-        self.code = source.get('code')
-        self.cui = source.get('cui')
-        self.tui = source.get('tui')
+        self.codingScheme = source.get("codingScheme")
+        self.code = source.get("code")
+        self.cui = source.get("cui")
+        self.tui = source.get("tui")
 
     def as_json(self) -> dict:
-        return {
-            'code': self.code,
-            'cui': self.cui,
-            'codingScheme': self.codingScheme,
-            'tui': self.tui
-        }
+        return {"code": self.code, "cui": self.cui, "codingScheme": self.codingScheme, "tui": self.tui}
 
     def as_string(self) -> str:
         """
@@ -71,6 +67,7 @@ class UmlsConcept:
     def __str__(self):
         return self.as_string()
 
+
 ###############################################################################
 #
 # JSON Responses from CTAKES REST Server
@@ -79,11 +76,12 @@ class UmlsConcept:
 
 
 class Polarity(Enum):
-    """"
+    """ "
     Polarity means "negation" like "patient denies cough".
     NegEx algorithm popularized by Wendy Chapman et al
     https://www.sciencedirect.com/science/article/pii/S1532046401910299
     """
+
     # pylint: disable=invalid-name
     pos = 0
     neg = -1
@@ -139,14 +137,14 @@ class MatchText:
         elif polarity == 0:
             return Polarity.pos
         else:
-            raise Exception(f'polarity unknown: {polarity}')
+            raise Exception(f"polarity unknown: {polarity}")
 
     @staticmethod
     def parse_mention(mention: str) -> UmlsTypeMention:
-        if mention == 'IdentifiedAnnotation':
+        if mention == "IdentifiedAnnotation":
             return UmlsTypeMention.CustomDict
         else:
-            return UmlsTypeMention[mention.replace('Mention', '')]
+            return UmlsTypeMention[mention.replace("Mention", "")]
 
     @staticmethod
     def sort_concepts(unsorted: List[UmlsConcept]) -> List[UmlsConcept]:
@@ -158,15 +156,15 @@ class MatchText:
         return sorted(unsorted, key=UmlsConcept.as_string)
 
     def from_json(self, source: dict):
-        self.begin = source.get('begin')
-        self.end = source.get('end')
-        self.text = source.get('text')
-        self.type = self.parse_mention(source.get('type'))
-        self.polarity = self.parse_polarity(source.get('polarity'))
+        self.begin = source.get("begin")
+        self.end = source.get("end")
+        self.text = source.get("text")
+        self.type = self.parse_mention(source.get("type"))
+        self.polarity = self.parse_polarity(source.get("polarity"))
         self.conceptAttributes = []
 
         # sort list of concepts ensuring same ordering
-        unsorted = list(UmlsConcept(c) for c in source.get('conceptAttributes', []))
+        unsorted = list(UmlsConcept(c) for c in source.get("conceptAttributes", []))
 
         for c in MatchText.sort_concepts(unsorted):
             self.conceptAttributes.append(c)
@@ -175,12 +173,12 @@ class MatchText:
         polarity_json = self.polarity.value
         concepts_json = [c.as_json() for c in self.conceptAttributes]
         return {
-            'begin': self.begin,
-            'end': self.end,
-            'text': self.text,
-            'polarity': polarity_json,
-            'conceptAttributes': concepts_json,
-            'type': self.type.value
+            "begin": self.begin,
+            "end": self.end,
+            "text": self.text,
+            "polarity": polarity_json,
+            "conceptAttributes": concepts_json,
+            "type": self.type.value,
         }
 
 
@@ -213,11 +211,8 @@ class CtakesJSON:
     def list_polarity(self, matches: list) -> List[Polarity]:
         return list(m.polarity for m in matches)
 
-    def list_match(self,
-                   polarity=None,
-                   filter_umls_type=None) -> List[MatchText]:
-        logging.debug('list_match(polarity=%s, filter_umls_type=%s', polarity,
-                      filter_umls_type)
+    def list_match(self, polarity=None, filter_umls_type=None) -> List[MatchText]:
+        logging.debug("list_match(polarity=%s, filter_umls_type=%s", polarity, filter_umls_type)
 
         if polarity is not None:
             polarity = MatchText.parse_polarity(polarity)
@@ -234,9 +229,7 @@ class CtakesJSON:
         return concat
 
     def list_match_text(self, polarity=None) -> List[str]:
-        return list(
-            m.text
-            for m in self.list_match(polarity=polarity, filter_umls_type=None))
+        return list(m.text for m in self.list_match(polarity=polarity, filter_umls_type=None))
 
     def list_sign_symptom(self, polarity=None) -> List[MatchText]:
         return self.list_match(polarity, UmlsTypeMention.SignSymptom)

@@ -39,6 +39,9 @@ include = [
 [tool.bandit]
 exclude_dirs = ["tests"]
 
+[tool.black]
+line-length = 120
+
 [project.optional-dependencies]
 docs = [
     "myst-parser", # markdown support in sphinx
@@ -48,4 +51,8 @@ docs = [
 tests = [
     "ddt",
     "pytest",
+]
+dev = [
+    "black",
+    "pre-commit"
 ]

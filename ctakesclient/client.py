@@ -20,8 +20,8 @@ def get_url_ctakes_rest() -> str:
 
     :return: URL_CTAKES_REST env variable or default using localhost
     """
-    url = os.environ.get('URL_CTAKES_REST')
-    return url or 'http://localhost:8080/ctakes-web-rest/service/analyze'
+    url = os.environ.get("URL_CTAKES_REST")
+    return url or "http://localhost:8080/ctakes-web-rest/service/analyze"
 
 
 def post(sentence: str, url: str = None) -> dict:
@@ -42,10 +42,10 @@ def post(sentence: str, url: str = None) -> dict:
     # TODO: consider exposing a pass-through timeout parameter
     response = requests.post(  # pylint: disable=missing-timeout
         url,
-        data=sentence.encode('utf8'),
+        data=sentence.encode("utf8"),
         headers={
-            'Content-Type': 'text/plain; charset=UTF-8',
-        }
+            "Content-Type": "text/plain; charset=UTF-8",
+        },
     )
     response.raise_for_status()
     return response.json()
@@ -71,12 +71,13 @@ def extract(sentence: str, url: str = None) -> CtakesJSON:
 #
 ###############################################################################
 
+
 def _utf16le_to_unicode_index(utf16: bytes, code_point_index: int) -> int:
     """
     Adjust one utf-16-le-code-point-index into a character-index for the given string
     """
     bytes_index = code_point_index * 2  # all code points are 2-bytes
-    prefix = utf16[0:bytes_index].decode('utf-16-le')
+    prefix = utf16[0:bytes_index].decode("utf-16-le")
     return len(prefix)  # and the length of that is the character index into the original unicode string
 
 
@@ -97,14 +98,14 @@ def _adjust_character_indexes(original: str, ner: CtakesJSON) -> None:
     """
     # Try to early exit by seeing if any character in the source is actually above U+FFFF (usually not)
     for c in original:
-        if ord(c) > 0xffff:
+        if ord(c) > 0xFFFF:
             break
     else:
         return  # nothing to do, utf16-code-points happen to be the same as characters, so early exit
 
     # Ah well, looks like we'll have to actually translate the indexes
 
-    utf16 = original.encode('utf-16-le')  # use low-endian encoding to avoid a byte-order-mark messing up our counts
+    utf16 = original.encode("utf-16-le")  # use low-endian encoding to avoid a byte-order-mark messing up our counts
     matches = ner.list_match()
     cache = {}  # use a cache, just because a lot of indexes do get re-used between concepts
     for match in matches:
@@ -112,7 +113,7 @@ def _adjust_character_indexes(original: str, ner: CtakesJSON) -> None:
         # but I have some concerns that match.text is maybe unicode-normalized and doesn't represent the text in
         # the original source text byte-for-byte. So just to be super-safe, convert both begin and end by looking
         # at the source text, since that's where they were defined from.
-        for index_attr in ['begin', 'end']:
+        for index_attr in ["begin", "end"]:
             index = getattr(match, index_attr)
             if index in cache:
                 setattr(match, index_attr, cache[index])

@@ -20,6 +20,12 @@ For example, given the note `Patient denies fever`, you can now detect that:
 pip install ctakesclient
 ```
 
+If you are working from source to contribute to `ctakesclient`, you will want to run the following commands after checking out the repo to enable code styling:
+```sh
+pip install .[dev]
+pre-commit install
+```
+
 ## Example
 
 Let's explore the simple fever example above.

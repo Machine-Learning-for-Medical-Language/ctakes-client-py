@@ -19,8 +19,8 @@ def get_url_cnlp_negation() -> str:
 
     :return: CTAKES_URL_NEGATION env variable or default using localhost
     """
-    url = os.environ.get('URL_CNLP_NEGATION')
-    return url or 'http://localhost:8000/negation/process'
+    url = os.environ.get("URL_CNLP_NEGATION")
+    return url or "http://localhost:8000/negation/process"
 
 
 def list_polarity(sentence: str, spans: list, url: str = None) -> List[Polarity]:
@@ -31,7 +31,7 @@ def list_polarity(sentence: str, spans: list, url: str = None) -> List[Polarity]
     :return: List of Polarity (positive or negated)
     """
     url = url or get_url_cnlp_negation()
-    doc = {'doc_text': sentence, 'entities': spans}
+    doc = {"doc_text": sentence, "entities": spans}
 
     # TODO: consider exposing a pass-through timeout parameter
     response = requests.post(url=url, json=doc)  # pylint: disable=missing-timeout
@@ -39,7 +39,7 @@ def list_polarity(sentence: str, spans: list, url: str = None) -> List[Polarity]
     response = response.json()
     polarities = []
 
-    for status in response['statuses']:
+    for status in response["statuses"]:
         # NOT negated (double negative)
         if status == -1:
             polarities.append(Polarity.pos)
@@ -47,11 +47,10 @@ def list_polarity(sentence: str, spans: list, url: str = None) -> List[Polarity]
         elif status == 1:
             polarities.append(Polarity.neg)
         else:
-            raise ClientError(f'negate-api unknown {status}, url= {url}')
+            raise ClientError(f"negate-api unknown {status}, url= {url}")
 
     if len(spans) != len(polarities):
-        raise ClientError('Number of Spans and Polarities did not match: '
-                          f'{spans}, {polarities}')
+        raise ClientError("Number of Spans and Polarities did not match: " f"{spans}, {polarities}")
 
     return polarities
 
