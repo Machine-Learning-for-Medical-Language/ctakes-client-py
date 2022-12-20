@@ -6,7 +6,7 @@ import ctakesclient
 from ctakesclient import text2fhir
 from ctakesclient.typesystem import CtakesJSON, MatchText, Polarity
 
-from tests.test_resources import LoadResource
+from tests.test_resources import LoadResource, PathResource, filesystem
 
 
 def expected_nlp_source() -> dict:
@@ -355,3 +355,14 @@ class TestText2Fhir(unittest.TestCase):
             'Observation',
             'Procedure',
         }, {type(x).__name__ for x in fhir})
+
+    def test_nlp_fhir_publication_example(self):
+        file_txt = PathResource.TEXT2FHIR_TEXT.value
+        file_json = PathResource.TEXT2FHIR_JSON.value
+        text = filesystem.read_text(file_txt)
+
+        dict_json = list()
+        for res in text2fhir.text2fhir(text):
+            dict_json.append(res.as_json())
+
+        filesystem.write_json(file_json, dict_json)

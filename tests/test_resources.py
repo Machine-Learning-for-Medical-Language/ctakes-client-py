@@ -19,6 +19,8 @@ def load(filepath):
 
 class PathResource(Enum):
     CONCEPTS_BSV = path('concepts.bsv')
+    TEXT2FHIR_TEXT = path('text2fhir.txt')
+    TEXT2FHIR_JSON = path('text2fhir.json')
     PHYSICIAN_NOTE_TEXT = path('test_physician_note.txt')
     PHYSICIAN_NOTE_JSON = path('test_physician_note.json')
     SEMANTICS_BSV = path('semantics.bsv')
@@ -31,7 +33,8 @@ class LoadResource(Enum):
     PHYSICIAN_NOTE_JSON = load(PathResource.PHYSICIAN_NOTE_JSON.value)
     SYNTHETIC_JSON = load(PathResource.SYNTHETIC_JSON.value)
     TEST_NEGATION = load(PathResource.TEST_NEGATION.value)
-
+    TEXT2FHIR_TEXT = load(PathResource.TEXT2FHIR_TEXT)
+    TEXT2FHIR_JSON = load(PathResource.TEXT2FHIR_JSON)
 
 class TestResourceValidity(unittest.TestCase):
     """Test case for sanity checking resources"""
