@@ -472,3 +472,20 @@ def nlp_fhir(
         as_fhir.append(nlp_procedure(subject_id, encounter_id, docref_id, match, source))
 
     return as_fhir
+
+def text2fhir(physician_note: str, polarity: Polarity = Polarity.pos) -> List[DomainResource]:
+    """
+    "all in one" method : Send TEXT get FHIR resources.
+    Note: see nlp_fhir for proper use of FHIR linked identifiers.
+    FHIR resource IDs are randomly generated and consistent for each physician_note
+
+    :param physician_note: raw clinical text (note or fragment)
+    :param polarity: filter only positive mentions by default
+    :return: List of FHIR Resources (DomainResource)
+    """
+    return nlp_fhir(subject_id=_random_id(),
+                    encounter_id=_random_id(),
+                    docref_id=_random_id(),
+                    nlp_results=ctakesclient.client.extract(physician_note),
+                    source=_nlp_source(),
+                    polarity=polarity)
