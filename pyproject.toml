@@ -53,6 +53,5 @@ tests = [
     "pytest",
 ]
 dev = [
-    "black",
     "pre-commit"
 ]
