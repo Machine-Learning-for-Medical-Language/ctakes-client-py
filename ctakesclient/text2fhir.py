@@ -24,27 +24,28 @@ from ctakesclient.typesystem import CtakesJSON, MatchText, Polarity, Span
 #   FHIR DerivationReference
 #   SMART-on-FHIR StructureDefinition
 ###############################################################################
-FHIR_DERIVATION_REF_URL = 'http://hl7.org/fhir/StructureDefinition/derivation-reference'
-NLP_SOURCE_URL = 'http://fhir-registry.smarthealthit.org/StructureDefinition/nlp-source'
-NLP_POLARITY_URL = 'http://fhir-registry.smarthealthit.org/StructureDefinition/nlp-polarity'
+FHIR_DERIVATION_REF_URL = "http://hl7.org/fhir/StructureDefinition/derivation-reference"
+NLP_SOURCE_URL = "http://fhir-registry.smarthealthit.org/StructureDefinition/nlp-source"
+NLP_POLARITY_URL = "http://fhir-registry.smarthealthit.org/StructureDefinition/nlp-polarity"
 
 
 class Vocab(Enum):
     """
     https://build.fhir.org/terminologies-systems.html
     """
-    SNOMEDCT_US = 'http://snomed.info/sct'
-    RXNORM = 'http://www.nlm.nih.gov/research/umls/rxnorm'
-    LOINC = 'http://loinc.org'
-    LNC = 'http://loinc.org'
-    CPT = 'http://www.ama-assn.org/go/cpt'
-    MEDRT = 'http://va.gov/terminology/medrt'
-    NDFRT = 'http://hl7.org/fhir/ndfrt'
-    NDC = 'http://hl7.org/fhir/sid/ndc'
-    CVX = 'http://hl7.org/fhir/sid/cvx'
-    ICD9 = 'ICD-9'
-    ICD10 = 'ICD-10'
-    UMLS = 'http://terminology.hl7.org/CodeSystem/umls'
+
+    SNOMEDCT_US = "http://snomed.info/sct"
+    RXNORM = "http://www.nlm.nih.gov/research/umls/rxnorm"
+    LOINC = "http://loinc.org"
+    LNC = "http://loinc.org"
+    CPT = "http://www.ama-assn.org/go/cpt"
+    MEDRT = "http://va.gov/terminology/medrt"
+    NDFRT = "http://hl7.org/fhir/ndfrt"
+    NDC = "http://hl7.org/fhir/sid/ndc"
+    CVX = "http://hl7.org/fhir/sid/cvx"
+    ICD9 = "ICD-9"
+    ICD10 = "ICD-10"
+    UMLS = "http://terminology.hl7.org/CodeSystem/umls"
 
 
 def _vocab_url(umls_sab: str) -> Optional[str]:
@@ -66,13 +67,14 @@ def _vocab_url(umls_sab: str) -> Optional[str]:
 #
 ###############################################################################
 
+
 def _value_string(url: str, value: str) -> Extension:
     """
     :param url: either URL or simple "key"
     :param value: valueString to associate with URL
     :return: Extension with simple url:valueString
     """
-    return Extension({'url': url, 'valueString': value})
+    return Extension({"url": url, "valueString": value})
 
 
 def _value_integer(url: str, value: str) -> Extension:
@@ -81,7 +83,7 @@ def _value_integer(url: str, value: str) -> Extension:
     :param value: valueInteger to associate with URL
     :return: Extension with simple url:valueInteger
     """
-    return Extension({'url': url, 'valueInteger': value})
+    return Extension({"url": url, "valueInteger": value})
 
 
 def _value_boolean(url: str, value: bool) -> Extension:
@@ -90,7 +92,7 @@ def _value_boolean(url: str, value: bool) -> Extension:
     :param value: valueString to associate with URL
     :return: Extension with simple url:valueBoolean
     """
-    return Extension({'url': url, 'valueBoolean': value})
+    return Extension({"url": url, "valueBoolean": value})
 
 
 def _value_reference(value: FHIRReference) -> Extension:
@@ -98,7 +100,7 @@ def _value_reference(value: FHIRReference) -> Extension:
     :param value: valueString to associate with URL
     :return: Extension with reference:FHIRReference like 'Patient/123456789'
     """
-    return Extension({'url': 'reference', 'valueReference': value.as_json()})
+    return Extension({"url": "reference", "valueReference": value.as_json()})
 
 
 def _value_list(url: str, values: List[Extension]) -> Extension:
@@ -107,12 +109,13 @@ def _value_list(url: str, values: List[Extension]) -> Extension:
     :param values: nested list of extensions
     :return: Extension with nested content extension:List
     """
-    return Extension({'url': url, 'extension': [v.as_json() for v in values]})
+    return Extension({"url": url, "extension": [v.as_json() for v in values]})
 
 
 ###############################################################################
 # Standard FHIR References are ResourceType/id
 ###############################################################################
+
 
 def _random_id() -> str:
     """
@@ -131,8 +134,8 @@ def _ref_resource(resource_type: str, resource_id: str) -> FHIRReference:
     :return: FHIRReference as Resource/$id
     """
     if not resource_id:
-        raise ValueError('Missing resource ID')
-    return FHIRReference({'reference': f'{resource_type}/{resource_id}'})
+        raise ValueError("Missing resource ID")
+    return FHIRReference({"reference": f"{resource_type}/{resource_id}"})
 
 
 def _ref_subject(subject_id: str) -> FHIRReference:
@@ -141,7 +144,7 @@ def _ref_subject(subject_id: str) -> FHIRReference:
     :param subject_id: ID for patient (isa REF can be UUID)
     :return: FHIRReference as Patient/$id
     """
-    return _ref_resource('Patient', subject_id)
+    return _ref_resource("Patient", subject_id)
 
 
 def _ref_encounter(encounter_id: str) -> FHIRReference:
@@ -150,7 +153,7 @@ def _ref_encounter(encounter_id: str) -> FHIRReference:
     :param encounter_id: ID for encounter (isa REF can be UUID)
     :return: FHIRReference as Encounter/$id
     """
-    return _ref_resource('Encounter', encounter_id)
+    return _ref_resource("Encounter", encounter_id)
 
 
 def _ref_document(docref_id: str) -> FHIRReference:
@@ -159,7 +162,7 @@ def _ref_document(docref_id: str) -> FHIRReference:
     :param docref_id: ID for encounter (isa REF can be UUID)
     :return: FHIRReference as Encounter/$id
     """
-    return _ref_resource('DocumentReference', docref_id)
+    return _ref_resource("DocumentReference", docref_id)
 
 
 ###############################################################################
@@ -168,6 +171,7 @@ def _ref_document(docref_id: str) -> FHIRReference:
 #   "nlp-polarity" is Optional
 #
 ###############################################################################
+
 
 def _nlp_modifier(source=None, polarity=None) -> List[Extension]:
     """
@@ -200,7 +204,7 @@ def _nlp_algorithm(algorithm=None) -> Extension:
     if not algorithm:
         algorithm = ctakesclient.__package__
 
-    return _value_string('algorithm', algorithm)
+    return _value_string("algorithm", algorithm)
 
 
 def _nlp_version(version=None) -> Extension:
@@ -209,9 +213,9 @@ def _nlp_version(version=None) -> Extension:
     """
     if version is None:
         release = ctakesclient.__version__
-        version = f'https://github.com/Machine-Learning-for-Medical-Language/ctakes-client-py/releases/tag/v{release}'
+        version = f"https://github.com/Machine-Learning-for-Medical-Language/ctakes-client-py/releases/tag/v{release}"
 
-    return _value_string('version', version)
+    return _value_string("version", version)
 
 
 def _nlp_polarity(polarity: Polarity) -> Extension:
@@ -231,6 +235,7 @@ def _nlp_polarity(polarity: Polarity) -> Extension:
 #
 ###############################################################################
 
+
 def _nlp_derivation_span(docref_id, span: Span) -> Extension:
     return _nlp_derivation(docref_id=docref_id, offset=span.begin, length=(span.end - span.begin))
 
@@ -247,14 +252,14 @@ def _nlp_derivation(docref_id, offset=None, length=None) -> Extension:
     values = [_value_reference(_ref_document(docref_id))]
 
     if offset:
-        values.append(_value_integer('offset', offset))
+        values.append(_value_integer("offset", offset))
 
     if length:
-        values.append(_value_integer('length', length))
+        values.append(_value_integer("length", length))
 
     values = [v.as_json() for v in values]
 
-    return Extension({'url': FHIR_DERIVATION_REF_URL, 'extension': values})
+    return Extension({"url": FHIR_DERIVATION_REF_URL, "extension": values})
 
 
 def _nlp_extensions(fhir_resource: Resource, docref_id: str, nlp_match: MatchText, source=None) -> None:
@@ -276,6 +281,7 @@ def _nlp_extensions(fhir_resource: Resource, docref_id: str, nlp_match: MatchTex
 #
 ###############################################################################
 
+
 def nlp_concept(match: MatchText) -> CodeableConcept:
     """
     NLP match --> FHIR CodeableConcept
@@ -285,18 +291,18 @@ def nlp_concept(match: MatchText) -> CodeableConcept:
     """
     coded = []
     for concept in match.conceptAttributes:
-        coded.append(Coding({'system': _vocab_url(concept.codingScheme), 'code': concept.code}))
-        coded.append(Coding({'system': Vocab.UMLS.value, 'code': concept.cui}))
+        coded.append(Coding({"system": _vocab_url(concept.codingScheme), "code": concept.code}))
+        coded.append(Coding({"system": Vocab.UMLS.value, "code": concept.cui}))
 
-    return CodeableConcept({'text': match.text, 'coding': [c.as_json() for c in coded]})
+    return CodeableConcept({"text": match.text, "coding": [c.as_json() for c in coded]})
 
 
 def nlp_condition(
-        subject_id: str,
-        encounter_id: str,
-        docref_id: str,
-        nlp_match: MatchText,
-        source: Extension = None,
+    subject_id: str,
+    encounter_id: str,
+    docref_id: str,
+    nlp_match: MatchText,
+    source: Extension = None,
 ) -> Condition:
     """
     FHIR Condition from an NLP match (e.g. a disease disorder)
@@ -319,8 +325,8 @@ def nlp_condition(
     condition.encounter = _ref_encounter(encounter_id)
 
     # status is unconfirmed - NLP is not perfect.
-    status = Coding({'system': 'http://terminology.hl7.org/CodeSystem/condition-ver-status', 'code': 'unconfirmed'})
-    condition.verificationStatus = CodeableConcept({'text': 'Unconfirmed', 'coding': [status.as_json()]})
+    status = Coding({"system": "http://terminology.hl7.org/CodeSystem/condition-ver-status", "code": "unconfirmed"})
+    condition.verificationStatus = CodeableConcept({"text": "Unconfirmed", "coding": [status.as_json()]})
 
     # NLP
     _nlp_extensions(condition, docref_id, nlp_match, source)
@@ -330,11 +336,11 @@ def nlp_condition(
 
 
 def nlp_observation(
-        subject_id: str,
-        encounter_id: str,
-        docref_id: str,
-        nlp_match: MatchText,
-        source: Extension = None,
+    subject_id: str,
+    encounter_id: str,
+    docref_id: str,
+    nlp_match: MatchText,
+    source: Extension = None,
 ) -> Observation:
     """
     FHIR Observation from an NLP match (e.g. a sign symptom)
@@ -354,7 +360,7 @@ def nlp_observation(
     observation.id = _random_id()
     observation.subject = _ref_subject(subject_id)
     observation.encounter = _ref_encounter(encounter_id)
-    observation.status = 'preliminary'
+    observation.status = "preliminary"
 
     # NLP
     _nlp_extensions(observation, docref_id, nlp_match, source)
@@ -364,11 +370,11 @@ def nlp_observation(
 
 
 def nlp_medication(
-        subject_id: str,
-        encounter_id: str,
-        docref_id: str,
-        nlp_match: MatchText,
-        source: Extension = None,
+    subject_id: str,
+    encounter_id: str,
+    docref_id: str,
+    nlp_match: MatchText,
+    source: Extension = None,
 ) -> MedicationStatement:
     """
     FHIR MedicationStatement from an NLP match
@@ -388,7 +394,7 @@ def nlp_medication(
     medication.id = _random_id()
     medication.subject = _ref_subject(subject_id)
     medication.context = _ref_encounter(encounter_id)
-    medication.status = 'unknown'
+    medication.status = "unknown"
 
     # NLP
     _nlp_extensions(medication, docref_id, nlp_match, source)
@@ -398,11 +404,11 @@ def nlp_medication(
 
 
 def nlp_procedure(
-        subject_id: str,
-        encounter_id: str,
-        docref_id: str,
-        nlp_match: MatchText,
-        source: Extension = None,
+    subject_id: str,
+    encounter_id: str,
+    docref_id: str,
+    nlp_match: MatchText,
+    source: Extension = None,
 ) -> Procedure:
     """
     FHIR Procedure from an NLP match
@@ -423,7 +429,7 @@ def nlp_procedure(
     procedure.id = _random_id()
     procedure.subject = _ref_subject(subject_id)
     procedure.encounter = _ref_encounter(encounter_id)
-    procedure.status = 'unknown'
+    procedure.status = "unknown"
 
     # NLP
     _nlp_extensions(procedure, docref_id, nlp_match, source)
@@ -433,12 +439,12 @@ def nlp_procedure(
 
 
 def nlp_fhir(
-        subject_id: str,
-        encounter_id: str,
-        docref_id: str,
-        nlp_results: CtakesJSON,
-        source: Extension = None,
-        polarity: Polarity = Polarity.pos,
+    subject_id: str,
+    encounter_id: str,
+    docref_id: str,
+    nlp_results: CtakesJSON,
+    source: Extension = None,
+    polarity: Polarity = Polarity.pos,
 ) -> List[DomainResource]:
     """
     Returns all FHIR resources we can generate from a patient encounter.

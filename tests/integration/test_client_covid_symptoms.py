@@ -16,18 +16,19 @@ def pretty(result: dict):
 
 class Symptom(Enum):
     """COVID Symptom Synonyms for Testing"""
+
     # pylint: disable=invalid-name
-    Cough = ['R05.9', 'Post-tussive', 'tussive', 'Coughing']
-    Fever = ['R50.9', 'Fevers', 'Chills']
-    Diarrhea = ['R19.7', 'Watery stool']
-    Fatigue = ['R53.81', 'Fatigued']
-    Nausea = ['R11.0', 'Nauseated', 'nauseous']
-    Congestion = ['R09.81', 'runny nose', 'nasal congestion']
-    SoreThroat = ['M79.1', 'Pharyngitis']
-    Headache = ['R51.9', 'R51', 'Headache', 'Headaches', 'HA']
-    Dyspnea = ['R06.0', 'SOB', 'Short of Breath']
-    Aches = ['Myalgias', 'Muscle Aches']
-    Anosmia = ['R43', 'R43.0', 'Loss of smell', 'loss of taste']
+    Cough = ["R05.9", "Post-tussive", "tussive", "Coughing"]
+    Fever = ["R50.9", "Fevers", "Chills"]
+    Diarrhea = ["R19.7", "Watery stool"]
+    Fatigue = ["R53.81", "Fatigued"]
+    Nausea = ["R11.0", "Nauseated", "nauseous"]
+    Congestion = ["R09.81", "runny nose", "nasal congestion"]
+    SoreThroat = ["M79.1", "Pharyngitis"]
+    Headache = ["R51.9", "R51", "Headache", "Headaches", "HA"]
+    Dyspnea = ["R06.0", "SOB", "Short of Breath"]
+    Aches = ["Myalgias", "Muscle Aches"]
+    Anosmia = ["R43", "R43.0", "Loss of smell", "loss of taste"]
 
 
 @ddt.ddt
@@ -37,9 +38,9 @@ class TestCtakesClient(unittest.TestCase):
     def test_chief_complaint_is_symptom(self):
         for bsv in covid_symptoms():
 
-            chief_complaint = f'Chief Complaint: {bsv.text.lower()} .'
+            chief_complaint = f"Chief Complaint: {bsv.text.lower()} ."
 
-            print(f'{chief_complaint}')
+            print(f"{chief_complaint}")
 
             res = ctakesclient.client.extract(bsv.text)
 
@@ -47,34 +48,36 @@ class TestCtakesClient(unittest.TestCase):
             match_list = res.list_match()
 
             # validated manually
-            excludes = ['nasal congestion',   # Nasal (anatomic site)
-                        'nasal discharge',    # Nasal (anatomic site)
-                        'bronchial cough',    # Bronchial (anatomic site)
-                        'chest cough',        # Chest (anatomic site)
-                        'sore throat',        # throat (anatomic site)
-                        'throat soreness',    # throat (anatomic site)
-                        'throat discomfort',  # throat (anatomic site)
-                        'painful throat',     # throat (anatomic site)
-                        'pain in throat',     # throat (anatomic site)
-                        'pain in the throat',   # throat (anatomic site)
-                        'pain in the pharynx',  # throat (anatomic site)
-                        'pharyngitis',          # (DiseaseDisorder)
-                        'aching body',          # body (anatomic site)
-                        'generalized body aches',  # body (anatomic site)
-                        'generalized body pain',   # body (anatomic site)
-                        'body pain',     # body (anatomic site)
-                        'throat pain',   # body (anatomic site)
-                        'muscle ache',   # muscle (anatomic site)
-                        'muscle aches',  # muscle (anatomic site)
-                        'body aches',    # body (anatomic site)
-                        'ache head',     # head (anatomic site)
-                        'head pain',     # head (anatomic site)
-                        'muscle pain',   # muscle (anatomic site)
-                        'muscle pains',  # muscle (anatomic site)
-                        'muscle soreness']  # muscle (anatomic site)
+            excludes = [
+                "nasal congestion",  # Nasal (anatomic site)
+                "nasal discharge",  # Nasal (anatomic site)
+                "bronchial cough",  # Bronchial (anatomic site)
+                "chest cough",  # Chest (anatomic site)
+                "sore throat",  # throat (anatomic site)
+                "throat soreness",  # throat (anatomic site)
+                "throat discomfort",  # throat (anatomic site)
+                "painful throat",  # throat (anatomic site)
+                "pain in throat",  # throat (anatomic site)
+                "pain in the throat",  # throat (anatomic site)
+                "pain in the pharynx",  # throat (anatomic site)
+                "pharyngitis",  # (DiseaseDisorder)
+                "aching body",  # body (anatomic site)
+                "generalized body aches",  # body (anatomic site)
+                "generalized body pain",  # body (anatomic site)
+                "body pain",  # body (anatomic site)
+                "throat pain",  # body (anatomic site)
+                "muscle ache",  # muscle (anatomic site)
+                "muscle aches",  # muscle (anatomic site)
+                "body aches",  # body (anatomic site)
+                "ache head",  # head (anatomic site)
+                "head pain",  # head (anatomic site)
+                "muscle pain",  # muscle (anatomic site)
+                "muscle pains",  # muscle (anatomic site)
+                "muscle soreness",
+            ]  # muscle (anatomic site)
 
             if bsv.text.lower() not in excludes:
-                self.assertDictEqual({'root': match_list}, {'root': ss_list})
+                self.assertDictEqual({"root": match_list}, {"root": ss_list})
 
     def test_covid_symptoms_medical_synonyms(self):
         """
@@ -86,7 +89,7 @@ class TestCtakesClient(unittest.TestCase):
         for symptom in Symptom:
             for synonym in symptom.value:
 
-                text = f'Chief Complaint: {synonym}'
+                text = f"Chief Complaint: {synonym}"
                 found = ctakesclient.client.extract(text).list_match_text()
                 found = [hit.title() for hit in found]
 
@@ -95,14 +98,14 @@ class TestCtakesClient(unittest.TestCase):
                     actual.append(synonym.title())
                 elif len(synonym) < 3:
                     miss_icd.append(synonym)
-                elif '.' in synonym:
+                elif "." in synonym:
                     miss_icd.append(synonym)
                 else:
                     expected.append(synonym.title())
 
         diff = set(expected).difference(set(actual))
 
-        self.assertEqual(set(), diff, 'diff should be empty, missing')
+        self.assertEqual(set(), diff, "diff should be empty, missing")
 
     @ddt.data(
         *ctakesclient.filesystem.covid_symptoms(),
@@ -118,17 +121,17 @@ class TestCtakesClient(unittest.TestCase):
         https://github.com/Machine-Learning-for-Medical-Language/ctakes-covid-container/blob/main/covid.bsv
         """
         known_issues = [
-            'running nose',
-            'No sense of smell',
-            'HA',
-            'R09.81',
-            'R11.10',
-            'R53.81',
-            'R53.83',
-            'R68.83',
+            "running nose",
+            "No sense of smell",
+            "HA",
+            "R09.81",
+            "R11.10",
+            "R53.81",
+            "R53.83",
+            "R68.83",
         ]
         if bsv.text in known_issues:
-            pytest.xfail(f'Known cTAKES failure with {bsv.text}')
+            pytest.xfail(f"Known cTAKES failure with {bsv.text}")
 
         ner = ctakesclient.client.extract(bsv.text)
 
@@ -144,5 +147,5 @@ class TestCtakesClient(unittest.TestCase):
         self.assertIn(bsv.cui, cui_list)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     unittest.main()

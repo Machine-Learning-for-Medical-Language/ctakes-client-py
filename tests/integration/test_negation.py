@@ -12,20 +12,18 @@ def note_negated_ros_review_of_symptoms() -> str:
 
 
 def note_negated_denies() -> str:
-    return 'Denies any fevers or chills, sore throat, anosmia, cough.'
+    return "Denies any fevers or chills, sore throat, anosmia, cough."
 
 
 def note_positive_headache() -> str:
-    return ('Presents for a 5-day history of headache,sore throat, fever '
-            'up to 100.5,cough,anosmia, dysgeusia.')
+    return "Presents for a 5-day history of headache,sore throat, fever " "up to 100.5,cough,anosmia, dysgeusia."
 
 
 def note_negation_api_example() -> str:
     """
     https://github.com/Machine-Learning-for-Medical-Language/cnlp_transformers#negation-api
     """
-    return ('The patient has a sore knee and headache but denies nausea '
-            'and has no anosmia.')
+    return "The patient has a sore knee and headache but denies nausea " "and has no anosmia."
 
 
 def pretty(result: dict) -> str:
@@ -48,12 +46,14 @@ class TestNegationCtakesDefaultContext(unittest.TestCase):
                 if concept.cui in symptoms_dict:
                     symptoms_fp.append(match)
 
-        self.assertEqual([], symptoms_fp,
-                         ('false positives found in purely NEGATED physician '
-                          f'note review of systems {symptoms_fp}'))
+        self.assertEqual(
+            [],
+            symptoms_fp,
+            ("false positives found in purely NEGATED physician " f"note review of systems {symptoms_fp}"),
+        )
 
     # pylint: disable-next=line-too-long
-    @unittest.skip('https://github.com/Machine-Learning-for-Medical-Language/ctakes-client-py/issues/8')
+    @unittest.skip("https://github.com/Machine-Learning-for-Medical-Language/ctakes-client-py/issues/8")
     def test_patient_denies(self):
         """
         Test everything in this example note is negated.
@@ -68,8 +68,8 @@ class TestNegationCtakesDefaultContext(unittest.TestCase):
     def test_history_of_headache(self):
         text = note_positive_headache()
         ner = ctakesclient.client.extract(text)
-        self.assertIn('headache', ner.list_match_text())
+        self.assertIn("headache", ner.list_match_text())
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     unittest.main()

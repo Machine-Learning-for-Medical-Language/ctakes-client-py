@@ -19,13 +19,7 @@ class BsvConcept:
     BSV flat file of UMLS Concept
     """
 
-    def __init__(self,
-                 cui=None,
-                 tui=None,
-                 code=None,
-                 vocab=None,
-                 text=None,
-                 pref=None):
+    def __init__(self, cui=None, tui=None, code=None, vocab=None, text=None, pref=None):
         """
         BSV file format =
         CUI|TUI|CODE|VOCAB|TXT|PREF
@@ -52,22 +46,22 @@ class BsvConcept:
         return self.__dict__
 
     def from_json(self, source):
-        self.cui = source.get('cui')
-        self.tui = source.get('tui')
-        self.code = source.get('code')
-        self.vocab = source.get('vocab')
-        self.text = source.get('text')
-        self.pref = source.get('pref')
+        self.cui = source.get("cui")
+        self.tui = source.get("tui")
+        self.code = source.get("code")
+        self.vocab = source.get("vocab")
+        self.text = source.get("text")
+        self.pref = source.get("pref")
 
     def from_bsv(self, source):
         if isinstance(source, BsvConcept):
             return source
 
         if isinstance(source, str):
-            source = source.split('|')
+            source = source.split("|")
 
         if 6 != len(source):
-            raise BSVError(f'from_bsv failed: {source}')
+            raise BSVError(f"from_bsv failed: {source}")
 
         self.cui = source[0]
         self.tui = source[1]
@@ -77,7 +71,7 @@ class BsvConcept:
         self.pref = source[5]
 
     def to_bsv(self):
-        return f'{self.cui}|{self.tui}|{self.code}|{self.vocab}|{self.text}|{self.pref}'
+        return f"{self.cui}|{self.tui}|{self.code}|{self.vocab}|{self.text}|{self.pref}"
 
     def __str__(self):
         return self.to_bsv()
@@ -98,11 +92,7 @@ class BsvSemanticType:
     https://lhncbc.nlm.nih.gov/ii/tools/MetaMap/documentation/SemanticTypesAndGroups.html
     """
 
-    def __init__(self,
-                 group_id=None,
-                 group_label=None,
-                 tui=None,
-                 tui_label=None):
+    def __init__(self, group_id=None, group_label=None, tui=None, tui_label=None):
         """
         :param group_id: UMLS Semantic Group Abbreviation
         :param group_label: UMLS Semantic Group Label (longer than abbreviation)
@@ -118,20 +108,20 @@ class BsvSemanticType:
         return self.__dict__
 
     def from_json(self, source):
-        self.group_id = source.get('group_id')
-        self.group_label = source.get('group_label')
-        self.tui = source.get('tui')
-        self.tui_label = source.get('tui_label')
+        self.group_id = source.get("group_id")
+        self.group_label = source.get("group_label")
+        self.tui = source.get("tui")
+        self.tui_label = source.get("tui_label")
 
     def from_bsv(self, source):
         if isinstance(source, BsvSemanticType):
             return source
 
         if isinstance(source, str):
-            source = source.split('|')
+            source = source.split("|")
 
         if 4 != len(source):
-            raise BSVError(f'from_bsv failed: {source}')
+            raise BSVError(f"from_bsv failed: {source}")
 
         self.group_id = source[0]
         self.group_label = source[1]
@@ -139,7 +129,7 @@ class BsvSemanticType:
         self.tui_label = source[3]
 
     def to_bsv(self):
-        return f'{self.group_id}|{self.group_label}|{self.tui}|{self.tui_label}'
+        return f"{self.group_id}|{self.group_label}|{self.tui}|{self.tui_label}"
 
     def __str__(self):
         return self.to_bsv()
@@ -160,11 +150,11 @@ def list_bsv(filename: str, class_bsv) -> list:
     entries = []
     for line in read_text_lines(filename):
         if not line.strip():
-            pass    # OK (empty line)
-        elif line.startswith('#'):
-            logging.info('found header : %s : %s', line, filename)
-        elif '|' not in line:
-            logging.error('malformed line: %s', line)
+            pass  # OK (empty line)
+        elif line.startswith("#"):
+            logging.info("found header : %s : %s", line, filename)
+        elif "|" not in line:
+            logging.error("malformed line: %s", line)
         else:
             parsed = class_bsv()
             parsed.from_bsv(line.strip())
@@ -200,20 +190,20 @@ def map_cui_pref(concepts: Union[str, List[BsvConcept]]) -> dict:
 #
 ###############################################################################
 def read_text(filename) -> str:
-    logging.info('read_text(%s)', filename)
-    with open(filename, 'r', encoding='utf-8') as fp:
+    logging.info("read_text(%s)", filename)
+    with open(filename, "r", encoding="utf-8") as fp:
         return fp.read()
 
 
 def read_text_lines(filename) -> List[str]:
-    logging.info('read_text_lines(%s)', filename)
-    with open(filename, 'r', encoding='utf-8') as fp:
+    logging.info("read_text_lines(%s)", filename)
+    with open(filename, "r", encoding="utf-8") as fp:
         return fp.readlines()
 
 
 def read_json(filename) -> dict:
-    logging.info('read_json(%s)', filename)
-    with open(filename, 'r', encoding='utf-8') as fp:
+    logging.info("read_json(%s)", filename)
+    with open(filename, "r", encoding="utf-8") as fp:
         return json.load(fp)
 
 
@@ -223,13 +213,14 @@ def read_json(filename) -> dict:
 #
 ###############################################################################
 
+
 def _resource_file(filename: str) -> str:
-    return os.path.join(os.path.dirname(__file__), 'resources', filename)
+    return os.path.join(os.path.dirname(__file__), "resources", filename)
 
 
 def covid_symptoms() -> List[BsvConcept]:
     """Returns a list of known covid symptoms"""
-    return list_bsv_concept(_resource_file('covid_symptoms.bsv'))
+    return list_bsv_concept(_resource_file("covid_symptoms.bsv"))
 
 
 def umls_semantic_groups() -> List[BsvSemanticType]:
@@ -238,4 +229,4 @@ def umls_semantic_groups() -> List[BsvSemanticType]:
 
     See https://lhncbc.nlm.nih.gov/ii/tools/MetaMap/documentation/SemanticTypesAndGroups.html
     """
-    return list_bsv_semantics(_resource_file('SemGroups_2018.bsv'))
+    return list_bsv_semantics(_resource_file("SemGroups_2018.bsv"))

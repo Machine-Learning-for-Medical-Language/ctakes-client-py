@@ -7,23 +7,23 @@ from ctakesclient import filesystem
 
 
 def path(filename) -> str:
-    return os.path.join(os.path.dirname(__file__), 'resources', filename)
+    return os.path.join(os.path.dirname(__file__), "resources", filename)
 
 
 def load(filepath):
-    if str(filepath).endswith('.json'):
+    if str(filepath).endswith(".json"):
         return filesystem.read_json(filepath)
-    elif str(filepath).endswith('.txt'):
+    elif str(filepath).endswith(".txt"):
         return filesystem.read_text(filepath)
 
 
 class PathResource(Enum):
-    CONCEPTS_BSV = path('concepts.bsv')
-    PHYSICIAN_NOTE_TEXT = path('test_physician_note.txt')
-    PHYSICIAN_NOTE_JSON = path('test_physician_note.json')
-    SEMANTICS_BSV = path('semantics.bsv')
-    SYNTHETIC_JSON = path('synthetic.json')
-    TEST_NEGATION = path('test_negation_hard.txt')
+    CONCEPTS_BSV = path("concepts.bsv")
+    PHYSICIAN_NOTE_TEXT = path("test_physician_note.txt")
+    PHYSICIAN_NOTE_JSON = path("test_physician_note.json")
+    SEMANTICS_BSV = path("semantics.bsv")
+    SYNTHETIC_JSON = path("synthetic.json")
+    TEST_NEGATION = path("test_negation_hard.txt")
 
 
 class LoadResource(Enum):
@@ -37,8 +37,7 @@ class TestResourceValidity(unittest.TestCase):
     """Test case for sanity checking resources"""
 
     def assertExists(self, resource_file):
-        self.assertTrue(os.path.exists(resource_file),
-                        f'resource did not exist: {resource_file}')
+        self.assertTrue(os.path.exists(resource_file), f"resource did not exist: {resource_file}")
 
     def test_resource_exists(self):
         for res in PathResource:
@@ -51,5 +50,5 @@ class TestResourceValidity(unittest.TestCase):
             self.assertTrue(len(loader.value) > 0)
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     unittest.main()
