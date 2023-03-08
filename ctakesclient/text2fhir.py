@@ -237,7 +237,7 @@ def _nlp_polarity(polarity: Polarity) -> Extension:
 
 
 def _nlp_derivation_span(docref_id, span: Span) -> Extension:
-    return _nlp_derivation(docref_id=docref_id, offset=span.begin, length=(span.end - span.begin))
+    return _nlp_derivation(docref_id=docref_id, offset=span.begin, length=span.end - span.begin)
 
 
 def _nlp_derivation(docref_id, offset=None, length=None) -> Extension:

@@ -137,7 +137,7 @@ class MatchText:
         elif polarity == 0:
             return Polarity.pos
         else:
-            raise Exception(f"polarity unknown: {polarity}")
+            raise ValueError(f"polarity unknown: {polarity}")
 
     @staticmethod
     def parse_mention(mention: str) -> UmlsTypeMention:
