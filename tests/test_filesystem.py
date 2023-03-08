@@ -1,13 +1,29 @@
 """Tests for the filesystem module"""
 
+import os
 import unittest
+
+import ddt
 
 from ctakesclient import filesystem
 from tests.test_resources import PathResource
 
 
+@ddt.ddt
 class TestCovidSymptomsBSV(unittest.TestCase):
     """Test case for files loaded from bsv"""
+
+    @ddt.data(
+        filesystem.covid_symptoms_path,
+        filesystem.umls_semantic_groups_path,
+    )
+    def test_path_methods(self, method):
+        """Verify we hand out a bsv path correctly"""
+        path = method()
+        self.assertIsInstance(path, str)
+        self.assertTrue(path.endswith(".bsv"))
+        self.assertTrue(os.path.isabs(path))
+        self.assertTrue(os.path.isfile(path))
 
     def test_covid_symptom_concepts(self):
         """

@@ -218,9 +218,19 @@ def _resource_file(filename: str) -> str:
     return os.path.join(os.path.dirname(__file__), "resources", filename)
 
 
+def covid_symptoms_path() -> str:
+    """Returns the path to a bsv file of covid symptoms"""
+    return _resource_file("covid_symptoms.bsv")
+
+
 def covid_symptoms() -> List[BsvConcept]:
     """Returns a list of known covid symptoms"""
-    return list_bsv_concept(_resource_file("covid_symptoms.bsv"))
+    return list_bsv_concept(covid_symptoms_path())
+
+
+def umls_semantic_groups_path() -> str:
+    """Returns the path to a bsv file of UMLS semantic groups"""
+    return _resource_file("SemGroups_2018.bsv")
 
 
 def umls_semantic_groups() -> List[BsvSemanticType]:
@@ -229,4 +239,4 @@ def umls_semantic_groups() -> List[BsvSemanticType]:
 
     See https://lhncbc.nlm.nih.gov/ii/tools/MetaMap/documentation/SemanticTypesAndGroups.html
     """
-    return list_bsv_semantics(_resource_file("SemGroups_2018.bsv"))
+    return list_bsv_semantics(umls_semantic_groups_path())
