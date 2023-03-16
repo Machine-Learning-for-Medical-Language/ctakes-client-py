@@ -39,13 +39,13 @@ def post(sentence: str, url: str = None) -> dict:
     """
     url = url or get_url_ctakes_rest()
     logging.debug(url)
-    # TODO: consider exposing a pass-through timeout parameter
-    response = requests.post(  # pylint: disable=missing-timeout
+    response = requests.post(
         url,
         data=sentence.encode("utf8"),
         headers={
             "Content-Type": "text/plain; charset=UTF-8",
         },
+        timeout=300,  # TODO: consider exposing a pass-through timeout parameter
     )
     response.raise_for_status()
     return response.json()
