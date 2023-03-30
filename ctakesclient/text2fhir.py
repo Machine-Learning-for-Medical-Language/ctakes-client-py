@@ -290,9 +290,13 @@ def nlp_concept(match: MatchText) -> CodeableConcept:
     :return: FHIR CodeableConcept with both UMLS CUI and source vocab CODE
     """
     coded = []
+    cuis = set()
     for concept in match.conceptAttributes:
         coded.append(Coding({"system": _vocab_url(concept.codingScheme), "code": concept.code}))
-        coded.append(Coding({"system": Vocab.UMLS.value, "code": concept.cui}))
+        cuis.add(concept.cui)  # collect CUIs as a set, because they are often duplicated across vocab mentions
+
+    for cui in cuis:
+        coded.append(Coding({"system": Vocab.UMLS.value, "code": cui}))
 
     return CodeableConcept({"text": match.text, "coding": [c.as_json() for c in coded]})
 
