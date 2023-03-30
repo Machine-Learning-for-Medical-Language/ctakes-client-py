@@ -205,10 +205,6 @@ class TestText2Fhir(unittest.TestCase):
                             "system": "http://snomed.info/sct",
                         },
                         {
-                            "code": "C0304290",
-                            "system": "http://terminology.hl7.org/CodeSystem/umls",
-                        },
-                        {
                             "code": "91058",
                             "system": "http://www.nlm.nih.gov/research/umls/rxnorm",
                         },
@@ -262,10 +258,6 @@ class TestText2Fhir(unittest.TestCase):
                         {
                             "code": "33962009",
                             "system": "http://snomed.info/sct",
-                        },
-                        {
-                            "code": "C0277786",
-                            "system": "http://terminology.hl7.org/CodeSystem/umls",
                         },
                         {
                             "code": "409586006",
@@ -324,10 +316,6 @@ class TestText2Fhir(unittest.TestCase):
                         {
                             "code": "129265001",
                             "system": "http://snomed.info/sct",
-                        },
-                        {
-                            "code": "C1261322",
-                            "system": "http://terminology.hl7.org/CodeSystem/umls",
                         },
                         {
                             "code": "386053000",
