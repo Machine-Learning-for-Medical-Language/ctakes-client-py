@@ -1,8 +1,10 @@
 """HTTP client for medical language"""
 
-from typing import List
 import os
-import requests
+from typing import List, Tuple
+
+import httpx
+
 from ctakesclient.exceptions import ClientError
 from ctakesclient.typesystem import Polarity
 
@@ -23,18 +25,21 @@ def get_url_cnlp_negation() -> str:
     return url or "http://localhost:8000/negation/process"
 
 
-def list_polarity(sentence: str, spans: list, url: str = None) -> List[Polarity]:
+async def list_polarity(
+    sentence: str, spans: List[Tuple[int, int]], url: str = None, client: httpx.AsyncClient = None
+) -> List[Polarity]:
     """
     :param sentence: clinical text to send to cTAKES
     :param spans: list of spans where each span is a tuple of (begin,end)
     :param url: Clinical NLP Transformer: Negation API
+    :param client: optional existing HTTPX client session
     :return: List of Polarity (positive or negated)
     """
     url = url or get_url_cnlp_negation()
-    doc = {"doc_text": sentence, "entities": spans}
+    client = client or httpx.AsyncClient()
 
-    # TODO: consider exposing a pass-through timeout parameter
-    response = requests.post(url=url, json=doc, timeout=300)
+    doc = {"doc_text": sentence, "entities": spans}
+    response = await client.post(url=url, json=doc)
     response.raise_for_status()
     response = response.json()
     polarities = []
@@ -55,18 +60,15 @@ def list_polarity(sentence: str, spans: list, url: str = None) -> List[Polarity]
     return polarities
 
 
-def map_polarity(sentence: str, spans: list, url: str = None) -> dict:
+async def map_polarity(
+    sentence: str, spans: List[Tuple[int, int]], url: str = None, client: httpx.AsyncClient = None
+) -> dict:
     """
     :param sentence: clinical text to send to cTAKES
     :param spans: list of spans where each span is a tuple of (begin,end)
     :param url: Clinical NLP Transformer: Negation API
+    :param client: optional existing HTTPX client session
     :return: Map of Polarity key=span, value=polarity
     """
-    url = url or get_url_cnlp_negation()
-    polarities = list_polarity(sentence, spans, url)
-    mapped = {}
-
-    for span, polarity in zip(spans, polarities):
-        mapped[span] = polarity
-
-    return mapped
+    polarities = await list_polarity(sentence, spans, url=url, client=client)
+    return dict(zip(spans, polarities))

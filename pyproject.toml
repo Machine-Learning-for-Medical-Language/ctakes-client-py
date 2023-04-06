@@ -1,9 +1,9 @@
 [project]
 name = "ctakesclient"
-requires-python = ">= 3.7"
+requires-python = ">= 3.8"
 dependencies = [
     "fhirclient >= 4.1",
-    "requests",
+    "httpx",
 ]
 authors = [
   { name="Andy McMurry, PhD", email="andrew.mcmurry@childrens.harvard.edu" },
@@ -51,6 +51,7 @@ docs = [
 tests = [
     "ddt",
     "pytest",
+    "respx",
 ]
 dev = [
     "pre-commit"

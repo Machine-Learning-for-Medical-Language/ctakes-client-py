@@ -9,7 +9,14 @@ Clinical text fragment or entire physician note.
 
 ```python
 physician_note = 'Chief Complaint: Patient c/o cough, denies fever, recent COVID test negative. Denies smoking.'
-output = ctakesclient.client.post(physician_note)
+output = await ctakesclient.client.post(physician_note)
+```
+
+Note that `ctakesclient` uses an async API.
+If your code is not async, you can simply wrap calls in `asyncio.run()`:
+
+```python
+output = asyncio.run(ctakesclient.client.post(physician_note))
 ```
 
 # Output
