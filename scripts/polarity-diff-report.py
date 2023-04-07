@@ -3,6 +3,7 @@
 """Generates and shows polarity difference reports between cTAKES and cNLP"""
 
 import argparse
+import asyncio
 import csv
 import json
 import os
@@ -20,16 +21,16 @@ def default(parser, args):
     parser.print_help()
 
 
-def compare_note_polarity(text: str):
+async def compare_note_polarity(text: str):
     """
     Prints difference summary (if any)
     """
-    ner = ctakesclient.client.extract(text)
+    ner = await ctakesclient.client.extract(text)
 
     matches = ner.list_match()
     spans = ner.list_spans(matches)
 
-    polarities_cnlp = ctakesclient.transformer.list_polarity(text, spans)
+    polarities_cnlp = await ctakesclient.transformer.list_polarity(text, spans)
     if len(matches) != len(polarities_cnlp):
         raise JSONDecodeError("Polarity lists had different lengths!", text, 0)
 
@@ -46,7 +47,7 @@ def compare_note_polarity(text: str):
     return differing
 
 
-def calculate(parser, args):
+async def calculate(parser, args):
     del parser
 
     output_path = os.path.splitext(args.notes_path)[0] + ".pdr.ndjson"
@@ -84,7 +85,7 @@ def calculate(parser, args):
                 note_tic = time.perf_counter()
                 try:
                     error = None
-                    differences = compare_note_polarity(note["OBSERVATION_BLOB"])
+                    differences = await compare_note_polarity(note["OBSERVATION_BLOB"])
                 except JSONDecodeError as e:
                     error = str(e)
                     differences = []
@@ -159,7 +160,7 @@ def show_note(args, note):
         print("No matching differences found!")
 
 
-def report(parser, args):
+async def report(parser, args):
     del parser
 
     if args.note and args.instance:
@@ -186,7 +187,7 @@ def report(parser, args):
     sys.exit(1)
 
 
-def main():
+async def main():
     parser = argparse.ArgumentParser()
     subparsers = parser.add_subparsers()
 
@@ -208,8 +209,8 @@ def main():
     report_parser.set_defaults(func=report)
 
     args = parser.parse_args()
-    args.func(parser, args)
+    await args.func(parser, args)
 
 
 if __name__ == "__main__":
-    main()
+    asyncio.run(main())

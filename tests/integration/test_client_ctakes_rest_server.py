@@ -5,10 +5,10 @@ import ctakesclient
 from tests.test_resources import LoadResource
 
 
-class TestClientCtakesRestServer(unittest.TestCase):
+class TestClientCtakesRestServer(unittest.IsolatedAsyncioTestCase):
     """Test case for REST requests"""
 
-    def test_physician_note(self):
+    async def test_physician_note(self):
         """
         Test calling REST server returns JSON that matches expected.
         Strong typing (Polarity, MatchText, UmlsConcept) enforced during
@@ -17,18 +17,18 @@ class TestClientCtakesRestServer(unittest.TestCase):
         physician_note = LoadResource.PHYSICIAN_NOTE_TEXT.value
         expected = LoadResource.PHYSICIAN_NOTE_JSON.value
 
-        actual1 = ctakesclient.client.extract(physician_note).as_json()
-        actual2 = ctakesclient.client.extract(physician_note).as_json()
+        actual1 = (await ctakesclient.client.extract(physician_note)).as_json()
+        actual2 = (await ctakesclient.client.extract(physician_note)).as_json()
 
         unittest.TestCase.maxDiff = None
 
         self.assertDictEqual(expected, actual1, "JSON did not match round trip serialization")
         self.assertDictEqual(actual1, actual2, "calling service twice produces same results")
 
-    def test_unicode(self):
+    async def test_unicode(self):
         """Ensure that we handle utf8/unicode correctly"""
         # First, make sure we don't blow up just by sending it
-        ner = ctakesclient.client.extract("patient feels 🤒 with fever")
+        ner = await ctakesclient.client.extract("patient feels 🤒 with fever")
 
         # Then confirm that our spans are correct (0-based and character-based)
         self.assertLess(0, len(ner.list_sign_symptom()))

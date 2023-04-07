@@ -32,17 +32,17 @@ class Symptom(Enum):
 
 
 @ddt.ddt
-class TestCtakesClient(unittest.TestCase):
+class TestCtakesClient(unittest.IsolatedAsyncioTestCase):
     """Test case for ctakes client extracting covid symptoms"""
 
-    def test_chief_complaint_is_symptom(self):
+    async def test_chief_complaint_is_symptom(self):
         for bsv in covid_symptoms():
 
             chief_complaint = f"Chief Complaint: {bsv.text.lower()} ."
 
             print(f"{chief_complaint}")
 
-            res = ctakesclient.client.extract(bsv.text)
+            res = await ctakesclient.client.extract(bsv.text)
 
             ss_list = res.list_sign_symptom()
             match_list = res.list_match()
@@ -79,7 +79,7 @@ class TestCtakesClient(unittest.TestCase):
             if bsv.text.lower() not in excludes:
                 self.assertDictEqual({"root": match_list}, {"root": ss_list})
 
-    def test_covid_symptoms_medical_synonyms(self):
+    async def test_covid_symptoms_medical_synonyms(self):
         """
         Test if COVID19 symptom synonyms are mapped in the BSV dictionary.
         """
@@ -90,7 +90,8 @@ class TestCtakesClient(unittest.TestCase):
             for synonym in symptom.value:
 
                 text = f"Chief Complaint: {synonym}"
-                found = ctakesclient.client.extract(text).list_match_text()
+                ner = await ctakesclient.client.extract(text)
+                found = ner.list_match_text()
                 found = [hit.title() for hit in found]
 
                 if synonym.title() in found:
@@ -110,7 +111,7 @@ class TestCtakesClient(unittest.TestCase):
     @ddt.data(
         *ctakesclient.filesystem.covid_symptoms(),
     )
-    def test_covid_symptoms_exist_in_response(self, bsv):
+    async def test_covid_symptoms_exist_in_response(self, bsv):
         """
         Symptoms of COVID-19
         https://www.cdc.gov/coronavirus/2019-ncov/symptoms-testing/symptoms.html
@@ -133,7 +134,7 @@ class TestCtakesClient(unittest.TestCase):
         if bsv.text in known_issues:
             pytest.xfail(f"Known cTAKES failure with {bsv.text}")
 
-        ner = ctakesclient.client.extract(bsv.text)
+        ner = await ctakesclient.client.extract(bsv.text)
 
         cui_list = []
         text_list = []

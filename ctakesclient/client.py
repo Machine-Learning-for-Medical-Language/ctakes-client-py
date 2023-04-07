@@ -2,7 +2,9 @@
 
 import os
 import logging
-import requests
+
+import httpx
+
 from ctakesclient.typesystem import CtakesJSON
 
 ###############################################################################
@@ -24,7 +26,7 @@ def get_url_ctakes_rest() -> str:
     return url or "http://localhost:8080/ctakes-web-rest/service/analyze"
 
 
-def post(sentence: str, url: str = None) -> dict:
+async def post(sentence: str, url: str = None, client: httpx.AsyncClient = None) -> dict:
     """
     Sends clinical text to cTAKES for analysis and returns the raw server response
 
@@ -35,32 +37,34 @@ def post(sentence: str, url: str = None) -> dict:
 
     :param sentence: clinical text to send to cTAKES
     :param url: cTAKES REST server fully qualified path
+    :param client: optional existing HTTPX client session
     :return: Parsed json response from cTAKES
     """
     url = url or get_url_ctakes_rest()
+    client = client or httpx.AsyncClient()
     logging.debug(url)
-    response = requests.post(
+    response = await client.post(
         url,
-        data=sentence.encode("utf8"),
+        content=sentence.encode("utf8"),
         headers={
             "Content-Type": "text/plain; charset=UTF-8",
         },
-        timeout=300,  # TODO: consider exposing a pass-through timeout parameter
     )
     response.raise_for_status()
     return response.json()
 
 
-def extract(sentence: str, url: str = None) -> CtakesJSON:
+async def extract(sentence: str, url: str = None, client: httpx.AsyncClient = None) -> CtakesJSON:
     """
     Send clinical text to cTAKES for analysis and packages the response up for you
 
     :param sentence: clinical text to send to cTAKES
     :param url: cTAKES REST server fully qualified path
+    :param client: optional existing HTTPX client session
     :return: CtakesJSON wrapper
     """
-    url = url or get_url_ctakes_rest()
-    ner = CtakesJSON(post(sentence, url))
+    response = await post(sentence, url=url, client=client)
+    ner = CtakesJSON(response)
     _adjust_character_indexes(sentence, ner)  # Fix Java character indexes into Python ones
     return ner
 

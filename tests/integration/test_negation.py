@@ -30,13 +30,13 @@ def pretty(result: dict) -> str:
     return json.dumps(result, indent=4)
 
 
-class TestNegationCtakesDefaultContext(unittest.TestCase):
+class TestNegationCtakesDefaultContext(unittest.IsolatedAsyncioTestCase):
     """
     https://cwiki.apache.org/confluence/display/CTAKES/cTAKES+3.0+-+NE+Contexts
     """
 
-    def test_ctakes_covid_symptoms(self):
-        ner = ctakesclient.client.extract(note_negated_ros_review_of_symptoms())
+    async def test_ctakes_covid_symptoms(self):
+        ner = await ctakesclient.client.extract(note_negated_ros_review_of_symptoms())
 
         symptoms_dict = ctakesclient.filesystem.covid_symptoms()
         symptoms_fp = []
@@ -54,20 +54,20 @@ class TestNegationCtakesDefaultContext(unittest.TestCase):
 
     # pylint: disable-next=line-too-long
     @unittest.skip("https://github.com/Machine-Learning-for-Medical-Language/ctakes-client-py/issues/8")
-    def test_patient_denies(self):
+    async def test_patient_denies(self):
         """
         Test everything in this example note is negated.
         Unfortunately ctakes negation algorithm is not perfect.
         See linked issue above.
         """
         text = note_negated_denies()
-        ner = ctakesclient.client.extract(text)
+        ner = await ctakesclient.client.extract(text)
         false_positives = ner.list_match_text(Polarity.pos)
         self.assertEqual([], false_positives)
 
-    def test_history_of_headache(self):
+    async def test_history_of_headache(self):
         text = note_positive_headache()
-        ner = ctakesclient.client.extract(text)
+        ner = await ctakesclient.client.extract(text)
         self.assertIn("headache", ner.list_match_text())
 
 
