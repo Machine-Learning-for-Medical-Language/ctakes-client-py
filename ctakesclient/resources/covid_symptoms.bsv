@@ -143,7 +143,6 @@ C0003126|T033|44169009|SNOMEDCT_US|Lost the sense of smell|Loss of taste or smel
 C0003126|T033|44169009|SNOMEDCT_US|Lost smell|Loss of taste or smell
 C0003126|T033|44169009|SNOMEDCT_US|No sense of smell|Loss of taste or smell
 C0003126|T033|44169009|SNOMEDCT_US|could not smell|Loss of taste or smell
-C0003126|T033|R43|ICD10CM|R43|Loss of taste or smell
 C0003126|T033|R43.0|ICD10CM|R43.0|Loss of taste or smell
 C0003126|T033|HP:0000458|HPO|Loss of smell|Loss of taste or smell
 C0003126|T033|44169009|HPO|Loss of the sense of smell|Loss of taste or smell
@@ -167,6 +166,11 @@ C0013404|T184|0000032132|CHV|shortness of breath|Dyspnea
 C0013404|T184|0000032132|CHV|short of breath|Dyspnea
 C0013404|T184|R06|ICD10CM|R06|Dyspnea
 C0013404|T184|R06.0|ICD10CM|R06.0|Dyspnea
+C0013404|T184|R06.0|ICD10CM|R06.00|Dyspnea
+C0013404|T184|R06.0|ICD10CM|R06.02|Dyspnea
+C0013404|T184|R06.0|ICD10CM|R06.02|Dyspnea
+C0013404|T184|R06.0|ICD10CM|R06.03|Dyspnea
+C0013404|T184|R06.0|ICD10CM|R06.09|Dyspnea
 
 ##  Sore throat
 C0242429|T184|162397003|SNOMEDCT_US|Sore throat|Sore throat
@@ -182,3 +186,4 @@ C0242429|T184|162397003|SNOMEDCT_US|Throat soreness|Sore throat
 C0242429|T184|162397003|SNOMEDCT_US|Pharyngitis|Sore throat
 C0242429|T184|162397003|SNOMEDCT_US|dynophagia|Sore throat
 C0242429|T184|R07.0|ICD10CM|R07.0|Sore throat
+C0242429|T184|J02.9|ICD10CM|R07.0|Sore throat
