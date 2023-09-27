@@ -11,7 +11,7 @@ from .test_negation import (
 )
 
 
-async def list_false_positive_ss(physician_note: str) -> List[str]:
+async def list_false_positive_ss(physician_note: str, **kwargs) -> List[str]:
     """
     :param physician_note: note containing negated entries.
     :return: strings of symptoms that were actually marked *Polarity.pos*
@@ -19,7 +19,7 @@ async def list_false_positive_ss(physician_note: str) -> List[str]:
     ner = await ctakesclient.client.extract(physician_note)
     symptoms = ner.list_sign_symptom()
     spans = ner.list_spans(symptoms)
-    polarities_cnlp = await ctakesclient.transformer.list_polarity(sentence=physician_note, spans=spans)
+    polarities_cnlp = await ctakesclient.transformer.list_polarity(sentence=physician_note, spans=spans, **kwargs)
 
     fp = []
 
@@ -33,7 +33,7 @@ async def list_false_positive_ss(physician_note: str) -> List[str]:
     return fp
 
 
-async def debug_helper(physician_note: str):
+async def debug_helper(physician_note: str, **kwargs):
     print("##################################################################")
     print(physician_note)
 
@@ -45,7 +45,7 @@ async def debug_helper(physician_note: str):
     for match in matches:
         print(f"{match.polarity.name}\t{match.span()}\t{match.text}\t\t" f"{match.type.value}")
 
-    polarities_cnlp = await ctakesclient.transformer.list_polarity(physician_note, spans)
+    polarities_cnlp = await ctakesclient.transformer.list_polarity(physician_note, spans, **kwargs)
     polarities_ctakes = ner.list_polarity(spans)
 
     print("##################################################################")
@@ -60,6 +60,9 @@ async def debug_helper(physician_note: str):
 class TestNegationTransformer(unittest.IsolatedAsyncioTestCase):
     """Test case for the machine learning negation API"""
 
+    model = ctakesclient.transformer.TransformerModel.NEGATION
+    url = None
+
     def test_negation_api_example(self):
         """
         Test negation using the example provided by upstream.
@@ -71,7 +74,8 @@ class TestNegationTransformer(unittest.IsolatedAsyncioTestCase):
         """
         Test simple 'patient denies' type statements.
         """
-        self.assertEqual([], await list_false_positive_ss(note_negated_denies()))
+        false_positives = await list_false_positive_ss(note_negated_denies(), url=self.url, model=self.model)
+        self.assertEqual([], false_positives)
 
     # pylint: disable-next=line-too-long
     @unittest.skip("https://github.com/Machine-Learning-for-Medical-Language/ctakes-client-py/issues/8")
@@ -81,15 +85,27 @@ class TestNegationTransformer(unittest.IsolatedAsyncioTestCase):
         This is not yet 100% accurate and will take consider time to be perfect.
         Negation is not a solved problem in NLP community.
         """
-        self.assertEqual([], await list_false_positive_ss(note_negated_ros_review_of_symptoms()))
+        false_positives = await list_false_positive_ss(
+            note_negated_ros_review_of_symptoms(), url=self.url, model=self.model
+        )
+        self.assertEqual([], false_positives)
 
     async def assertPolarityCompatible(self, text: str):
         ner = await ctakesclient.client.extract(text)
         symptoms = ner.list_sign_symptom()
         polarities_ctakes = ner.list_polarity(symptoms)
-        polarities_cnlp = await ctakesclient.transformer.list_polarity(text, ner.list_spans(symptoms))
+        polarities_cnlp = await ctakesclient.transformer.list_polarity(
+            text, ner.list_spans(symptoms), url=self.url, model=self.model
+        )
 
         self.assertEqual(polarities_ctakes, polarities_cnlp, text)
+
+
+class TestTermExistsTransformer(TestNegationTransformer):
+    """Test case for the machine learning term exists API"""
+
+    model = ctakesclient.transformer.TransformerModel.TERM_EXISTS
+    url = "http://localhost:8001/termexists/process"  # url assumed by our integration tests
 
 
 if __name__ == "__main__":

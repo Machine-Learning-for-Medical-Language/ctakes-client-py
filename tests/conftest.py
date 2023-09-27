@@ -22,8 +22,9 @@ def is_port_open(port: int) -> bool:
 
 
 ctakes_port = 8080
-cnlp_port = 8000
-servers_are_running = is_port_open(ctakes_port) and is_port_open(cnlp_port)
+negation_port = 8000
+term_exists_port = 8001
+servers_are_running = is_port_open(ctakes_port) and is_port_open(negation_port) and is_port_open(term_exists_port)
 
 
 def pytest_addoption(parser):
