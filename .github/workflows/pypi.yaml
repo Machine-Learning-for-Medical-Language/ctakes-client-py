@@ -7,6 +7,10 @@ on:
 jobs:
   publish:
     runs-on: ubuntu-22.04
+
+    permissions:
+      id-token: write # this permission is required for PyPI "trusted publishing"
+
     steps:
     - uses: actions/checkout@v3
 
@@ -20,6 +24,3 @@ jobs:
 
     - name: Publish
       uses: pypa/gh-action-pypi-publish@release/v1
-      with:
-        password: ${{ secrets.PYPI_API_TOKEN }}
-        print_hash: true
