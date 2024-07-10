@@ -4,6 +4,7 @@
 #   public description of their style guide using 4)
 # - max-line-length changed to 120 because 80 was driving us crazy
 # - wrong-import-order re-enabled, because MT likes order among chaos
+# - disable cyclic-import check because it often has false positives
 #
 # BELOW THIS LINE IS A COPY OF https://google.github.io/styleguide/pylintrc
 
@@ -73,6 +74,7 @@ disable=abstract-method,
         cmp-method,
         coerce-builtin,
         coerce-method,
+        cyclic-import,
         delslice-method,
         div-method,
         duplicate-code,
