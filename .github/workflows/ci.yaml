@@ -1,42 +1,54 @@
 name: CI
-on: [push]
+on:
+  pull_request:
+  push:
+    branches:
+      - main
 
 jobs:
   unittest:
     name: unit tests
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-latest
     strategy:
       matrix:
-        python-version: ["3.8", "3.9", "3.10", "3.11"]
+        python-version: ["3.8", "3.9", "3.10", "3.11", "3.12"]
 
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
 
       - name: Set up Python ${{ matrix.python-version }}
-        uses: actions/setup-python@v4
+        uses: actions/setup-python@v5
         with:
           python-version: ${{ matrix.python-version }}
 
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install pytest
           pip install .[tests]
 
       - name: Test with pytest
         run: |
-          python -m pytest
+          python -m pytest --cov=ctakesclient --cov-report=xml
+
+      - name: Check coverage report
+        if: github.ref != 'refs/heads/main'
+        uses: orgoro/coverage@v3.1
+        with:
+          coverageFile: coverage.xml
+          token: ${{ secrets.GITHUB_TOKEN }}
+          thresholdAll: .9
+          thresholdNew: 1
+          thresholdModified: 1
 
   lint:
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
 
       - name: Install linters
-        #black is synced with the .pre-commit-hooks version
         run: |
           python -m pip install --upgrade pip
-          pip install bandit[toml] pycodestyle pylint black==22.12.0
+          pip install .[dev]
 
       - name: Run pycodestyle
         run: |

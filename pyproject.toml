@@ -51,8 +51,13 @@ docs = [
 tests = [
     "ddt",
     "pytest",
+    "pytest-cov",
     "respx",
 ]
 dev = [
-    "pre-commit"
+    "bandit[toml]",
+    "black >= 22, < 23",  # keep in rough sync with .pre-commit-config.yaml
+    "pre-commit",
+    "pycodestyle",
+    "pylint",
 ]
